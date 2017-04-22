@@ -21,8 +21,9 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'auth',], function () {
 	Route::get('/main', 'StudentController@show');
-	Route::get('/enquireies', 'StudentController@showEnquireies');
-//	Route::post('/enquireies', 'StudentController@storEnquireies')
+	Route::get('/student', 'StudentController@showEnquireies');
+	Route::get('/student/{id}', 'StudentController@showStudent');
+	Route::post('/student', 'StudentController@storeStudent')
 });
 
 

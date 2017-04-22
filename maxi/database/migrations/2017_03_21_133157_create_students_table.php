@@ -15,20 +15,31 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
-            $table->String('surname',250);
-            $table->String('forename',250);
-            $table->String('subject',100);
-            $table->String('nationality',100);
-            $table->String('email',250);
-            $table->integer('phone_number');
-            $table->text('questions');
-            $table->String('source');
-            $table->String('manager');
-            $table->boolean('is_general');
-            $table->boolean('is_emailed');
-            $table->boolean('is_highlight');
-            $table->boolean('is_special');
-            $table->boolean('is_download');
+            $table->String('surname',50);
+            $table->String('middle_name',50)->nullable();
+            $table->String('fist_name',50);
+            $table->String('nationality',50)->nullable();
+            $table->String('birthday',50)->nullable();
+            $table->String('email',50);
+            $table->String('phone_number',20)->nullable();
+
+            $table->String('department',250)->nullable();
+            $table->String('course',250)->nullable();
+            $table->String('level',20)->nullable();
+            $table->integer('start_year')->unsigned()->nullable();
+            $table->boolean('is_special')->default(false);
+            $table->text('questions')->nullable(); 
+            $table->boolean('is_applied')->nullable();
+            $table->integer('regesition_number')->unsigned()->nullable();
+
+            $table->String('manager', 100)->nullable();
+            $table->String('place', 100)->nullable();
+            $table->date('date')->nullable(); 
+            $table->String('source',250)->nullable();
+            $table->boolean('is_highlight')->default(false);
+            $table->boolean('is_emailed')->default(false);
+            $table->boolean('is_download')->default(false);
+            $table->unique('email');
             $table->timestamps();
         });
     }
