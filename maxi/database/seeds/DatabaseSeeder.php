@@ -14,18 +14,26 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
         DB::table('students')->insert([
         	'surname' => 'Tom',
-        	'forename' => 'Potter',
-        	'subject' => 'Computer Science',
+        	'fist_name' => 'Potter',
         	'nationality' => 'America',
         	'email' => 'tp@gmail.com',
         	'phone_number' => 637184913,
-        	'questions' => 'Why so serious?',
-        	'source' => 'online',
+
+            'department' => 'Computer Science',
+            'course' => 'SSIT',
+            'level' => 'postgraduate',
+            'start_year' => 2020,
+            'is_special' => true,
+            'questions' => 'Why so serious?',
+            'is_special' => true,
+            'regesition_number' => 12345678,
+
         	'manager' => 'Sam Wenchester',
-        	'is_general' => true,
+            'place' => 'bar',
+            'source' => 'online',
+        	'date' => '2017-12-12',
         	'is_emailed' => false,
         	'is_highlight' => true,
-        	'is_special' => true,
         	'is_download' => false,
         	]);
     }
