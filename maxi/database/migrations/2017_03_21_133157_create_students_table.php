@@ -19,7 +19,6 @@ class CreateStudentsTable extends Migration
             $table->String('middle_name',50)->nullable();
             $table->String('last_name',50);
             $table->String('nationality',50)->nullable();
-            $table->date('birthday',50)->nullable();
             $table->String('email',50);
             $table->String('phone_number',20)->nullable();
 

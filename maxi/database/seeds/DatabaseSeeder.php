@@ -37,7 +37,6 @@ class DatabaseSeeder extends Seeder
             'middle_name' => '',
             'last_name' => 'Cat',
             'nationality' => 'America',
-            'birthday' => '1990/03/21',
             'email' => 'tom@gmail.com',
             'phone_number' => 637184913,
             'department' => 'Computer Science',
@@ -63,7 +62,6 @@ class DatabaseSeeder extends Seeder
             'middle_name' => 'Tiny',
             'last_name' => 'Mice',
             'nationality' => 'America',
-            'birthday' => '1990/03/21',
             'email' => 'jerry@gmail.com',
             'phone_number' => 637158253,
             'department' => 'Computer Science',
@@ -89,7 +87,6 @@ class DatabaseSeeder extends Seeder
             'middle_name' => '',
             'last_name' => 'Zhang',
             'nationality' => 'China',
-            'birthday' => '1992/06/10',
             'email' => '148305235@qq.com',
             'phone_number' => 693284913,
             'department' => 'Computer Science',
@@ -115,7 +112,6 @@ class DatabaseSeeder extends Seeder
             'middle_name' => '',
             'last_name' => 'Li',
             'nationality' => 'China',
-            'birthday' => '1995/10/04',
             'email' => 'ls@gmail.com',
             'phone_number' => 637153989,
             'department' => 'Computer Science',
@@ -135,6 +131,29 @@ class DatabaseSeeder extends Seeder
             'is_download' => false,
             'created_at' => '2017/01/02 08:00:00',
             'updated_at' => '2017/01/03 09:00:00',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'normal',
+            'name' => 'welcome',
+            'manager' => 'Mr. John',
+            'content' => '
+            Dear «First_Name»,
+
+            Thank you for coming to speak with the University of Sheffield recently. I hope you found the discussion enjoyable, interesting and informative. This e-mail contains information about your subject area, the University itself and advice on funding options.
+            
+            You expressed a particular interest in our «Subject_of_interest».  You can find more information about the relevant programme(s) here: «link».
+            '
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'normal',
+            'name' => 'apply',
+            'manager' => 'Mr. John',
+            'content' => '
+            *How to Apply* 
+            The application is done through our website: http://www.sheffield.ac.uk/postgraduate/taught/apply/applying.   
+
+            I do hope that you have found this information helpful. If you cannot find what you are looking for, please do not hesitate to contact me and I will get back to you. We are here to help.
+            '
             ]);
     }
 }
