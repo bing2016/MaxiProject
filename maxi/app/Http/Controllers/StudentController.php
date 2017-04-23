@@ -10,25 +10,20 @@ use App\Student;
 class StudentController extends Controller
 {
 
-	public function show()
-    {
+	public function show() {
     	return view('Teacher-Stu Interface')->withStudents(Student::all());
     }
 
-	public function showEnquireies()
-	{
+	public function showEnquireies() {
 		return view('enquireies');
 	}
 
-	public function showStudent($id)
-	{
-		$student = Student::findOrFail($id);
-		return $student;
+	public function showDetail($id) {
+		return view('detail')->withStudents(Student::findOrFail($id));
 	}
 
     public function searchStudent($key, $value) {
-        $students = Student::where($key, $value)->get();
-        return $students;
+        return view('Teacher-Stu Interface')->withStudents(Student::where($key, $value)->get());
     }
 
     private function setStudnet(Request $request, $article) {
