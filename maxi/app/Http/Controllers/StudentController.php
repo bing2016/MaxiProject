@@ -18,12 +18,12 @@ class StudentController extends Controller
 		return view('enquireies');
 	}
 
-	public function showDetail($id) {
-		return view('detail')->withStudents(Student::findOrFail($id));
+	public function showDetail(Request $request) {
+		return view('detail')->withStudents(Student::findOrFail($request->get('id')));
 	}
 
-    public function searchStudent($key, $value) {
-        return view('Teacher-Stu Interface')->withStudents(Student::where($key, $value)->get());
+    public function searchStudent(Request $request) {
+        return view('Teacher-Stu Interface')->withStudents(Student::where($request->get('key'), $request->get('value'))->get());
     }
 
     private function setStudnet(Request $request, $article) {
