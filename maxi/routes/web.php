@@ -23,7 +23,7 @@ Route::group(['middleware' => 'auth',], function () {
 	Route::get('/main', 'StudentController@show');
 	Route::get('/student', 'StudentController@showEnquireies');
 	Route::get('/student/{id}', 'StudentController@showStudent');
-	Route::post('/student', 'StudentController@storeStudent')
+	Route::post('/student', 'StudentController@storeStudent');
 });
 
 
