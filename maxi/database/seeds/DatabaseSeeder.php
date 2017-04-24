@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
             'middle_name' => '',
             'last_name' => 'Cat',
             'nationality' => 'America',
-            'email' => 'tom@gmail.com',
+            'email' => 'tma8@sheffield.ac.uk',
             'phone_number' => 637184913,
             'department' => 'Computer Science',
             'course' => 'SSIT',
@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
             'middle_name' => 'Tiny',
             'last_name' => 'Mice',
             'nationality' => 'America',
-            'email' => 'jerry@gmail.com',
+            'email' => '1347933776@qq.com',
             'phone_number' => 637158253,
             'department' => 'Computer Science',
             'course' => 'SSIT',
@@ -137,11 +137,14 @@ class DatabaseSeeder extends Seeder
             'name' => 'welcome',
             'manager' => 'Mr. John',
             'content' => '
-            Dear «First_Name»,
+            Dear {{first_name}},
 
             Thank you for coming to speak with the University of Sheffield recently. I hope you found the discussion enjoyable, interesting and informative. This e-mail contains information about your subject area, the University itself and advice on funding options.
             
-            You expressed a particular interest in our «Subject_of_interest».  You can find more information about the relevant programme(s) here: «link».
+            You expressed a particular interest in our {{department}}.  You can find more information about the relevant programme(s) here: {{nationality}}.
+
+            {{blurb}}
+
             '
             ]);
         DB::table('email_modules')->insert([
