@@ -18,24 +18,24 @@ class StudentController extends Controller
 		return view('enquireies');
 	}
 
-	public function showDetail(Request $request) {
-		return view('detail')->withStudents(Student::findOrFail($request->get('id')));
+	public function showDetail($id) {
+		return view('detail')->withStudents(Student::findOrFail($id));
 	}
 
-    public function searchStudent(Request $request) {
-        return view('Teacher-Stu Interface')->withStudents(Student::where($request->get('key'), $request->get('value'))->get());
+    public function searchStudent($key, $value) {
+        return view('Teacher-Stu Interface')->withStudents(Student::where($key, $value)->get());
     }
 
-    private function setStudnet(Request $request, $article) {
-       $article->last_name = $request->get('last_name');
+    private function setttribute(Request $request, $article) {
+        $article->last_name = $request->get('last_name');
         $article->middle_name = $request->get('middle_name');
         $article->first_name = $request->get('first_name');
         $article->nationality = $request->get('nationality');
         $article->email = $request->get('email');
         $article->phone_number = $request->get('phone_number');
 
-        $article->department = $request->get('department');
-        $article->course = $request->get('course');
+        $article->department = $request->get('department_name');
+        $article->course = $request->get('course_name');
         $article->source = $request->get('source');
         $article->level = $request->get('level');
         $article->is_special = $request->get('is_special'); //more question
@@ -55,25 +55,31 @@ class StudentController extends Controller
             if ($article->save()) {
                 return $this->show();
             } else {
-                return redirect()->back()->withInput()->withErrors('alse store');
+                return redirect()->back()->withInput()->withErrors('false store');
             }
         } catch(QueryException $e) {
             $error_code = $e->errorInfo[1];
             if($error_code == 1062){
-                return redirect()->back()->withInput()->withErrors('alse store');
+                return redirect()->back()->withInput()->withErrors('You already have this student');
             }
         }
     }
-    public function modifyStudent(Request $request) {
+    public function update(Request $request) {
         $article = Student::findOrFail($request->get('id'));
-        return $this->setStudnet($request, $article);
-
+        return $this->setAttribute($request, $article);
     }
 
-	public function storeStudent(Request $request) {
+	public function store(Request $request) {
     	$article = new Student;
-        return $this->setStudnet($request, $article);
-
+        return $this->setAttribute($request, $article);
 	}
+
+    public function delete(Request $Request) {
+        if (Student::destroy($Request->get('id'))) {
+            return $this->show();
+        } else {
+            return $this->show()->withErrors('false delete');
+        }
+    }
 
 }

@@ -22,14 +22,14 @@ class CreateStudentsTable extends Migration
             $table->String('email',50);
             $table->String('phone_number',20)->nullable();
 
-            $table->String('department',250)->nullable();
-            $table->String('course',250)->nullable();
+            $table->String('department_name',250)->nullable();
+            $table->String('course_name',250)->nullable();
             $table->String('level',20)->nullable();
             $table->integer('start_year')->unsigned()->nullable();
-            $table->boolean('is_special')->default(false);
             $table->text('questions')->nullable(); 
             $table->boolean('is_applied')->nullable();
             $table->integer('registration_number')->unsigned()->nullable();
+            $table->boolean('is_special')->default(false); //special memail
 
             $table->String('manager', 100)->nullable();
             $table->String('place', 100)->nullable();
@@ -38,6 +38,7 @@ class CreateStudentsTable extends Migration
             $table->boolean('is_highlight')->default(false);
             $table->boolean('is_emailed')->default(false);
             $table->boolean('is_download')->default(false);
+
             $table->unique('email');
             $table->timestamps();
         });

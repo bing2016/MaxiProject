@@ -39,8 +39,8 @@ class DatabaseSeeder extends Seeder
             'nationality' => 'America',
             'email' => 'tma8@sheffield.ac.uk',
             'phone_number' => 637184913,
-            'department' => 'Computer Science',
-            'course' => 'SSIT',
+            'department_name' => 'Computer Science',
+            'course_name' => 'SSIT',
             'level' => 'Master',
             'start_year' => '2015',
             'is_special' => false,
@@ -64,8 +64,8 @@ class DatabaseSeeder extends Seeder
             'nationality' => 'America',
             'email' => '1347933776@qq.com',
             'phone_number' => 637158253,
-            'department' => 'Computer Science',
-            'course' => 'SSIT',
+            'department_name' => 'Computer Science',
+            'course_name' => 'SSIT',
             'level' => 'Master',
             'start_year' => '2016',
             'is_special' => true,
@@ -89,8 +89,8 @@ class DatabaseSeeder extends Seeder
             'nationality' => 'China',
             'email' => '148305235@qq.com',
             'phone_number' => 693284913,
-            'department' => 'Computer Science',
-            'course' => 'SSIT',
+            'department_name' => 'Computer Science',
+            'course_name' => 'SSIT',
             'level' => 'Master',
             'start_year' => '2017',
             'is_special' => false,
@@ -114,8 +114,8 @@ class DatabaseSeeder extends Seeder
             'nationality' => 'China',
             'email' => 'ls@gmail.com',
             'phone_number' => 637153989,
-            'department' => 'Computer Science',
-            'course' => 'SSIT',
+            'department_name' => 'Computer Science',
+            'course_name' => 'SSIT',
             'level' => 'Master',
             'start_year' => '2017',
             'is_special' => true,
@@ -158,5 +158,18 @@ class DatabaseSeeder extends Seeder
             I do hope that you have found this information helpful. If you cannot find what you are looking for, please do not hesitate to contact me and I will get back to you. We are here to help.
             '
             ]);
+        DB::table('departments')->insert([
+            'name' => 'Computer Science',
+            'link' => 'Http:/sdfasdf',
+            'blurb' => 'XXXXXXXX',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'china',
+            ]);
+        DB::table('courses')->insert([
+            'name' => 'SSIT',
+            'link' => 'Http:/sdfasdf',
+            ]);
+
     }
 }
