@@ -1,26 +1,49 @@
 <!DOCTYPE html>
+<html lang="en">
 <html>
 <head>
-	<meta charset="utf-8"> 
+	<meta charset="UTF-8"> 
 	<title>Teacher-Stu Interface</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet"/>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="{{ asset('css/shiyishi.css') }}">
-		<link rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/bootstrap-responsiv.css">
-
+	<link rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/bootstrap-responsiv.css">
 	<link rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/dataTables.bootstra.css">
+    <script src="{{ URL::asset('/js/jquery.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
 </head>
 <body>
 
-<div id="header" style="background-color:#fff;">
-    
-                <div class="text-right links">
-                		<br>
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('http://127.0.0.1:8000/register') }}">Register</a>
-                        <a href="{{ url('/main') }}">Teacher-Stu Interface</a>
-                </div>
+<div id="header" style="background-color:#fff;"><br>
+
+@if (Auth::guest())
+
+    <div class="text-right links font">
+        <a href="{{ route('login') }}">Login</a>
+        <a href="{{ route('register') }}">Register</a>
+    </div>
+
+@else
+
+    <div class="text-right links font">
+        <a>
+            <a> User: </a>
+            {{ Auth::user()->name }}
+        </a>
+        <a href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">Logout</a>
+        <a href="{{ url('/home') }}">Main</a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+
+{{ csrf_field() }}
+
+        </form>
+    </div>
+
+@endif
+
 </div>
 
 	<div id=header class="header">
@@ -70,54 +93,49 @@
 
 <div class="col-md-6">
 	<div class="text-left">
+
 	<br>
 		&emsp;<button class="btn btn-default" type="">Sort</button>&emsp;
 		<button class="btn btn-default" type="">Delete</button>&emsp;
-		<button class="btn btn-default" onclick="allSelect();" />Select All/Cancel All</button>&emsp;
+		<button class="btn btn-default" onclick="allSelect();" >Select All/Cancel All</button>&emsp;
 		<a class="btn btn-default" href="{{ url('/enquireies') }}" role="button">Add Student</a>&emsp;
 		<button class="btn btn-default" type="">Modify</button>&emsp;
 		<button class="btn btn-default" type="">Donload</button><br><br>
 	</div>
 </div>
 
-<div class="col-md-3" ></div>
-
-<div class="col-md-3" >
+<div class="col-md-3"></div>
+<div class="col-md-3" ><br>
  <form class="form-inline" role="form" >
 
       <div class="form-group">
-        <select class="form-control" name="key" id="key">
-                        <option value="Q?">Q?</option>
-                        <option value="first_name">First Name</option>
-                        <option value="last_name">Last Name</option>
-                        <option value="country">Country</option>
-                        <option value="email">Email Address</option>
-                        <option value="stuff">Stuff</option>
-                        <option value="date">Date</option>
-                        <option value="department">Department</option>
-                        <option value="sending">Sending</option>
-                </select>&emsp;
-        <input type="text" class="form-control" name="value" id="value" unchange=:"" required>&emsp;
-       <a id="a_id"><button type="submit" class="btn">Search</button></a>
+        
+        <select id="select_id" class="form-control">
+            <option>first_name</option>
+            <option>last_name</option>
+        </select>
+        <input type="text" id="input_id" class="form-control">
+        <button class="btn"><a id="a_id">Search</a></button>
+        
+        <script>
+            $(function() {
+                $("#select_id").change(function() {
+                    var key = $(this).val();
+                    var value = $("#input_id").val();
+                    $("#a_id").attr("href", "{{  url(' (/main/" + key + "/" + value + "') }}" );
+                });
+
+                $("#input_id").keyup(function() {
+                    var key = $("#select_id").val();
+                    var value = $(this).val();
+                    $("#a_id").attr("href", "/main/" + key + "/" + value);
+                });
+            });
+        </script>
       </div>
      </form>
 </div>
 
-        <script>
-            $(function() {
-                $("#key").change(function() {
-                    var key = $(this).val();
-                    var value = $("#value").val();
-                    $("#a_id").attr("href", "{{ url('/student/" + key + "/" + value+"') }}");
-                });
-
-                $("#value").keyup(function() {
-                    var key = $("#key").val();
-                    var value = $(this).val();
-                    $("#a_id").attr("href", "{{ url('/student/" + key + "/" + value+"') }}");
-                });
-            });
-        </script>
 
 <div class="row-fliod">
 <table class="table table-striped table-hover datatable">
@@ -125,7 +143,7 @@
     <thead>
         <tr>
             <th></th>
-            <th>Need Information?</th>
+            <th>Q?</th>
             <th>Name</th>
             <th>Country</th>
             <th>Email Address</th>
@@ -139,16 +157,19 @@
     <tbody>
 
         
-            <div id="content">
                 
                 @foreach ($students as $student)
                 <tr>
-                <ul>
-                    <li>
                         <td>
-                            <label><input type="checkbox" id="chk_list_4" value="option1" aria-label="..."></label>
+                            <label><input type="checkbox" id="chk_list_4" value="option1" ></label>
                         </td>
-                        <td><span class="glyphicon glyphicon-star" aria-hidden="true"></td>
+                        <td>
+                        @if ($student->is_special == 1)
+                        <label><input type="checkbox" checked disabled></label>
+                        @else
+                        <label><input type="checkbox" disabled></label>
+                        @endif
+                        </td>
                         <td> {{ $student->first_name }} </td>
                         <td> {{ $student->nationality}} </td>
                         <td> {{ $student->email }} </td>
@@ -159,13 +180,9 @@
                             <button type="button" class="btn btn-default">Send Email</button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-link">Detail</button>
+                            <a href="{{ url(str_replace('{id}',$student->id,'/details/{id}')) }} "><button type="button" class="btn btn-link">Detail</button></a>
                         </td>
-
-                    </li>
                 @endforeach
-                </ul>
-            </div> 
         </tr>
 
     </tbody>

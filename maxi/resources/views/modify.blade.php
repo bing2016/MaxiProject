@@ -50,15 +50,15 @@
                                 
                                 <div class="col-md-3">
                                 <span style="font-size:20px;">First Name</span><br>
-                                <input class="form-control" input class="form-control" value="{{ $students->first_name }}" disabled><br></div>
+                                <input class="form-control" input class="form-control" value="{{ $students->first_name }}"><br></div>
 
                                 <div class="col-md-3">
                                  <span style="font-size:20px;">Middle name</span><br/>
-                                <input class="form-control" input class="form-control" value="{{ $students->middle_name }}" disabled><br/></div>
+                                <input class="form-control" input class="form-control" value="{{ $students->middle_name }}"><br/></div>
 
                                 <div class="col-md-3">
                                 <span style="font-size:20px;">Surname</span><br/>
-                                <input class="form-control" input class="form-control" value="{{ $students->last_name }}" disabled><br/></div>
+                                <input class="form-control" input class="form-control" value="{{ $students->last_name }}"><br/></div>
                    
                         </div>
          
@@ -69,64 +69,64 @@
                         <div  class="col-md-9 ">
 
                         <span style="font-size:20px;">Nationality</span><br/>
-                        <input class="form-control" input class="form-control" value="{{ $students->nationality }}" disabled><br/>
+                        <input class="form-control" input class="form-control" value="{{ $students->nationality }}"><br/>
 
                         <span style="font-size:20px;">Meeting Place</span><br/>
-                        <input class="form-control" input class="form-control" value="{{ $students->place }}" disabled><br/>
+                        <input class="form-control" input class="form-control" value="{{ $students->place }}"><br/>
                         </div>
                 </div>
 
                 <div  style="margin-left: 29%" class="col-md-7">
                         <div  class="col-md-9 ">
                         <span style="font-size:20px;">Date</span>
-                        <input class="form-control" input class="form-control" value="{{ $students->date }}" disabled><br>
+                        <input class="form-control" input class="form-control" value="{{ $students->date }}"><br>
 
 
                         <span style="font-size:20px;">Email Address</span>
-                        <input class="form-control" input class="form-control" value="{{ $students->email }}" disabled><br>
+                        <input class="form-control" input class="form-control" value="{{ $students->email }}"><br>
 
                        
 
                         <span style="font-size:20px;">Level of Study</span><br>
-                        <input class="form-control" input class="form-control" value="{{ $students->level }}" disabled><br>
+                        <input class="form-control" input class="form-control" value="{{ $students->level }}"><br>
 
 
                         <span style="font-size:20px;">Department</span><br>
-                        <input class="form-control" input class="form-control" value="{{ $students->department }}" disabled><br>
+                        <input class="form-control" input class="form-control" value="{{ $students->department }}"><br>
 
                         <span style="font-size:20px;">Course/Subject</span><br>
-                        <input class="form-control" input class="form-control" value="{{ $students->course }}" disabled><br>
+                        <input class="form-control" input class="form-control" value="{{ $students->course }}"><br>
 
                         <span style="font-size:20px;">Telephone Number</span>
-                        <input class="form-control" input class="form-control" value="{{ $students->phone_number }}" disabled><br>
+                        <input class="form-control" input class="form-control" value="{{ $students->phone_number }}"><br>
 
                         <span style="font-size:20px;" type="text" name="start_year" >Which Year You Want To Start</span>
-                        <input class="form-control" input class="form-control" value="{{ $students->start_year }}" disabled><br>
+                        <input class="form-control" input class="form-control" value="{{ $students->start_year }}"><br>
 
                         <span style="font-size:20px;"  >Have You Already Applied ?</span>&emsp;&emsp;&emsp;&emsp;
                         <span style="font-size:15px;">Yes</span>&emsp;
                         @if ($students->is_special == 1)
-                        <label><input type="checkbox" checked disabled></label>
+                        <label><input type="checkbox" checked></label>
                         @else
-                        <label><input type="checkbox" disabled></label>
+                        <label><input type="checkbox"></label>
                        @endif
                         <span style="font-size:15px;">No</span>&emsp;
                         @if ($students->is_special == 0)
-                        <label><input type="checkbox" checked disabled></label>
+                        <label><input type="checkbox" checked></label>
                         @else
-                        <label><input type="checkbox" disabled></label>
+                        <label><input type="checkbox"></label>
                         @endif
  
                         <br>
                         <span style="font-size:20px;">If Yes, Input Your Regesition Number</span>
                         @if ($students->is_special == 1)
-                        <input class="form-control" input class="form-control" value="{{ $students->regesition_number }}" disabled><br>
+                        <input class="form-control" input class="form-control" value="{{ $students->regesition_number }}"><br>
                         @else
-                        <input class="form-control" input class="form-control" disabled><br>
+                        <input class="form-control" input class="form-control"><br>
                         @endif
 
                         <span style="font-size:20px;">Specific Question</span>
-                        <input class="form-control" value="{{ $students->questions }}" disabled>
+                        <input class="form-control" value="{{ $students->questions }}">
 
                         <span style="font-size:15px;">Send now? </span>&emsp;
                         <input type="checkbox" checked><br/><br><br>

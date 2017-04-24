@@ -4,21 +4,25 @@
 
 	<meta charset="utf-8"> 
 	<title>Teacher-Stu Interface</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/shiyishi.css') }}">
+
+    <style type="text/css">
+        .footer{position:absolute;bottom:-80%;width:100%;}
+    </style>
 
 </head>
 
 <body>
         
-<div style="height: 200%">
+<div style="">
         <div id="header" style="background-color:#fff;">
                 <div class="text-right links"><br>
-                        <a href="{{ url('/main') }}">Teacher-Stu Interface</a>
+                        <a href="{{ url('/main') }}">Main</a>
                 </div>
 </div>
 
-	<div id=header class="header">
+	<div id=header class="">
 	        <div class="col-md-4">
                         <a><img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 13%;" ></a>
                 </div>
@@ -37,26 +41,26 @@
                 </div>
         </div>
 
-        <div class="text-center col-md-12 content"></br>
-                <span style="font-size:45px;">Enquireies</span>
+        <div class="text-center col-md-12">
+                <br><span style="font-size:45px;">Enquireies</span>
         </div>
 
         <form action="/insert" method="post">
 
                 {{ csrf_field() }}
 
-                <div class="col-md-9" style="margin-left: 20%"><br><br>
+                <div class="col-md-10" style="margin-left: 30%"><br><br>
                         <div class="row">
                                 
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                 <span style="font-size:20px;">First Name</span><br/>
                                 <input class="form-control" input id="firstname" type="text" class="form-control" name="first_name" value="" required="required"><br/></div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                  <span style="font-size:20px;">Middle name</span><br/>
                                 <input class="form-control" input id="sur_name" type="text" class="form-control" name="middle_name" value="" ><br/></div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                 <span style="font-size:20px;">Surname</span><br/>
                                 <input class="form-control" input id="sur_name" type="text" class="form-control" name="surname" value="" required="required"><br/></div>
                    
@@ -108,7 +112,7 @@
                                 <option>Italy</option>
                         </select>
                         <div class="text-right" >
-                        <a href="{{ url('/enquireies') }}" role="button">Add Courses</a>
+                        <a href="{{ url('/enquireies') }}" role="button">Add Department</a>
                         </div>
 
                         <span style="font-size:20px;">Course/Subject</span><br/>
@@ -164,9 +168,8 @@
                         <span style="font-size:20px;">Cancel</span>
                         </button>
                 </div>
-
-</div>
 </form>
+</div>
 
 
 
@@ -175,7 +178,7 @@
 
 
 <footer>
-        <div class="text-center">
+        <div class="text-center footer">
                 <p>Uniersity of Sheffield/ Conmputer of Science/ Software System of Internet Technology/ Maxi Project/ Team Three </p> 
         </div>
 </footer> 
