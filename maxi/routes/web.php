@@ -21,14 +21,33 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'auth',], function () {
 	Route::get('/main', 'StudentController@show');
-	Route::get('/student', 'StudentController@showEnquireies');
-	Route::get('/detail', 'StudentController@showDetail');
-	Route::post('/student', 'StudentController@storeStudent');
-	Route::put('/student', 'StudentController@modifyStudent');
-	Route::get('/search', 'StudentController@searchStudent');
+	Route::get('/enquireies', 'StudentController@showEnquireies');
+	Route::get('/detial/{id}', 'StudentController@showDetail');
+	Route::post('/student', 'StudentController@store');
+	Route::put('/student', 'StudentController@update');
+	Route::delete('/student', 'StudentController@delete');
+	Route::get('/main/{key}/{value}', 'StudentController@searchStudent');
 });
 
 Route::post('/reset_email', 'OrderController@resetEmail');
 Route::post('/general_email', 'OrderController@generalEmail');
 Route::post('/special_email', 'OrderController@specialEmail');
 //Route::get('/home', 'HomeController@index');
+
+Route::post('excel/export','ExcelController@export');
+Route::get('excel/import','ExcelController@import');
+
+Route::get('department','DepartmentController@show');
+Route::post('department','DepartmentController@store');
+Route::put('department','DepartmentController@update');
+Route::delete('department','DepartmentController@delete');
+
+Route::get('course','CourseController@show');
+Route::post('course','CourseController@store');
+Route::put('course','CourseController@update');
+Route::delete('course','CourseController@delete');
+
+Route::get('emailmodel','EmailModelController@show');
+Route::post('emailmodel','EmailModelController@store');
+Route::put('emailmodel','EmailModelController@update');
+Route::delete('emailmodel','EmailModelController@delete');
