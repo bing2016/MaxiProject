@@ -1,0 +1,3 @@
+{{$welcomenew}}
+<br/>
+{{$applynew}}
