@@ -29,7 +29,7 @@ class CreateStudentsTable extends Migration
             $table->text('questions')->nullable(); 
             $table->boolean('is_applied')->nullable();
             $table->integer('registration_number')->unsigned()->nullable();
-            $table->boolean('is_send_now')->default(thrue); //special memail
+            $table->boolean('is_send_now')->default(true); //special memail
 
             $table->String('manager', 100)->nullable();
             $table->String('place', 100)->nullable();
