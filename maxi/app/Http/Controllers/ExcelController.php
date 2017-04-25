@@ -42,11 +42,13 @@ class ExcelController extends Controller
 			});
 		})->store('xls')->export('xls');
 	}
-
+	
 	public function import(){
-    	if($file) {
+    	//if($file) {
+    	if(Input::hasFile('import_file')){
+    		$path = Input::file('import_file')->getRealPath();
     		//$filePath = 'storage/exports/students1493055147.xls';
-    		$path = $file->getRealPath();
+    		//$path = $file->getRealPath();
     	    $data = Excel::load($filePath, function($reader) {
     	    })->get();
     	    if(!empty($data)){
