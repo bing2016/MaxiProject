@@ -48,7 +48,7 @@ class StudentController extends Controller
         $article->course_name = $request->get('course_name');
         $article->source = $request->get('source');
         $article->level = $request->get('level');
-        $article->is_special = $request->get('is_special'); //more question
+        $article->is_send_now = $request->get('is_send_now'); //more question
         $article->questions = $request->get('questions');
         $article->start_year = $request->get('start_year');
         $article->is_applied = $request->get('is_applied');
