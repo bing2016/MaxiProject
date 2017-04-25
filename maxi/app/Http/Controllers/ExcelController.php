@@ -63,7 +63,7 @@ class ExcelController extends Controller
                     Student::insert($insert);
                 }
             }
-        
+        return redirect('/main');
 
 		}
 	}
