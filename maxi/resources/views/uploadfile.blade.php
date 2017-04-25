@@ -33,7 +33,7 @@
 	</div>
 	<div class="col-md-12">
 	        <div class="text-right" style="background-color: #66B3FF">
-	            <a href="{{ url('/upload') }}"><<button type="button" style="color:white" class="btn btn-link"> Upload File</button></a>
+	            <a href="{{ url('/upload') }}"><button type="button" style="color:white" class="btn btn-link"> Upload File</button></a>
 	           	<a href="{{ url('/emailmodify') }}"><button type="button" style="color:white" class="btn btn-link"  >Email Modification</button></a>
 				<button type="button" style="color:white" class="btn btn-link">Feedback</button>
 	        </div>

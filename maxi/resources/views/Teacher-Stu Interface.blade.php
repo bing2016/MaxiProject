@@ -6,11 +6,11 @@
 	<meta charset="UTF-8"> 
 	<title>Teacher-Stu Interface</title>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-	<link rel="stylesheet" href="{{ asset('css/shiyishi.css') }}">
 	<link rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/bootstrap-responsiv.css">
 	<link rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/dataTables.bootstra.css">
     <script src="{{ URL::asset('/js/jquery.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/shiyishi.css') }}">
 
 </head>
 <body>
@@ -86,24 +86,26 @@
 
 <div class="col-md-12">
 <div class="text-right" style="background-color: #66B3FF">
-        <button type="button" style="color:white" class="btn btn-link">Upload File</button>
+        <a href="{{ url('/upload') }}"><button type="button" style="color:white" class="btn btn-link"> Upload File</button></a>
         <a href="{{ url('/emailmodify') }}"><button type="button" style="color:white" class="btn btn-link"  >Email Modification</button></a>
-        <button type="button" style="color:white" class="btn btn-link">Feedback</button>
+        <button type="button" style="color:white" class="btn btn-link" onclick="feedBack()">Feedback</button>
         </div>
 </div>
+
+<script type="text/javascript">
+    function feedBack() {
+        alert(" Harry Meng: rmeng3@sheffield.ac.uk ");
+    }
+</script>
 
 <div class="col-md-6">
 	<div class="text-left">
 
 	<br>
 <form action=" {{ url('excel/export') }}   " name="frm" method="POST">
-		&emsp;<button class="btn btn-default" type="">Sort</button>&emsp;
-		<button class="btn btn-default" type="">Delete</button>&emsp;
+		&emsp;
 		<button class="btn btn-default" onclick="allSelect();" >Select All/Cancel All</button>&emsp;
 		<a class="btn btn-default" href="{{ url('/enquireies') }}" role="button">Add Student</a>&emsp;
-		<button class="btn btn-default" type="">Modify</button>&emsp;
-
- 
         <button class="btn btn-default" type="submit" id="submit1" name="id" value="" onclick="changeValue();" required />Download</button>
 
         </form><br><br>
@@ -171,6 +173,7 @@
             <th>Course</th>
             <th>Sending</th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -183,7 +186,7 @@
                             <input type="checkbox" id="chk_list_4" value="{{ $student->id }}" name="isSelect" >
                         </td>
                         <td>
-                        @if ($student->is_special == 1)
+                        @if ($student->is_highlight == 1)
                         <label><input type="checkbox" checked disabled></label>
                         @else
                         <label><input type="checkbox" disabled></label>
@@ -201,6 +204,10 @@
                         <td>
                             <a href="{{ url(str_replace('{id}',$student->id,'/details/{id}')) }} "><button type="button" class="btn btn-link">Detail</button></a>
                         </td>
+                        <form action=" {{ url('student/delete') }}   " name="frm" method="POST">
+                        <td>
+                            <button type="submit" class="btn btn-link" name="id" value=" {{ $student->id }} " >Delete</button>
+                        </td></form>
                 @endforeach
         </tr>
 

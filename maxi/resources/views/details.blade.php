@@ -41,7 +41,7 @@
                 <br><span style="font-size:45px;">Enquireies</span>
         </div>
 
-        <form action="/insert" method="post">
+        <form action="{{ url('/student/update') }}" method="POST">
 
                 {{ csrf_field() }}
 
@@ -50,15 +50,15 @@
                                 
                                 <div class="col-md-3">
                                 <span style="font-size:20px;">First Name</span><br>
-                                <input class="form-control" input class="form-control" value="{{ $students->first_name }}" disabled><br></div>
+                                <input class="form-control" input class="form-control" name="first_name" value="{{ $students->first_name }}"><br></div>
 
                                 <div class="col-md-3">
                                  <span style="font-size:20px;">Middle name</span><br/>
-                                <input class="form-control" input class="form-control" value="{{ $students->middle_name }}" disabled><br/></div>
+                                <input class="form-control" input class="form-control" name="middle_name" value="{{ $students->middle_name }}"><br/></div>
 
                                 <div class="col-md-3">
-                                <span style="font-size:20px;">Surname</span><br/>
-                                <input class="form-control" input class="form-control" value="{{ $students->last_name }}" disabled><br/></div>
+                                <span style="font-size:20px;">Last Name</span><br/>
+                                <input class="form-control" input class="form-control" name="last_name" value="{{ $students->last_name }}"><br/></div>
                    
                         </div>
          
@@ -69,68 +69,81 @@
                         <div  class="col-md-9 ">
 
                         <span style="font-size:20px;">Nationality</span><br/>
-                        <input class="form-control" input class="form-control" value="{{ $students->nationality }}" disabled><br/>
+                        <input class="form-control" name="nationality" value="{{ $students->nationality }}"><br/>
 
                         <span style="font-size:20px;">Meeting Place</span><br/>
-                        <input class="form-control" input class="form-control" value="{{ $students->place }}" disabled><br/>
+                        <input class="form-control" name="place" value="{{ $students->place }}"><br/>
                         </div>
                 </div>
 
                 <div  style="margin-left: 29%" class="col-md-7">
                         <div  class="col-md-9 ">
                         <span style="font-size:20px;">Date</span>
-                        <input class="form-control" input class="form-control" value="{{ $students->date }}" disabled><br>
+                        <input class="form-control" name="date" value="{{ $students->date }}"><br>
 
 
                         <span style="font-size:20px;">Email Address</span>
-                        <input class="form-control" input class="form-control" value="{{ $students->email }}" disabled><br>
+                        <input class="form-control" name="email" value="{{ $students->email }}"><br>
 
                        
 
                         <span style="font-size:20px;">Level of Study</span><br>
-                        <input class="form-control" input class="form-control" value="{{ $students->level }}" disabled><br>
+                        <input class="form-control" name="level" value="{{ $students->level }}"><br>
 
 
                         <span style="font-size:20px;">Department</span><br>
-                        <input class="form-control" input class="form-control" value="{{ $students->department }}" disabled><br>
+                        <input class="form-control" name="department_name" value="{{ $students->department_name }}"><br>
 
                         <span style="font-size:20px;">Course/Subject</span><br>
-                        <input class="form-control" input class="form-control" value="{{ $students->course }}" disabled><br>
+                        <input class="form-control" name="course_name" value="{{ $students->course_name }}"><br>
 
                         <span style="font-size:20px;">Telephone Number</span>
-                        <input class="form-control" input class="form-control" value="{{ $students->phone_number }}" disabled><br>
+                        <input class="form-control" name="phone_number" value="{{ $students->phone_number }}"><br>
 
                         <span style="font-size:20px;" type="text" name="start_year" >Which Year You Want To Start</span>
-                        <input class="form-control" input class="form-control" value="{{ $students->start_year }}" disabled><br>
+                        <input class="form-control" name="start_year" value="{{ $students->start_year }}"><br>
 
                         <span style="font-size:20px;"  >Have You Already Applied ?</span>&emsp;&emsp;&emsp;&emsp;
                         <span style="font-size:15px;">Yes</span>&emsp;
-                        @if ($students->is_special == 1)
-                        <label><input type="checkbox" checked disabled></label>
-                        @else
-                        <label><input type="checkbox" disabled></label>
-                       @endif
+                        @if ($students->is_applied == 1)
+                        <label><input type="checkbox" name="is_applied" value="1" checked></label>&emsp;
                         <span style="font-size:15px;">No</span>&emsp;
-                        @if ($students->is_special == 0)
-                        <label><input type="checkbox" checked disabled></label>
+                        <label><input type="checkbox" name="is_applied" value="0"></label>
                         @else
-                        <label><input type="checkbox" disabled></label>
-                        @endif
+                        <label><input type="checkbox" name="is_applied" value="1"></label>&emsp;
+                        <span style="font-size:15px;">No</span>&emsp;
+                        <label><input type="checkbox" name="is_applied" value="0" checked></label>
+                       @endif
  
                         <br>
                         <span style="font-size:20px;">If Yes, Input Your Regesition Number</span>
                         @if ($students->is_special == 1)
-                        <input class="form-control" input class="form-control" value="{{ $students->regesition_number }}" disabled><br>
+                        <input class="form-control" name="regesition_number" value="{{ $students->regesition_number }}"><br>
                         @else
-                        <input class="form-control" input class="form-control" disabled><br>
+                        <input class="form-control" name="regesition_number" disabled><br>
                         @endif
 
                         <span style="font-size:20px;">Specific Question</span>
-                        <input class="form-control" value="{{ $students->questions }}" disabled>
+                        <input class="form-control" name="questions" value="{{ $students->questions }}">
 
                         <span style="font-size:15px;">Send now? </span>&emsp;
-                        <input type="checkbox" checked><br/><br><br>
+                        <span style="font-size:15px;">Yes</span>&emsp;
+                        @if ($students->is_send_now == 1)
+                        <label><input type="checkbox" name="is_send_now" value="1" checked></label>&emsp;
+                        <span style="font-size:15px;">No</span>&emsp;
+                        <label><input type="checkbox" name="is_send_now" value="0"></label>
+                        @else
+                        <label><input type="checkbox" name="is_send_now" value="1"></label>&emsp;
+                        <span style="font-size:15px;">No</span>&emsp;
+                        <label><input type="checkbox" name="is_send_now" value="0" checked></label>
+                       @endif
+</form>
 
+                        <div class="text-center links"><br>
+                        <br/><br/><button type="submit" name="id" value="{{ $students->id }}">
+                        <span style="font-size:20px;">Submit</span>
+                        </button>
+                        </div>
 
                         <div class="text-center links"><br>
                                 <a href="{{ url('/main') }}">Back To Main</a>
@@ -139,7 +152,7 @@
                 </div>
 
                 
-</form>
+
 </div>
 
 

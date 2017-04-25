@@ -4,8 +4,8 @@
 
 <meta charset="utf-8"> 
 <title>Overseas Student Recruitment management</title> 
-<link rel="stylesheet" href="{{ asset('css/shiyishi.css') }}">
 <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/shiyishi.css') }}">
 
 </head>
 <body>

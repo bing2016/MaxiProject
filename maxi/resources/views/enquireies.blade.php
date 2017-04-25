@@ -45,7 +45,7 @@
                 <br><span style="font-size:45px;">Enquireies</span>
         </div>
 
-        <form action="/insert" method="post">
+        <form action="{{ url('/student') }}" method="POST">
 
                 {{ csrf_field() }}
 
@@ -54,15 +54,15 @@
                                 
                                 <div class="col-md-2">
                                 <span style="font-size:20px;">First Name</span><br/>
-                                <input class="form-control" input id="firstname" type="text" class="form-control" name="first_name" value="" required="required"><br/></div>
+                                <input class="form-control" id="firstname" type="text" name="first_name" value=" " required><br/></div>
 
                                 <div class="col-md-2">
-                                 <span style="font-size:20px;">Middle name</span><br/>
-                                <input class="form-control" input id="sur_name" type="text" class="form-control" name="middle_name" value="" ><br/></div>
+                                <span style="font-size:20px;">Middle name</span><br/>
+                                <input class="form-control" id="middle_name" type="text" name="middle_name" value="{{ old('middle_name') }}" ><br/></div>
 
                                 <div class="col-md-2">
                                 <span style="font-size:20px;">Surname</span><br/>
-                                <input class="form-control" input id="sur_name" type="text" class="form-control" name="surname" value="" required="required"><br/></div>
+                                <input class="form-control" id="sur_name" type="text" name="last_name" value="{{ old('last_name') }}" required><br/></div>
                    
                         </div>
          
@@ -72,7 +72,7 @@
                 <div class="col-md-5 " style="margin-left: 30%">
 
                         <span style="font-size:20px;">Nationality</span><br/>
-                        <select class="form-control" type="text" name="nationality" value="{{ old('select1') }}" required>
+                        <select class="form-control" id="nationality" type="text" name="nationality" value="{{ old('nationality') }}" required>
                                 <option value="China">China</option>
                                 <option value="United Kingdom">United Kingdom</option>
                                 <option value="United States">United States</option>
@@ -81,20 +81,20 @@
                         </select><br/>
 
                         <span style="font-size:20px;">Meeting Place</span><br/>
-                        <input class="form-control" input id="place" type="text" class="form-control" name="place" value="" required="required"><br/>
+                        <input class="form-control" id="place" type="text" name="place" value="{{ old('place') }}" ><br/>
                 </div>
 
                 <div class="col-md-5" style="margin-left: 30%">
                         <span style="font-size:20px;">Date</span>
-                        <input class="form-control" id="meeting" type="date" name="date" value="2017-03-22"/><br/>
+                        <input class="form-control" id="date" type="date" name="date" value="{{ old('date') }}" required><br/>
 
                         <span style="font-size:20px;">Email Address</span>
-                        <input class="form-control" input id="" type="text" class="form-control" name="email" value="" required="required"><br/>
+                        <input class="form-control" id="email" type="text" name="email" value="{{ old('email') }}" required><br/>
 
                        
 
                         <span style="font-size:20px;">Level of Study</span><br/>
-                        <select class="form-control" type="text" name="level" >
+                        <select class="form-control" id="level" type="text" name="level" value="{{ old('level') }}" required>
                                 <option value="FN">Foundation -FN</option>
                                 <option value="UT">Undergraduate -UT</option>
                                 <option value="PMP">Pre Masters -PMP</option>
@@ -104,34 +104,34 @@
 
 
                          <span style="font-size:20px;">Department</span><br/>
-                        <select class="form-control" type="text" name="department" >
+                        <select class="form-control" id="department_name" type="text" name="department_name" value="{{ old('department_name') }}" required>
                                 <option value="CS">Computer Science</option>
                                 <option value="Math">Math</option>
-                                <option>United States</option>
-                                <option>France</option>
-                                <option>Italy</option>
+                                <option value="United States">United States</option>
+                                <option value="France">France</option>
+                                <option value="Italy">Italy</option>
                         </select>
                         <div class="text-right" >
                         <a href="{{ url('/enquireies') }}" role="button">Add Department</a>
                         </div>
 
                         <span style="font-size:20px;">Course/Subject</span><br/>
-                        <select class="form-control" type="text" name="course" >
+                        <select class="form-control" id="course_name" type="text" name="course_name" value="{{ old('course_name') }}" required >
                                 <option value="SSIT">Software System and Internet Technology (SSIT)</option>
                                 <option value="CS">Computer Science</option>
-                                <option>United States</option>
-                                <option>France</option>
-                                <option>Italy</option>
+                                <option value="United States">United States</option>
+                                <option value="France">France</option>
+                                <option value="Italy">Italy</option>
                         </select>
                         <div class="text-right" >
                         <a href="{{ url('/enquireies') }}" role="button">Add Courses</a>
                         </div>
 
                         <span style="font-size:20px;">Telephone Number</span>
-                        <input class="form-control" input id="" type="text" class="form-control" name="phone_number" value="" required="required"><br/>
+                        <input class="form-control" input id="phone_number" type="text" name="phone_number" value="{{ old('phone_number') }}" required><br/>
 
-                        <span style="font-size:20px;" type="text" name="start_year" >Which Year You Want To Start</span>
-                        <select class="form-control" >
+                        <span style="font-size:20px;" >Which Year You Want To Start</span>
+                        <select class="form-control" id="start_year" type="text" name="start_year" value="{{ old('name') }}" required>
                                 <option value="2017">2017</option> 
                                 <option value="2018">2018</option> 
                                 <option value="2019">2019</option> 
@@ -141,19 +141,21 @@
 
                         <span style="font-size:20px;"  >Have You Already Applied ?</span>&emsp;&emsp;&emsp;&emsp;
                         <span style="font-size:15px;">Yes</span>&emsp;
-                        <input type="radio" id="chk_list_1" value="option1" aria-label="..." required="required" name="is_applied" >
+                        <input type="radio" id="chk_list_1" value="1" required name="is_applied" >
                         <span style="font-size:15px;">No</span>&emsp;
-                        <input type="radio" id="chk_list_1" value="option1" aria-label="..." required="required" name="is_applied" ><br/><br/>
+                        <input type="radio" id="chk_list_1" value="0"  required name="is_applied" ><br/><br/>
 
                         <span style="font-size:20px;">If Yes, Input Your Regesition Number</span>
-                        <input class="form-control" input id="" type="text" class="form-control" name="regesition_number" value="" required="required"><br/>
+                        <input class="form-control" id="regesition_number" type="text" name="regesition_number" value="{{ old('regesition_number') }}"><br/>
 
                         <span style="font-size:20px;">Specific Question</span>
-                        <textarea class="form-control" rows="3" type="text" name="questions" required="required"></textarea>
-
+                        <input class="form-control" id="questions" type="text" name="questions" value="{{ old('questions') }}"  >
 
                         <span style="font-size:15px;">Send now? </span>&emsp;
-                        <input type="checkbox" id="chk_list_1" name="is_special" value="option1" aria-label="..." checked><br/>
+                        <span style="font-size:15px;">Yes</span>&emsp;
+                        <input type="radio" id="chk_list_1" value="0"  name="is_send_now" required >
+                        <span style="font-size:15px;">No</span>&emsp;
+                        <input type="radio" id="chk_list_1" value="1"  name="is_send_now" required ><br/><br/>
 
                 </div>
 
@@ -164,9 +166,9 @@
                 </div>
 
                 <div class="col-md-3">
-                        <br/><br/><button type="button" class="btn btn-primary btn-lg">
+                        <br/><br/><a href="{{ url('/main') }}"><button type="button" class="btn btn-primary btn-lg">
                         <span style="font-size:20px;">Cancel</span>
-                        </button>
+                        </button></a>
                 </div>
 </form>
 </div>

@@ -4,8 +4,8 @@
 
 <meta charset="utf-8"> 
 <title>Overseas Student Recruitment management</title> 
+<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/shiyishi.css') }}">
-<link href="css/bootstrap.min.css" rel="stylesheet"/>
 
 </head>
 
@@ -15,7 +15,7 @@
 
                         @if (Auth::guest())
                         <div class="text-right links font">
-                            <a href="{{ url('/home1') }}">Home</a>
+                            <a href="{{ url('/') }}">Home</a>
                             <a href="{{ route('login') }}">Login</a>
                             <a href="{{ route('register') }}">Register</a>
                         </div>

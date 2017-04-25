@@ -71,7 +71,7 @@
 <div class="col-md-6">
 <input class="text2" id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 @if ($errors->has('email'))
-                                    <span class="help-block">
+                                    <span class="help-block"><br>
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
 @endif

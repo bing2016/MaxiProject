@@ -4,8 +4,8 @@
 
 <meta charset="utf-8"> 
 <title>Overseas Student Recruitment management</title> 
+<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/shiyishi.css') }}">
-<link href="css/bootstrap.min.css" rel="stylesheet"/>
 
 </head>
 
@@ -15,7 +15,7 @@
 
                         @if (Auth::guest())
                         <div class="text-right links font">
-                            <a href="{{ url('/home1') }}">Home</a>
+                            <a href="{{ url('/') }}">Home</a>
                             <a href="{{ route('login') }}">Login</a>
                             <a href="{{ route('register') }}">Register</a>
                         </div>
@@ -65,7 +65,7 @@
                     <p for="name">Name</p>
                         <input class="text2" id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 @if ($errors->has('name'))
-                        <span class="help-block">
+                        <span class="help-block"><br>
                             <strong>{{ $errors->first('name') }}</strong>
                         </span>
 @endif
@@ -74,7 +74,7 @@
                     <p for="email">E-Mail Address</p> 
                         <input class="text2" id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 @if ($errors->has('email'))
-                        <span class="help-block">
+                        <span class="help-block"><br>
                             <strong>{{ $errors->first('email') }}</strong>
                         </span>
 @endif
