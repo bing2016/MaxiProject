@@ -26,7 +26,7 @@ class StudentController extends Controller
         return view('Teacher-Stu Interface')->withStudents(Student::where($key, $value)->get());
     }
 
-    private function setttribute(Request $request, $article) {
+    private function setAttribute(Request $request, $article) {
         $article->last_name = $request->get('last_name');
         $article->middle_name = $request->get('middle_name');
         $article->first_name = $request->get('first_name');
@@ -34,8 +34,8 @@ class StudentController extends Controller
         $article->email = $request->get('email');
         $article->phone_number = $request->get('phone_number');
 
-        $article->department = $request->get('department_name');
-        $article->course = $request->get('course_name');
+        $article->department_name = $request->get('department_name');
+        $article->course_name = $request->get('course_name');
         $article->source = $request->get('source');
         $article->level = $request->get('level');
         $article->is_special = $request->get('is_special'); //more question
@@ -55,13 +55,14 @@ class StudentController extends Controller
             if ($article->save()) {
                 return $this->show();
             } else {
-                return redirect()->back()->withInput()->withErrors('false store');
+                return redirect()->back()->withInput()->withErrors('fOOPS, FALSE STORED');
             }
         } catch(QueryException $e) {
             $error_code = $e->errorInfo[1];
             if($error_code == 1062){
                 return redirect()->back()->withInput()->withErrors('You already have this student');
             }
+            return 'WHOOPS, FALSE STORED';
         }
     }
     public function update(Request $request) {
