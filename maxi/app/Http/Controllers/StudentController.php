@@ -47,9 +47,8 @@ class StudentController extends Controller
         $article->manager = $request->get('manager');
         $article->place = $request->get('place');
         $article->date = $request->get('date');
-        $article->is_emailed = $request->get('is_emailed');
-        $article->is_highlight = $request->get('is_highlight');
-        $article->is_download = $request->get('is_download');
+        if (null != $request->get('questions'))
+            $article->is_highlight = true;
 
         try {
             if ($article->save()) {
