@@ -141,11 +141,11 @@ class DatabaseSeeder extends Seeder
 
             Thank you for coming to speak with the University of Sheffield recently. I hope you found the discussion enjoyable, interesting and informative. This e-mail contains information about your subject area, the University itself and advice on funding options.
             
-            You expressed a particular interest in our {{department}}.  You can find more information about the relevant programme(s) here: {{nationality}}.
+            You expressed a particular interest in our {{department}}.  You can find more information about the relevant programme(s) here: {{link}}.
 
             {{blurb}}
 
-            '
+            ',
             ]);
         DB::table('email_modules')->insert([
             'type' => 'normal',
@@ -156,8 +156,53 @@ class DatabaseSeeder extends Seeder
             The application is done through our website: http://www.sheffield.ac.uk/postgraduate/taught/apply/applying.   
 
             I do hope that you have found this information helpful. If you cannot find what you are looking for, please do not hesitate to contact me and I will get back to you. We are here to help.
-            '
+            ',
             ]);
+        DB::table('email_modules')->insert([
+            'type' => 'normal',
+            'name' => 'fees',
+            'manager' => 'Mr. John',
+            'content' => '
+            *Fees and Scholarships*
+            Tuition fees can be found here: https://www.sheffield.ac.uk/ssid/fees/pgt/lookup (select your department and then overseas). Please note - this page will be updated soon for 2017 fees.
+
+            We are pleased to offer a range of scholarships specifically to students from Brazil.  We have automatic scholarships worth £2000-£2500, merit based scholarships worth 50% of the tuition fee and also Santander scholarships worth £5000 for both undergraduate and postgraduate students.
+
+            You may also wish to apply for a Chevening scholarship for study at Sheffield: http://www.chevening.org/brazil.  Please note the application deadline for Chevening is 8 November.
+
+            ',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'normal',
+            'name' => 'officeInfo',
+            'manager' => 'Mr. John',
+            'content' => '
+            Best wishes,
+            --
+            Ruth Lauener
+            International Officer
+            Global Engagement
+            The University of Sheffield
+            Level 1, The Arts Tower
+            Western Bank
+            Sheffield
+            S10 2TN
+            Tel: +44(0)114 222 8025
+            ',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'country',
+            'name' => 'America',
+            'manager' => 'Mr. John',
+            'content' => 'Welcome to America kid!',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'country',
+            'name' => 'China',
+            'manager' => 'Mr. John',
+            'content' => 'Welcome to China kid!',
+            ]);
+
         DB::table('departments')->insert([
             'name' => 'Computer Science',
             'link' => 'Http:/sdfasdf',

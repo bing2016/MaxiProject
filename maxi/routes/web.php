@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth',], function () {
 });
 
 Route::post('/reset_email', 'OrderController@resetEmail');
-Route::post('/general_email', 'OrderController@generalEmail');
+Route::get('/general_email', 'OrderController@generalEmail');
 Route::post('/special_email', 'OrderController@specialEmail');
 //Route::get('/home', 'HomeController@index');
 

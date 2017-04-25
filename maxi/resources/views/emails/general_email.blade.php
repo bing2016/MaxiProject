@@ -1,3 +1,9 @@
 {{$welcomenew}}
-<br/>
+<br/><br/>
 {{$applynew}}
+<br/><br/>
+{{$nationalityPart}}
+<br/><br/>
+{{$fees}}
+<br/><br/>
+{{$officeInfo}}
