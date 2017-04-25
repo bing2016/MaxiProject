@@ -6,6 +6,7 @@ use App\Student;
 use App\EmailModule;
 use App\Department;
 use App\Course;
+use App\User;
 use App\Mail\OrderShipped;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -22,7 +23,7 @@ class OrderController extends Controller
     //general email
     public function generalEmail()
     {
-        $studentList = Student::where('is_emailed', false)->where('is_special', false)->get();
+        $studentList = Student::where('is_emailed', false)->where('is_send_now', true)->get();
         foreach ($studentList as $student)
         {
             $first_name = $student['first_name'];
@@ -68,25 +69,43 @@ class OrderController extends Controller
             $student->is_emailed = true;
             $student->save();
         }
+        return redirect('/main');
     }
 
     //reset passwaord email
-    public function resetEmail($request)
+    public function resetEmail(Request $request)
     {
-        $manager = User::findOrFail($request->get('email'));
-        $email = $manager['email'];
-        $name = $namager['name'];
+        $manager = User::where('email', $request->get('email'))->first();
+        if($manager==null)
+        {
+            return redirect()->back()->withInput()->withErrors("Invalid email.");
+        }
+        else
+        {
+            $email = $manager->email;
+            $name = $manager->name;
+        }
+
         Mail::send('emails.reset_password', ['name'=>$name], function($message) use($email)
         {
             $message->to( $email, 'some guy')->subject('Reset your password');
         });
+
+        return redirect('/login');
     }
 
     public function specialEmail(Request $request)
     {
-        $student = Student::findOrFail($request->get('id'));
-        $content = $request->get('content');
-        $email = $student['email'];
+        $student = Student::where('id', $request->get('id'))->first();
+        if($manager==null)
+        {
+            return redirect()->back()->withInput()->withErrors("Invalid student ID.");
+        }
+        else
+        {
+            $content = $request->get('content');
+            $email = $student['email'];
+        }
         Mail::send('emails.special_email', ['content'=>$content], function($message) use($email)
         {
             $message->to( $email, 'some guy')->subject('Welcome to the University of Sheffield!');
@@ -94,6 +113,7 @@ class OrderController extends Controller
 
         $student->is_emailed = true;
         $student->save();
+        return redirect('/main');
     }
 
     public function index()

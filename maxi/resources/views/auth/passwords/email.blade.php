@@ -5,7 +5,6 @@
 <meta charset="utf-8"> 
 <title>Overseas Student Recruitment management</title> 
 <link rel="stylesheet" href="{{ asset('css/shiyishi.css') }}">
-
 </head>
 <body>
  
@@ -64,17 +63,28 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('password.email') }}">
+<form class="form-horizontal" role="form" method="POST" action="{{ url('/reset_email') }}">
 {{ csrf_field() }}
 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 <div class="col-md-6">
+
 <input class="text2" id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 @if ($errors->has('email'))
-                                    <span class="help-block"><br>
+                                    <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
 @endif
+
+   @if (count($errors) > 0)
+                        @foreach ($errors->all() as $error)
+                         <div class="bg-danger" style="color:red">
+                            <p>{{ $error }}</p>
+                        @endforeach
+                </div>
+
+            @endif
+
 </div>
 </div> 
 <div class="form-group">
