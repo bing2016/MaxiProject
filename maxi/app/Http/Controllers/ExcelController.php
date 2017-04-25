@@ -42,4 +42,25 @@ class ExcelController extends Controller
 		})->store('xls')->export('xls');
 	}
 
+	public function import(){
+    	if($file) {
+    		//$filePath = 'storage/exports/students1493055147.xls';
+    		$path = $file->getRealPath();
+    	    $data = Excel::load($filePath, function($reader) {
+    	    })->get();
+    	    if(!empty($data)){
+    	    	foreach ($data as $key => $value) {
+    	    		$nameArray = explode(" ", $value->name);
+                    $insert[] = ['first_name' => reset($nameArray),
+                    			 'last_name' => end($nameArray), 
+                    			 'email' => $value->email, 
+                    			 'course_name' => $value->course,];
+                }
+                if(!empty($insert)){
+                    Student::insert($insert);
+                }
+            }
+        //}
+
+	}
 }
