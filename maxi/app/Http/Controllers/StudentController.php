@@ -19,11 +19,21 @@ class StudentController extends Controller
 	}
 
 	public function showDetail($id) {
-		return view('detail')->withStudents(Student::findOrFail($id));
+		return view('details')->withStudents(Student::findOrFail($id));
 	}
 
     public function searchStudent($key, $value) {
         return view('Teacher-Stu Interface')->withStudents(Student::where($key, $value)->get());
+    }
+
+    public function updateHighlight(Request $request) {
+        $student = Student::findOrFail($request->get('id'));
+        if (true == $student->is_highlight)
+            $student->is_highlight = false;
+        else {
+            $student->is_highlight = true;
+        }
+        return $this->show();
     }
 
     private function setAttribute(Request $request, $article) {
