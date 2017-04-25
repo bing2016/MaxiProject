@@ -15,7 +15,8 @@ class ExcelController extends Controller
     }
 
 	public function export(Request $request){
-		$arr = explode("&", $request->get('id'));
+
+		$arr = explode(",", $request->get('id'));
 
 		if (empty($arr)) {
 			$students = Student::where('is_download', 0)->get();
