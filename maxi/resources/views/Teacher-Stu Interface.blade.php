@@ -2,6 +2,7 @@
 <html lang="en">
 <html>
 <head>
+
 	<meta charset="UTF-8"> 
 	<title>Teacher-Stu Interface</title>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
@@ -95,14 +96,32 @@
 	<div class="text-left">
 
 	<br>
+<form action=" {{ url('excel/export') }}   " name="frm" method="POST">
 		&emsp;<button class="btn btn-default" type="">Sort</button>&emsp;
 		<button class="btn btn-default" type="">Delete</button>&emsp;
 		<button class="btn btn-default" onclick="allSelect();" >Select All/Cancel All</button>&emsp;
 		<a class="btn btn-default" href="{{ url('/enquireies') }}" role="button">Add Student</a>&emsp;
 		<button class="btn btn-default" type="">Modify</button>&emsp;
-		<button class="btn btn-default" type="">Donload</button><br><br>
+
+ 
+        <button class="btn btn-default" type="submit" id="submit1" name="id" value="" onclick="changeValue();" required />Download</button>
+
+        </form><br><br>
 	</div>
 </div>
+
+
+<script type="text/javascript">
+    function changeValue() {
+        obj = document.getElementsByName("isSelect");
+        check_val = [];
+        for(k in obj){
+            if(obj[k].checked)
+                check_val.push(obj[k].value);
+        }
+        document.getElementById("submit1").value=(check_val); 
+    }
+</script>
 
 <div class="col-md-3"></div>
 <div class="col-md-3" ><br>
@@ -149,7 +168,7 @@
             <th>Email Address</th>
             <th>Stuff</th>
             <th>Date</th>
-            <th>Department</th>
+            <th>Course</th>
             <th>Sending</th>
             <th></th>
         </tr>
@@ -161,7 +180,7 @@
                 @foreach ($students as $student)
                 <tr>
                         <td>
-                            <label><input type="checkbox" id="chk_list_4" value="option1" ></label>
+                            <input type="checkbox" id="chk_list_4" value="{{ $student->id }}" name="isSelect" >
                         </td>
                         <td>
                         @if ($student->is_special == 1)
@@ -175,7 +194,7 @@
                         <td> {{ $student->email }} </td>
                         <td> {{ $student->manager }} </td>
                         <td> {{ $student->date }} </td>
-                        <td> {{ $student->department }} </td>
+                        <td> {{ $student->course_name }} </td>
                         <td>
                             <button type="button" class="btn btn-default">Send Email</button>
                         </td>
