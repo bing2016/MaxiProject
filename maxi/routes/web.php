@@ -36,7 +36,7 @@ Route::post('/special_email', 'OrderController@specialEmail');
 
 Route::get('upload','ExcelController@upload');
 Route::post('excel/export','ExcelController@export');
-Route::get('excel/import','ExcelController@import');
+Route::post('excel/import','ExcelController@import');
 
 Route::get('department','DepartmentController@show');
 Route::post('department','DepartmentController@store');

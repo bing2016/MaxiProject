@@ -47,8 +47,6 @@ class ExcelController extends Controller
     	$file = $request->file('import_file');
 
     	if($file) {
-    		//$path = Input::file('import_file')->getRealPath();
-    		//$filePath = 'storage/exports/students1493055147.xls';
     		$path = $file->getRealPath();
 
     	    $data = Excel::load($path, function($reader) {
@@ -65,7 +63,7 @@ class ExcelController extends Controller
                     Student::insert($insert);
                 }
             }
-        //}
+        
 
 		}
 	}
