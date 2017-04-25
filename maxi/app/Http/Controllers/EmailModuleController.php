@@ -7,6 +7,49 @@ use Illuminate\Http\Request;
 class EmailModuleController extends Controller
 {
     public function show() {
-    	return view('EmailModule')->withStudents(EmailModule::all());
+    	return view('EmailModule');
+    }
+
+    public function showContent($name) {
+    	return view('EmailModule')->withStudents(EmailModule::where('name', $name)->first());
+    }
+
+    private function setAttribute(Request $request, $article) {
+        $article->name = $request->get('type');
+        $article->link = $request->get('name');
+        $article->link = $request->get('manager');
+        $article->link = $request->get('content');
+
+        try {
+            if ($article->save()) {
+                return $this->show();
+            } else {
+                return redirect()->back()->withInput()->withErrors('false store');
+            }
+        } catch(QueryException $e) {
+            $error_code = $e->errorInfo[1];
+            if($error_code == 1062){
+                return redirect()->back()->withInput()->withErrors('You already have this module');
+            }
+            return 'WHOOPS, FALSE STORED';
+        }
+    }
+
+    public function update(Request $request) {
+        $article = EmailModule::findOrFail($request->get('id'));
+        return $this->setAttribute($request, $article);
+    }
+
+	public function store(Request $request) {
+    	$article = new EmailModule;
+        return $this->setAttribute($request, $article);
+	}
+
+    public function delete(Request $Request) {
+    	if (EmailModule::destroy($Request->get('id'))) {
+            return $this->show();
+        } else {
+            return $this->show()->withErrors('false delete');
+        }
     }
 }

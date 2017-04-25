@@ -7,33 +7,16 @@ use Illuminate\Http\Request;
 class CourseController extends Controller
 {
     public function show() {
-        return view('Course')->withStudents(Course::all())
+        return view('Course');
+    }
+
+    public function showContent($name) {
+        return view('Course')->withStudents(Course::where('name', $name)->first());
     }
 
     private function setAttribute(Request $request, $article) {
-        $article->last_name = $request->get('last_name');
-        $article->middle_name = $request->get('middle_name');
-        $article->first_name = $request->get('first_name');
-        $article->nationality = $request->get('nationality');
-        $article->email = $request->get('email');
-        $article->phone_number = $request->get('phone_number');
-
-        $article->department = $request->get('department');
-        $article->course = $request->get('course');
-        $article->source = $request->get('source');
-        $article->level = $request->get('level');
-        $article->is_special = $request->get('is_special'); //more question
-        $article->questions = $request->get('questions');
-        $article->start_year = $request->get('start_year');
-        $article->is_applied = $request->get('is_applied');
-        $article->regesition_number = $request->get('regesition_number');
-
-        $article->manager = $request->get('manager');
-        $article->place = $request->get('place');
-        $article->date = $request->get('date');
-        $article->is_emailed = $request->get('is_emailed');
-        $article->is_highlight = $request->get('is_highlight');
-        $article->is_download = $request->get('is_download');
+        $article->name = $request->get('name');
+        $article->link = $request->get('link');
 
         try {
             if ($article->save()) {
