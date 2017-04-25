@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-	public function show() {
-    	return Course::all();
+    public function show() {
+        return view('Course')->withStudents(Course::all())
     }
 
     private function setAttribute(Request $request, $article) {
