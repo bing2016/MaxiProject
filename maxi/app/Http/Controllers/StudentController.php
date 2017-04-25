@@ -42,7 +42,7 @@ class StudentController extends Controller
         $article->questions = $request->get('questions');
         $article->start_year = $request->get('start_year');
         $article->is_applied = $request->get('is_applied');
-        $article->regesition_number = $request->get('regesition_number');
+        $article->registration_number = $request->get('registration_number');
 
         $article->manager = $request->get('manager');
         $article->place = $request->get('place');
@@ -55,7 +55,7 @@ class StudentController extends Controller
             if ($article->save()) {
                 return $this->show();
             } else {
-                return redirect()->back()->withInput()->withErrors('fOOPS, FALSE STORED');
+                return redirect()->back()->withInput()->withErrors('WHOOPS, FALSE STORED');
             }
         } catch(QueryException $e) {
             $error_code = $e->errorInfo[1];
