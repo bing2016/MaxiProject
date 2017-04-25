@@ -12,17 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('auth/login');
+    return view('welcom');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'StudentController@show');
 
 Route::group(['middleware' => 'auth',], function () {
 	Route::get('/main', 'StudentController@show');
 	Route::get('/enquireies', 'StudentController@showEnquireies');
-	Route::get('/detail/{id}', 'StudentController@showDetail');
+	Route::get('/details/{id}', 'StudentController@showDetail');
 	Route::post('/student', 'StudentController@store');
 	Route::put('/student', 'StudentController@update');
 	Route::delete('/student', 'StudentController@delete');
