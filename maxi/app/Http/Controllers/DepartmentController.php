@@ -12,7 +12,7 @@ class DepartmentController extends Controller
     }
 
     public function showContent($name) {
-        return view('departmentUp')->withDepartment(Department::where('name', $name)->first());
+        return view('departmentUp')->withDepartments(Department::where('name', $name)->first());
     }
 
     private function setAttribute(Request $request, $article) {

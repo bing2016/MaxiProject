@@ -12,7 +12,7 @@ class CourseController extends Controller
     }
 
     public function showContent($name) {
-        return view('courseUp')->withCourse(Course::where('name', $name)->first());
+        return view('courseUp')->withCourses(Course::where('name', $name)->first());
     }
 
     private function setAttribute(Request $request, $article) {
