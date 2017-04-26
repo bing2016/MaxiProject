@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Course;
 
 class CourseController extends Controller
 {
@@ -11,7 +12,7 @@ class CourseController extends Controller
     }
 
     public function showContent($name) {
-        return view('Course')->withStudents(Course::where('name', $name)->first());
+        return view('Course')->withCourse(Course::where('name', $name)->first());
     }
 
     private function setAttribute(Request $request, $article) {
@@ -27,7 +28,7 @@ class CourseController extends Controller
         } catch(QueryException $e) {
             $error_code = $e->errorInfo[1];
             if($error_code == 1062){
-                return redirect()->back()->withInput()->withErrors('You already have this student');
+                return redirect()->back()->withInput()->withErrors('YOU ALREADY HAVE THIS  COURSE');
             }
         }
     }

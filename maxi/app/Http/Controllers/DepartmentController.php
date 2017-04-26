@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Department;
 
 class DepartmentController extends Controller
 {
@@ -11,7 +12,7 @@ class DepartmentController extends Controller
     }
 
     public function showContent($name) {
-        return view('Department')->withStudents(Department::where('name', $name)->first());
+        return view('Department')->withDepartment(Department::where('name', $name)->first());
     }
 
     private function setAttribute(Request $request, $article) {
@@ -29,7 +30,7 @@ class DepartmentController extends Controller
         } catch(QueryException $e) {
             $error_code = $e->errorInfo[1];
             if($error_code == 1062){
-                return redirect()->back()->withInput()->withErrors('You already have this student');
+                return redirect()->back()->withInput()->withErrors('YOU ALREADY HAVE THIS DEPARTMENT.');
             }
         }
     }

@@ -14,8 +14,10 @@ class EmailModuleController extends Controller
     public function showContent($type, $name) {
         if ('country' == $type) {
             $countent_c = EmailModule::where('name', 'country')->select('content')->first();
+            $countent_n = ''
         } else if ('normal' == $type) {
             $countent_n = EmailModule::where('name', 'normal')->select('content')->first();
+            $countent_c = ''
         } else {
             $countent_c = '';
             $countent_n = '';   
