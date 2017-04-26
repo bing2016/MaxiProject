@@ -8,7 +8,7 @@ use App\EmailModule;
 class EmailModuleController extends Controller
 {
     public function show() {
-    	return view('EmailModule')->with('countent', '');
+    	return view('EmailModule')->withDEmailModules(EmailModule::select('name')->get());
     }
 
     public function showContent($name) {
