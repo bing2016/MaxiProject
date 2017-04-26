@@ -57,8 +57,9 @@ class StudentController extends Controller
         $article->manager = $request->get('manager');
         $article->place = $request->get('place');
         $article->date = $request->get('date');
-        if (null != $request->get('questions'))
+        if (null != $request->get('questions')){
             $article->is_highlight = true;
+        }
 
         try {
             if ($article->save()) {

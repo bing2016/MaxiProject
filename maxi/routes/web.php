@@ -13,7 +13,9 @@
 
 
 Auth::routes();
-Route::get('/', 'StudentController@show');
+Route::get('/', function () {
+    return view('auth/login');
+});
 
 Route::group(['middleware' => 'auth',], function () {
 	Route::get('/home', 'StudentController@show');
