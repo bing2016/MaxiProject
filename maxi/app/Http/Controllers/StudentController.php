@@ -23,7 +23,11 @@ class StudentController extends Controller
 	}
 
     public function searchStudent($key, $value) {
-        return view('Teacher-Stu Interface')->withStudents(Student::where($key, $value)->get());
+        if ('all_students' == $key) {
+            return $this->show();
+        } else {
+            return view('Teacher-Stu Interface')->withStudents(Student::where($key, $value)->get());
+        }
     }
 
     public function updateHighlight(Request $request) {
