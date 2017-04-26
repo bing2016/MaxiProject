@@ -23,7 +23,7 @@ class OrderController extends Controller
     public function getEmail($id)
     {
         $student = Student::where('id', $id)->first();
-        return $this->getEmailDetail($student);
+        return view('EmailModule')->with('content', $this->getEmailDetail($student));
     }
 
     public function getEmailDetail($student)
@@ -72,7 +72,7 @@ class OrderController extends Controller
         foreach ($studentList as $student)
         {
             $email = $student['email'];
-            Mail::send('emails.general_email', $this->getEmail($student['id']), function($message) use($email)
+            Mail::send('emails.general_email', $this->getEmail($student['id'])->content, function($message) use($email)
             {
                 $message->to( $email, 'some guy')->subject('Welcome to the University of Sheffield!');
             });
@@ -127,74 +127,4 @@ class OrderController extends Controller
         return redirect('/main');
     }
 
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
