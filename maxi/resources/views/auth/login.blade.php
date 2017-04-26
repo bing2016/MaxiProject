@@ -15,7 +15,6 @@
 
                         @if (Auth::guest())
                         <div class="text-right links font">
-                            <a href="{{ url('/') }}">Home</a>
                             <a href="{{ route('login') }}">Login</a>
                             <a href="{{ route('register') }}">Register</a>
                         </div>
