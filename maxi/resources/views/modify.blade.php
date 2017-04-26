@@ -20,7 +20,7 @@
 
         <div id=header class="">
                 <div class="col-md-4">
-                        <a><img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 13%;" ></a>
+                        <a href="{{ route('login') }}"><img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 13%;" ></a>
                 </div>
                 <div class="col-md-8">
                         <div class="text-center" style="font-size: 50px; margin-top:5%">

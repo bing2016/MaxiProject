@@ -39,13 +39,13 @@
 
 <div class="row"> 
 <div class="col-md-6">
-                <div class="title m-b-md"><br>
+                <div class="title m-b-md text-center" style="margin-left: 13%;"><br>
                     <a>
-                    <img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 32%;" >
+                    <a href="{{ route('login') }}" ><img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 5%;"></a>
                     </a>
                     <br>
 
-                    <div class="text-center font">
+                    <div class=" font">
                     <span style="font-size:70px;">
                     Overseas Student Recruitment management System
                     </span></div>

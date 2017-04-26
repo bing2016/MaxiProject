@@ -27,7 +27,7 @@
 @else
 
     <div class="text-right links font">
-        <a>
+        <a> 
             <a> User: </a>
             {{ Auth::user()->name }}
         </a>
@@ -50,13 +50,13 @@
 	<div id=header class="header">
 		<a>
 		<div class="col-md-4">
-        	<img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 13%;" >
+        	<a href="{{ route('login') }}"><img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 13%;" ></a>
         </div>
         </a>
         <div class="col-md-8"><br><br>
 
         <div class="text-center">
-        <h1><strong>Overseas Student Recruitment management</strong></h1>
+        <h1><strong>Overseas Student Recruitment Management</strong></h1>
         </div>
 
         <script type="text/javascript">
@@ -98,18 +98,19 @@
     }
 </script>
 
-<div class="col-md-6">
+<div class="col-md-2">
 	<div class="text-left">
 
 	<br>
-<form action=" {{ url('excel/export') }}   " name="frm" method="POST">
-		&emsp;
-		<button class="btn btn-default" onclick="allSelect();" >Select All/Cancel All</button>&emsp;
-		<a class="btn btn-default" href="{{ url('/enquireies') }}" role="button">Add Student</a>&emsp;
-        <button class="btn btn-default" type="submit" id="submit1" name="id" value="" onclick="changeValue();" required />Download</button>
-
-        </form><br><br>
+<form action=" {{ url('excel/export') }}   " name="frm" method="POST">&emsp;
+		<a class="btn btn-default" href="{{ url('/enquireies') }}" role="button">Add Student</a>&emsp;&emsp;&emsp;
+        <button class="btn btn-default" type="submit" id="submit1" name="id" value="" onclick="changeValue();">Download</button>
+        </form>
+        <br><br>
 	</div>
+</div>
+<div class="col-md-2"><br>
+    <button class="btn btn-default" onclick="allSelect();" >Select All/Cancel All</button>&emsp;
 </div>
 
 
@@ -126,14 +127,20 @@
 </script>
 
 <div class="col-md-3"></div>
-<div class="col-md-3" ><br>
+<div class="col-md-3 text-right" ><br>
  <form class="form-inline" role="form" >
 
       <div class="form-group">
         
         <select id="select_id" class="form-control">
-            <option>first_name</option>
-            <option>last_name</option>
+            <option value="all_students">All Students</option>
+            <option value="first_name">First Name</option>
+            <option value="last_name">Last Name</option>
+            <option value="nationality">Country</option>
+            <option value="email">Email Address</option>
+            <option value="manager">Stuff</option>
+            <option value="updated_at">Meeting Date</option>
+            <option value="course_name">Course</option>
         </select>
         <input type="text" id="input_id" class="form-control">
         <button class="btn"><a id="a_id">Search</a></button>
@@ -169,7 +176,7 @@
             <th>Country</th>
             <th>Email Address</th>
             <th>Stuff</th>
-            <th>Date</th>
+            <th>Meeting Date</th>
             <th>Course</th>
             <th>Sending</th>
             <th></th>
@@ -199,14 +206,17 @@
                         <td> {{ $student->date }} </td>
                         <td> {{ $student->course_name }} </td>
                         <td>
+                            @if ($student->is_send_now ==1)
                             <button type="button" class="btn btn-default">Send Email</button>
+                            @else
+                            @endif
                         </td>
                         <td>
-                            <a href="{{ url(str_replace('{id}',$student->id,'/details/{id}')) }} "><button type="button" class="btn btn-link">Detail</button></a>
+                            <a href="{{ url(str_replace('{id}',$student->id,'/details/{id}')) }} "><button type="button" class="btn btn-default">Detail</button></a>
                         </td>
                         <form action=" {{ url('student/delete') }}   " name="frm" method="POST">
                         <td>
-                            <button type="submit" class="btn btn-link" name="id" value=" {{ $student->id }} " >Delete</button>
+                            <button type="submit" class="btn btn-default" name="id" value=" {{ $student->id }} " >Delete</button>
                         </td></form>
                 @endforeach
         </tr>
