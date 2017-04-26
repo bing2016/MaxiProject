@@ -20,13 +20,13 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function getEmail($id)
+    public function getEmail($id, $manager_name)
     {
         $student = Student::where('id', $id)->first();
-        return view('EmailModule')->with('content', $this->getEmailDetail($student));
+        return view('EmailModule')->with('content', $this->getEmailDetail($student))->with($student->email);
     }
 
-    public function getEmailDetail($student)
+    public function getEmailDetail($student, $manager_name)
     {
         $first_name = $student['first_name'];
         $nationality = $student['nationality'];
@@ -61,18 +61,19 @@ class OrderController extends Controller
         $welcomenew = preg_replace('{{{first_name}}}', $first_name, $welcomenew);
         $welcomenew = preg_replace('{{{link}}}', $link, $welcomenew);
         $welcomenew = preg_replace('{{{department}}}', $department, $welcomenew);
+        $officeInfo = preg_replace('{{{manager_name}}}', $manager_name, $officeInfo);
         //$welcomenew = preg_replace('{{{blurb}}}', $blurb, $welcomenew);
         return ['welcomenew'=>$welcomenew, 'applynew'=>$applynew, 'nationalityPart'=>$nationalityPart, 'fees'=>$fees['content'], 'officeInfo'=>$officeInfo['content']];
     }
-
+    
     //general email
-    public function generalEmail()
+    public function generalEmail(Request $request)
     {
         $studentList = Student::where('is_emailed', false)->where('is_send_now', true)->get();
         foreach ($studentList as $student)
         {
             $email = $student['email'];
-            Mail::send('emails.general_email', $this->getEmail($student['id'])->content, function($message) use($email)
+            Mail::send('emails.general_email', $this->getEmailDetail($student, $request->manager_name), function($message) use($email)
             {
                 $message->to( $email, 'some guy')->subject('Welcome to the University of Sheffield!');
             });
@@ -81,28 +82,6 @@ class OrderController extends Controller
             $student->save();
         }
         return redirect('/main');
-    }
-
-    //reset passwaord email
-    public function resetEmail(Request $request)
-    {
-        $manager = User::where('email', $request->get('email'))->first();
-        if($manager==null)
-        {
-            return redirect()->back()->withInput()->withErrors("Invalid email.");
-        }
-        else
-        {
-            $email = $manager->email;
-            $name = $manager->name;
-        }
-
-        Mail::send('emails.reset_password', ['name'=>$name], function($message) use($email)
-        {
-            $message->to( $email, 'some guy')->subject('Reset your password');
-        });
-
-        return redirect('/login');
     }
 
     public function specialEmail(Request $request)
@@ -127,4 +106,25 @@ class OrderController extends Controller
         return redirect('/main');
     }
 
+    //reset passwaord email
+    public function resetEmail(Request $request)
+    {
+        $manager = User::where('email', $request->get('email'))->first();
+        if($manager==null)
+        {
+            return redirect()->back()->withInput()->withErrors("Invalid email.");
+        }
+        else
+        {
+            $email = $manager->email;
+            $name = $manager->name;
+        }
+
+        Mail::send('emails.reset_password', ['name'=>$name], function($message) use($email)
+        {
+            $message->to( $email, 'some guy')->subject('Reset your password');
+        });
+
+        return redirect('/login');
+    }
 }
