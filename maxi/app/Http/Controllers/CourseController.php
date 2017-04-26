@@ -8,11 +8,11 @@ use App\Course;
 class CourseController extends Controller
 {
     public function show() {
-        return view('courseUp');
+        return view('courseUp')->withCourses(Course::select('name')->get());
     }
 
     public function showContent($name) {
-        return view('courseUp')->withCourses(Course::where('name', $name)->first());
+        return view('courseUp')->withCourse(Course::where('name', $name)->first());
     }
 
     private function setAttribute(Request $request, $article) {
