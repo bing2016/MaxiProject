@@ -23,7 +23,7 @@ class OrderController extends Controller
     public function getEmail($id)
     {
         $student = Student::where('id', $id)->first();
-        return $this->getEmailDetail($student);
+        return view('EmailModule')->with('content', $this->getEmailDetail($student));
     }
 
     public function getEmailDetail($student)
@@ -72,7 +72,7 @@ class OrderController extends Controller
         foreach ($studentList as $student)
         {
             $email = $student['email'];
-            Mail::send('emails.general_email', $this->getEmail($student['id']), function($message) use($email)
+            Mail::send('emails.general_email', $this->getEmail($student['id'])->content, function($message) use($email)
             {
                 $message->to( $email, 'some guy')->subject('Welcome to the University of Sheffield!');
             });
