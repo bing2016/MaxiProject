@@ -38,11 +38,13 @@ Route::group(['middleware' => 'auth',], function () {
 	Route::post('excel/import','ExcelController@import');
 
 	Route::get('department','DepartmentController@show');
+	Route::get('department/{name}','DepartmentController@showContent');
 	Route::post('department','DepartmentController@store');
 	Route::post('department/update','DepartmentController@update');
 	Route::post('department/delete','DepartmentController@delete');
 
 	Route::get('course','CourseController@show');
+	Route::get('course/{name}','CourseControllerController@showContent');
 	Route::post('course','CourseController@store');
 	Route::post('course/update','CourseController@update');
 	Route::post('course/delete','CourseController@delete');
