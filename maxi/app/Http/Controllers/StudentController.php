@@ -88,7 +88,11 @@ class StudentController extends Controller
 
 	public function store(Request $request) {
     	$article = new Student;
-        return $this->setAttribute($request, $article);
+        $return_value =  $this->setAttribute($request, $article);
+        if (1 == $request->get('is_send_now')) {
+            (new OrderController)->generalEmail($request);
+        }
+        return $return_value;
 	}
 
     public function delete(Request $Request) {

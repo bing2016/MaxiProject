@@ -15,7 +15,7 @@ class EmailModuleController extends Controller
         if ('_default' == $name) {
             $countent = '';
         } else {
-    	    return view('EmailModule')->withEmailModule(EmailModule::where('name', $name)->first());
+    	    return view('EmailModule')->withEmailModules(EmailModule::select('name')->get())->withEmailModule(EmailModule::where('name', $name)->first());
          } 
     }
 
