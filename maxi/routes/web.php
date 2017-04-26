@@ -12,14 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('EmailModule');
 });
 
 Auth::routes();
 
 Route::get('/home', 'StudentController@show');
 
-Route::group(['middleware' => 'auth',], function () {
+
 	Route::get('/main', 'StudentController@show');
 	Route::get('/enquireies', 'StudentController@showEnquireies');
 	Route::get('/details/{id}', 'StudentController@showDetail');
@@ -27,11 +27,12 @@ Route::group(['middleware' => 'auth',], function () {
 	Route::post('/student/update', 'StudentController@update');
 	Route::post('/student/delete', 'StudentController@delete');
 	Route::get('/main/{key}/{value}', 'StudentController@searchStudent');
-});
+
 
 Route::post('/reset_email', 'OrderController@resetEmail');
 Route::get('/general_email', 'OrderController@generalEmail');
 Route::post('/special_email', 'OrderController@specialEmail');
+Route::get('/get_email/{id}', 'OrderController@getEmail');
 //Route::get('/home', 'HomeController@index');
 
 Route::get('upload','ExcelController@upload');

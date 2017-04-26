@@ -20,48 +20,59 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function getEmail($id)
+    {
+        $student = Student::where('id', $id)->first();
+        return $this->getEmailDetail($student);
+    }
+
+    public function getEmailDetail($student)
+    {
+        $first_name = $student['first_name'];
+        $nationality = $student['nationality'];
+        $department = $student['department_name'];
+        $course = $student['course_name'];
+        $email = $student['email'];
+
+        $welcome = EmailModule::where('name', 'welcome')->select('content')->first();
+        $apply = EmailModule::where('name', 'apply')->select('content')->first();
+        $fees = EmailModule::where('name', 'fees')->select('content')->first();
+        $officeInfo = EmailModule::where('name', 'officeInfo')->select('content')->first();
+
+        $nationalityList = EmailModule::where('name', 'America')->select('content')->first();
+
+        if($nationalityList==null)
+        {
+            $nationalityPart = '';
+        }
+        else
+        {
+            $nationalityPart = $nationalityList['content'];
+        }
+
+        $blurb = Department::where('name', $department)->select('blurb')->first();
+        $link = Course::where('name', $course)->select('link')->first();
+
+        //$welcomenew = preg_replace('/\n/','<br/>',$welcome['content']);//replace \n with <br/>, return correct, email has <br/>
+        $welcomenew = ($welcome['content']);
+        //$applynew = preg_replace('/\n/','<br />',$apply['content']);//replace \r\n, nothing changes
+        $applynew = ($apply['content']);
+
+        $welcomenew = preg_replace('{{{first_name}}}', $first_name, $welcomenew);
+        $welcomenew = preg_replace('{{{link}}}', $link, $welcomenew);
+        $welcomenew = preg_replace('{{{department}}}', $department, $welcomenew);
+        //$welcomenew = preg_replace('{{{blurb}}}', $blurb, $welcomenew);
+        return ['welcomenew'=>$welcomenew, 'applynew'=>$applynew, 'nationalityPart'=>$nationalityPart, 'fees'=>$fees['content'], 'officeInfo'=>$officeInfo['content']];
+    }
+
     //general email
     public function generalEmail()
     {
         $studentList = Student::where('is_emailed', false)->where('is_send_now', true)->get();
         foreach ($studentList as $student)
         {
-            $first_name = $student['first_name'];
-            $nationality = $student['nationality'];
-            $department = $student['department_name'];
-            $course = $student['course_name'];
             $email = $student['email'];
-
-            $welcome = EmailModule::where('name', 'welcome')->select('content')->first();
-            $apply = EmailModule::where('name', 'apply')->select('content')->first();
-            $fees = EmailModule::where('name', 'fees')->select('content')->first();
-            $officeInfo = EmailModule::where('name', 'officeInfo')->select('content')->first();
-
-            $nationalityList = EmailModule::where('name', 'America')->select('content')->first();
-
-            if($nationalityList==null)
-            {
-                $nationalityPart = '';
-            }
-            else
-            {
-                $nationalityPart = $nationalityList['content'];
-            }
-
-            $blurb = Department::where('name', $department)->select('blurb')->first();
-            $link = Course::where('name', $course)->select('link')->first();
-
-            //$welcomenew = preg_replace('/\n/','<br/>',$welcome['content']);//replace \n with <br/>, return correct, email has <br/>
-            $welcomenew = ($welcome['content']);
-            //$applynew = preg_replace('/\n/','<br />',$apply['content']);//replace \r\n, nothing changes
-            $applynew = ($apply['content']);
-
-            $welcomenew = preg_replace('{{{first_name}}}', $first_name, $welcomenew);
-            $welcomenew = preg_replace('{{{link}}}', $link, $welcomenew);
-            $welcomenew = preg_replace('{{{department}}}', $department, $welcomenew);
-            //$welcomenew = preg_replace('{{{blurb}}}', $blurb, $welcomenew);
-
-            Mail::send('emails.general_email', ['welcomenew'=>$welcomenew, 'applynew'=>$applynew, 'nationalityPart'=>$nationalityPart, 'fees'=>$fees['content'], 'officeInfo'=>$officeInfo['content']], function($message) use($email)
+            Mail::send('emails.general_email', $this->getEmail($student['id']), function($message) use($email)
             {
                 $message->to( $email, 'some guy')->subject('Welcome to the University of Sheffield!');
             });
