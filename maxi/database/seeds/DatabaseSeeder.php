@@ -179,7 +179,7 @@ class DatabaseSeeder extends Seeder
             'content' => '
             Best wishes,
             --
-            Ruth Lauener
+            {{manager_name}}
             International Officer
             Global Engagement
             The University of Sheffield

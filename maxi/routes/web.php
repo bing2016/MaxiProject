@@ -29,9 +29,9 @@ Route::group(['middleware' => 'auth',], function () {
 	Route::get('/main/{key}/{value}', 'StudentController@searchStudent');
 
 	Route::post('/reset_email', 'OrderController@resetEmail');
-	Route::get('/general_email', 'OrderController@generalEmail');
+	Route::post('/general_email', 'OrderController@generalEmail');
 	Route::post('/special_email', 'OrderController@specialEmail');
-	Route::get('/get_email/{id}', 'OrderController@getEmail');
+	Route::get('/get_email/{id}/{manager_name}', 'OrderController@getEmail');
 	
 	Route::get('upload','ExcelController@upload');
 	Route::post('excel/export','ExcelController@export');
