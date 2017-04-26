@@ -12,7 +12,12 @@ class EmailModuleController extends Controller
     }
 
     public function showContent($name) {
-    	return view('EmailModule')->withEmailModules(EmailModule::where('name', $name)->first());
+        if ('_default' == $name) {
+            $countent = '';
+        } else {
+            $countent = EmailModule::where('name', $name)->first();
+        }
+    	return view('EmailModule')->with('content', $countent);
     }
 
     private function setAttribute(Request $request, $article) {
