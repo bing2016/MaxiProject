@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use App\Student;
 use App\Department;
+use App\Course;
 
 
 class StudentController extends Controller
