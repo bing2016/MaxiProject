@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth',], function () {
 	Route::post('course/delete','CourseController@delete');
 
 	Route::get('emailmodule','EmailmoduleController@show');
-	Route::get('emailmodule/{type}/{name}','EmailmoduleController@showContent');
+	Route::get('emailmodule/{name}','EmailmoduleController@showContent');
 	Route::post('emailmodule','EmailmoduleController@store');
 	Route::post('emailmodule/update','EmailmoduleController@update');
 	Route::post('emailmodule/delete','EmailmoduleController@delete');

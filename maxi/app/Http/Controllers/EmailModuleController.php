@@ -8,21 +8,16 @@ use App\EmailModule;
 class EmailModuleController extends Controller
 {
     public function show() {
-    	return view('EmailModule')->with('countent_c', '')->with('countent_n', '');
+    	return view('EmailModule')->with('countent', '');
     }
 
-    public function showContent($type, $name) {
-        if ('country' == $type) {
-            $countent_c = EmailModule::where('name', 'country')->select('content')->first();
-            $countent_n = ''
-        } else if ('normal' == $type) {
-            $countent_n = EmailModule::where('name', 'normal')->select('content')->first();
-            $countent_c = ''
+    public function showContent($name) {
+        if ('_default' == $name) {
+            $countent = '';
         } else {
-            $countent_c = '';
-            $countent_n = '';   
-        }
-    	return view('EmailModule')->with('content_c', $countent_c)->with('countent_n', $countent_n);
+            $countent = EmailModule::where('name', $name)->select('content')->first();
+        } 
+    	return view('EmailModule')->with('content', $countent);
     }
 
     private function setAttribute(Request $request, $article) {
@@ -33,14 +28,14 @@ class EmailModuleController extends Controller
 
         try {
             if ($article->save()) {
-                return $this->show();
+                return redirect('/main');
             } else {
                 return redirect()->back()->withInput()->withErrors('false store');
             }
         } catch(QueryException $e) {
             $error_code = $e->errorInfo[1];
             if($error_code == 1062){
-                return redirect()->back()->withInput()->withErrors('You already have this module');
+                return redirect()->back()->withInput()->withErrors('YOU ALREADY HAVE THIS MODULE');
             }
             return 'WHOOPS, FALSE STORED';
         }
