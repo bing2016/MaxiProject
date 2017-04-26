@@ -5,7 +5,6 @@
 		<title>upload</title>
 		<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('css/shiyishi.css') }}">
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	    <link href="../css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
 	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	    <script src="../js/fileinput.js" type="text/javascript"></script>
@@ -69,7 +68,7 @@
 	</div>
 	<br>
 
-	<div class="container" style="margin-top:25%">
+	<div class="container" style="margin-top:15%">
 
 
    <form style="border: 4px solid #a1a1a1;margin-top: 20px;padding: 30px;" method="post" enctype="multipart/form-data" action="{{url('excel/import')}}">  
@@ -78,6 +77,7 @@
     <br>
     <button type="submit" class="btn btn-primary" name="manager" value="{{ Auth::user()->name }}"> submit </button>
 	</form>
+	</div><br><br>
    <script>
     $("#import_file").fileinput({
      showUpload: false, //是否显示上传按钮  
