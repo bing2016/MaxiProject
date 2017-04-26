@@ -17,7 +17,7 @@ class CreateDepartmentsTable extends Migration
             $table->increments('id');
             $table->String('name');
             $table->text('blurb');
-            $table->String('link');
+            $table->String('link')->nullable();
             $table->timestamps();
         });
     }

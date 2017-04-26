@@ -18,6 +18,7 @@ class CreateEmailModulesTable extends Migration
             $table->String('type');
             $table->String('name');
             $table->String('manager');
+            $table->unique('name');
             $table->text('content');
         });
     }

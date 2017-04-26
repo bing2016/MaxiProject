@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Department;
+use App\Department;
 
 class DepartmentController extends Controller
 {
@@ -18,7 +18,7 @@ class DepartmentController extends Controller
     private function setAttribute(Request $request, $article) {
         $article->name = $request->get('name');
         $article->link = $request->get('link');
-        $article->link = $request->get('blurb');
+        $article->blurb = $request->get('blurb');
 
 
         try {

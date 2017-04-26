@@ -17,6 +17,7 @@ class CreateCoursesTable extends Migration
             $table->increments('id');
             $table->String('name');
             $table->String('link');
+            $table->unique('name');
             $table->timestamps();
         });
     }
