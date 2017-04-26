@@ -8,16 +8,19 @@ use App\EmailModule;
 class EmailModuleController extends Controller
 {
     public function show() {
-    	return view('EmailModule');
+    	return view('EmailModule')->with('countent_c', '')->with('countent_n', '');
     }
 
-    public function showContent($name) {
-        if ('_default' == $name) {
-            $countent = '';
+    public function showContent($type, $name) {
+        if ('country' == $type) {
+            $countent_c = EmailModule::where('name', 'country')->select('content')->first();
+        } else if ('normal' == $type) {
+            $countent_n = EmailModule::where('name', 'normal')->select('content')->first();
         } else {
-            $countent = EmailModule::where('name', $name)->first();
+            $countent_c = '';
+            $countent_n = '';   
         }
-    	return view('EmailModule')->with('content', $countent);
+    	return view('EmailModule')->with('content_c', $countent_c)->with('countent_n', $countent_n);
     }
 
     private function setAttribute(Request $request, $article) {
