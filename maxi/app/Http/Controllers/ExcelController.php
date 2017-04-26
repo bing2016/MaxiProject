@@ -57,7 +57,8 @@ class ExcelController extends Controller
                     $insert[] = ['first_name' => reset($nameArray),
                     			 'last_name' => end($nameArray), 
                     			 'email' => $value->email, 
-                    			 'course_name' => $value->course,];
+                    			 'course_name' => $value->course,
+                    			 'manager' =>$request->get('manager')];
                 }
                 if(!empty($insert)){
                     Student::insert($insert);

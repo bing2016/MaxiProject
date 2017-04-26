@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use App\Student;
+use App\Department;
 
 
 class StudentController extends Controller
@@ -15,11 +16,11 @@ class StudentController extends Controller
     }
 
 	public function showEnquireies() {
-		return view('enquireies');
+		return view('enquireies')->withDepartments(Department::all())->withCourses(Course::all());
 	}
 
 	public function showDetail($id) {
-		return view('details')->withStudents(Student::findOrFail($id));
+		return view('details')->withStudents(Student::findOrFail($id))->withDepartments(Department::all())->withCourses(Course::all());
 	}
 
     public function searchStudent($key, $value) {

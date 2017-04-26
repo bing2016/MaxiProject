@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\EmailModule
 
 class EmailModuleController extends Controller
 {
@@ -11,7 +12,7 @@ class EmailModuleController extends Controller
     }
 
     public function showContent($name) {
-    	return view('EmailModule')->withStudents(EmailModule::where('name', $name)->first());
+    	return view('EmailModule')->withEmailModules(EmailModule::where('name', $name)->first());
     }
 
     private function setAttribute(Request $request, $article) {
