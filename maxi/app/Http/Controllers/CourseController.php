@@ -8,11 +8,11 @@ use App\Course;
 class CourseController extends Controller
 {
     public function show() {
-        return view('Course');
+        return view('courseUp');
     }
 
     public function showContent($name) {
-        return view('Course')->withCourse(Course::where('name', $name)->first());
+        return view('courseUp')->withCourse(Course::where('name', $name)->first());
     }
 
     private function setAttribute(Request $request, $article) {
@@ -21,7 +21,7 @@ class CourseController extends Controller
 
         try {
             if ($article->save()) {
-                return $this->show();
+                return redirect('/main');
             } else {
                 return redirect()->back()->withInput()->withErrors('false store');
             }

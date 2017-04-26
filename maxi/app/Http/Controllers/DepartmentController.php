@@ -8,11 +8,11 @@ use App\Department;
 class DepartmentController extends Controller
 {
     public function show() {
-        return view('Department');
+        return view('departmentUp');
     }
 
     public function showContent($name) {
-        return view('Department')->withDepartment(Department::where('name', $name)->first());
+        return view('departmentUp')->withDepartment(Department::where('name', $name)->first());
     }
 
     private function setAttribute(Request $request, $article) {
@@ -23,7 +23,7 @@ class DepartmentController extends Controller
 
         try {
             if ($article->save()) {
-                return $this->show();
+                return redirect('/main');
             } else {
                 return redirect()->back()->withInput()->withErrors('false store');
             }
