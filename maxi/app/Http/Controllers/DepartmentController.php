@@ -7,11 +7,7 @@ use App\Department;
 
 class DepartmentController extends Controller
 {
-    public function show() {
-        return view('departmentUp')->withDepartments(Department::select('name')->get());
-    }
-
-    public function showContent($name) {
+    public function show($name) {
         return view('departmentUp')->withDepartments(Department::select('name')->get())->withDepartment(Department::where('name', $name)->first());
     }
 
@@ -33,11 +29,6 @@ class DepartmentController extends Controller
                 return redirect()->back()->withInput()->withErrors('YOU ALREADY HAVE THIS DEPARTMENT.');
             }
         }
-    }
-
-    public function update(Request $request) {
-        $article = Department::findOrFail($request->get('id'));
-        return $this->setAttribute($request, $article);
     }
 
 	public function store(Request $request) {

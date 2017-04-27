@@ -37,20 +37,17 @@ Route::group(['middleware' => 'auth',], function () {
 	Route::post('excel/export','ExcelController@export');
 	Route::post('excel/import','ExcelController@import');
 
-	Route::get('department','DepartmentController@show');
-	Route::get('department/{name}','DepartmentController@showContent');
+	Route::get('department/{name}','DepartmentController@show');
 	Route::post('department','DepartmentController@store');
 	Route::post('department/update','DepartmentController@update');
 	Route::post('department/delete','DepartmentController@delete');
 
-	Route::get('course','CourseController@show');
-	Route::get('course/{name}','CourseControllerController@showContent');
+	Route::get('course/{name}','CourseControllerController@show');
 	Route::post('course','CourseController@store');
 	Route::post('course/update','CourseController@update');
 	Route::post('course/delete','CourseController@delete');
 
-	Route::get('emailmodule','EmailmoduleController@show');
-	Route::get('emailmodule/{name}','EmailmoduleController@showContent');
+	Route::get('emailmodule/{name}','EmailmoduleController@show');
 	Route::post('emailmodule','EmailmoduleController@store');
 	Route::post('emailmodule/update','EmailmoduleController@update');
 	Route::post('emailmodule/delete','EmailmoduleController@delete');

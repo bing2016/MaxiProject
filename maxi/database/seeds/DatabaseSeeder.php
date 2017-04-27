@@ -202,11 +202,21 @@ class DatabaseSeeder extends Seeder
             'manager' => 'Mr. John',
             'content' => 'Welcome to China kid!',
             ]);
-
+        DB::table('email_modules')->insert([
+            'type' => '_default',
+            'name' => '',
+            'manager' => '',
+            'content' => '',
+            ]);
         DB::table('departments')->insert([
             'name' => 'Computer Science',
             'link' => 'Http:/sdfasdf',
             'blurb' => 'XXXXXXXX',
+            ]);
+        DB::table('departments')->insert([
+            'name' => '_default',
+            'link' => '',
+            'blurb' => '',
             ]);
         DB::table('nationalities')->insert([
             'name' => 'china',
@@ -214,6 +224,10 @@ class DatabaseSeeder extends Seeder
         DB::table('courses')->insert([
             'name' => 'SSIT',
             'link' => 'Http:/sdfasdf',
+            ]);
+        DB::table('courses')->insert([
+            'name' => '_default',
+            'link' => '',
             ]);
 
     }

@@ -7,16 +7,8 @@ use App\EmailModule;
 
 class EmailModuleController extends Controller
 {
-    public function show() {
-    	return view('EmailModule')->withEmailModules(EmailModule::select('name')->get());
-    }
-
-    public function showContent($name) {
-        if ('_default' == $name) {
-            $countent = '';
-        } else {
-    	    return view('EmailModule')->withEmailModules(EmailModule::select('name')->get())->withEmailModule(EmailModule::where('name', $name)->first());
-         } 
+    public function show($name) {
+    	return view('EmailModule')->withEmailModules(EmailModule::select('name')->get())->withEmailModule(EmailModule::where('name', $name)->first());
     }
 
     private function setAttribute(Request $request, $article) {
@@ -38,11 +30,6 @@ class EmailModuleController extends Controller
             }
             return 'WHOOPS, FALSE STORED';
         }
-    }
-
-    public function update(Request $request) {
-        $article = EmailModule::findOrFail($request->get('id'));
-        return $this->setAttribute($request, $article);
     }
 
 	public function store(Request $request) {

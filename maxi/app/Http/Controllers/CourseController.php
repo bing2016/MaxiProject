@@ -7,11 +7,7 @@ use App\Course;
 
 class CourseController extends Controller
 {
-    public function show() {
-        return view('courseUp')->withCourses(Course::select('name')->get());
-    }
-
-    public function showContent($name) {
+    public function show($name) {
         return view('courseUp')->withCourses(Course::select('name')->get())->withCourse(Course::where('name', $name)->first());
     }
 
@@ -31,11 +27,6 @@ class CourseController extends Controller
                 return redirect()->back()->withInput()->withErrors('YOU ALREADY HAVE THIS  COURSE');
             }
         }
-    }
-
-    public function update(Request $request) {
-        $article = Course::findOrFail($request->get('id'));
-        return $this->setAttribute($request, $article);
     }
 
 	public function store(Request $request) {
