@@ -8,7 +8,7 @@ use App\Department;
 class DepartmentController extends Controller
 {
     public function show($name) {
-        return view('departmentUp')->withDepartments(Department::select('name')->get())->withDepartment(Department::where('name', $name)->first());
+        return view('departmentUp')->withDepartments(Department::select('name')->orderBy('name')->get())->withDepartment(Department::where('name', $name)->first());
     }
 
     private function setAttribute(Request $request, $article) {

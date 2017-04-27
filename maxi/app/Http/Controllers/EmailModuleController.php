@@ -8,7 +8,7 @@ use App\EmailModule;
 class EmailModuleController extends Controller
 {
     public function show($name) {
-    	return view('EmailModule')->withEmailModules(EmailModule::select('name')->get())->withEmailModule(EmailModule::where('name', $name)->first());
+    	return view('EmailModule')->withEmailModules(EmailModule::select('name')->orderBy('name')->get())->withEmailModule(EmailModule::where('name', $name)->first());
     }
 
     private function setAttribute(Request $request, $article) {
