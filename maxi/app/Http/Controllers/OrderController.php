@@ -23,7 +23,7 @@ class OrderController extends Controller
     public function getEmail($id, $manager_name)
     {
         $student = Student::where('id', $id)->first();
-        return view('EmailModule')->with('content', $this->getEmailDetail($student))->with($student->email);
+        return view('sendEmail')->with('content', $this->getEmailDetail($student))->with($student->email);
     }
 
     public function getEmailDetail($student, $manager_name)
@@ -61,9 +61,10 @@ class OrderController extends Controller
         $welcomenew = preg_replace('{{{first_name}}}', $first_name, $welcomenew);
         $welcomenew = preg_replace('{{{link}}}', $link, $welcomenew);
         $welcomenew = preg_replace('{{{department}}}', $department, $welcomenew);
-        $officeInfo = preg_replace('{{{manager_name}}}', $manager_name, $officeInfo);
+        $officeInfonew = preg_replace('{{{manager_name}}}', $manager_name, $officeInfo['content']);
         //$welcomenew = preg_replace('{{{blurb}}}', $blurb, $welcomenew);
-        return ['welcomenew'=>$welcomenew, 'applynew'=>$applynew, 'nationalityPart'=>$nationalityPart, 'fees'=>$fees['content'], 'officeInfo'=>$officeInfo['content']];
+        $feesnew = $fees['content'];
+        return ['welcomenew'=>$welcomenew, 'applynew'=>$applynew, 'nationalityPart'=>$nationalityPart, 'fees'=>$feesnew, 'officeInfo'=>$officeInfonew];
     }
     
     //general email
@@ -73,6 +74,7 @@ class OrderController extends Controller
         foreach ($studentList as $student)
         {
             $email = $student['email'];
+            //return $this->getEmailDetail($student, $request->manager_name);
             Mail::send('emails.general_email', $this->getEmailDetail($student, $request->manager_name), function($message) use($email)
             {
                 $message->to( $email, 'some guy')->subject('Welcome to the University of Sheffield!');
