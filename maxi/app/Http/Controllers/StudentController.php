@@ -13,7 +13,7 @@ class StudentController extends Controller
 {
 
 	public function show() {
-    	return view('Teacher-Stu Interface')->withStudents(Student::where('is_download', false)->orderBy('is_highlight', 'desc')->orderBy('updated_at', 'desc')->get());
+    	return view('Teacher-Stu Interface')->withStudents(Student::where('is_download', false)->orderBy('is_highlight', 'desc')->orderBy('created_at', 'desc')->get());
     }
 
 	public function showEnquireies() {

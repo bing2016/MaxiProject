@@ -51,21 +51,29 @@ class ExcelController extends Controller
 
     	    $data = Excel::load($path, function($reader) {
     	    })->get();
+
+    	    $namelist = array();
     	    if(!empty($data)){
     	    	foreach ($data as $key => $value) {
     	    		$nameArray = explode(" ", $value->name);
-                    $insert[] = ['first_name' => reset($nameArray),
-                    			 'last_name' => end($nameArray), 
-                    			 'email' => $value->email, 
-                    			 'course_name' => $value->course,
-                    			 'manager' =>$request->get('manager')];
-                }
-                if(!empty($insert)){
-                    Student::insert($insert);
-                }
+    	    		$student = new Student;
+    	    		$student->first_name => reset($nameArray),
+    	    		$student->last_name => end($nameArray), 
+    	    		$student->email => $value->email, 
+    	    		$student->course_name => $value->course,
+    	    		$student->manager => $request->get('manager')];
+    	    		try {
+          				if (!$student->save()) {
+                			$arr[] = $nameArray;
+            			}
+        			} catch(QueryException $e) {
+            			$arr[] = $nameArray;
+        			}
+            	}
             }
-        return redirect('/main');
-
+        	return redirect('/main');
 		}
+
+		return //TODO
 	}
 }

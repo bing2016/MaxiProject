@@ -89,7 +89,6 @@ class OrderController extends Controller
             $student->is_emailed = true;
             $student->save();
         }
-        return redirect('/main');
     }
 
     public function specialEmail(Request $request)
