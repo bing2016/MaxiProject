@@ -207,8 +207,8 @@
                         <td> {{ $student->date }} </td>
                         <td> {{ $student->course_name }} </td>
                         <td>
-                            @if ($student->is_send_now ==1)
-                            <a href="{{ url('/sendEmail') }}"><button type="button" class="btn btn-default">Send Email</button>
+                            @if ($student->is_emailed ==0)
+                            <a href="{{ url('/sendEmail') }}"><button type="button" name="id" value="{{ $student->id }}" class="btn btn-default">Send Email</button>
                             @else
                             @endif
                         </td>
