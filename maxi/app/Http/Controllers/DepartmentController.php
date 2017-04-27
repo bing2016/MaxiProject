@@ -8,11 +8,16 @@ use App\Department;
 class DepartmentController extends Controller
 {
     public function show($name) {
-        return view('departmentUp')->withDepartments(Department::select('name')->orderBy('name')->get())->with('Department', ['id' => -1; 'name' => ''; 'link' => ''; 'blurb' => '';]);
+        return view('departmentUp')->withDepartments(Department::select('name')->orderBy('name')->get())->with('department', ['id' => '', 'name' => '', 'link' => '', 'blurb' => '']);
     }
 
     public function showContent($name) {
-        return view('departmentUp')->withDepartments(Department::select('name')->orderBy('name')->get())->withDepartment(Department::where('name', $name)->first());
+        $department = Department::where('name', $name)->first();
+        $info = ['id' => $department->id, 
+                 'name' => $department->name, 
+                 'link' => $department->link, 
+                 'blurb' => $department->blurb]
+        return view('departmentUp')->withDepartments(Department::select('name')->orderBy('name')->get())->with('department', $info);
     }
 
     private function setAttribute(Request $request, $article) {
@@ -37,12 +42,8 @@ class DepartmentController extends Controller
 
 	public function store(Request $request) {
 
-        if (-1 != $request->get('id')) {
-            $article = Department::find($request->get('id'));
-            if (null == $article) {
-                $article = new Department;
-            }
-        } else {
+        $article = Department::find($request->get('name'));
+        if (null == $article) {
             $article = new Department;
         }
         return $this->setAttribute($request, $article);
