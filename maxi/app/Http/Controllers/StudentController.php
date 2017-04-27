@@ -42,33 +42,33 @@ class StudentController extends Controller
         return $this->show();
     }
 
-    private function setAttribute(Request $request, $article) {
-        $article->last_name = $request->get('last_name');
-        $article->middle_name = $request->get('middle_name');
-        $article->first_name = $request->get('first_name');
-        $article->nationality = $request->get('nationality');
-        $article->email = $request->get('email');
-        $article->phone_number = $request->get('phone_number');
+    private function setAttribute(Request $request, $student) {
+        $student->last_name = $request->get('last_name');
+        $student->middle_name = $request->get('middle_name');
+        $student->first_name = $request->get('first_name');
+        $student->nationality = $request->get('nationality');
+        $student->email = $request->get('email');
+        $student->phone_number = $request->get('phone_number');
 
-        $article->department_name = $request->get('department_name');
-        $article->course_name = $request->get('course_name');
-        $article->source = $request->get('source');
-        $article->level = $request->get('level');
-        $article->is_send_now = $request->get('is_send_now'); //more question
-        $article->questions = $request->get('questions');
-        $article->start_year = $request->get('start_year');
-        $article->is_applied = $request->get('is_applied');
-        $article->registration_number = $request->get('registration_number');
+        $student->department_name = $request->get('department_name');
+        $student->course_name = $request->get('course_name');
+        $student->source = $request->get('source');
+        $student->level = $request->get('level');
+        $student->is_send_now = $request->get('is_send_now'); //more question
+        $student->questions = $request->get('questions');
+        $student->start_year = $request->get('start_year');
+        $student->is_applied = $request->get('is_applied');
+        $student->registration_number = $request->get('registration_number');
 
-        $article->manager = $request->get('manager');
-        $article->place = $request->get('place');
-        $article->date = $request->get('date');
+        $student->manager = $request->get('manager');
+        $student->place = $request->get('place');
+        $student->date = $request->get('date');
         if (null != $request->get('questions')){
-            $article->is_highlight = true;
+            $student->is_highlight = true;
         }
 
         try {
-            if (!$article->save()) {
+            if (!$student->save()) {
                 return redirect()->back()->withInput()->withErrors('WHOOPS, FALSE STORED');
             }
         } catch(QueryException $e) {
@@ -80,13 +80,13 @@ class StudentController extends Controller
         }
     }
     public function update(Request $request) {
-        $article = Student::findOrFail($request->get('id'));
-        return $this->setAttribute($request, $article);
+        $student = Student::findOrFail($request->get('id'));
+        return $this->setAttribute($request, $student);
     }
 
 	public function store(Request $request) {
-    	$article = new Student;
-        $this->setAttribute($request, $article);
+    	$student = new Student;
+        $this->setAttribute($request, $student);
         if (1 == $request->get('is_send_now')) {
             (new OrderController)->generalEmail($request);
         }
