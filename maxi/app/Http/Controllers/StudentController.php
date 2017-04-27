@@ -68,9 +68,7 @@ class StudentController extends Controller
         }
 
         try {
-            if ($article->save()) {
-                return $this->show();
-            } else {
+            if (!$article->save()) {
                 return redirect()->back()->withInput()->withErrors('WHOOPS, FALSE STORED');
             }
         } catch(QueryException $e) {
@@ -88,11 +86,11 @@ class StudentController extends Controller
 
 	public function store(Request $request) {
     	$article = new Student;
-        $return_value =  $this->setAttribute($request, $article);
+        $this->setAttribute($request, $article);
         if (1 == $request->get('is_send_now')) {
             (new OrderController)->generalEmail($request);
         }
-        return $return_value;
+        return $this->show();
 	}
 
     public function delete(Request $Request) {
