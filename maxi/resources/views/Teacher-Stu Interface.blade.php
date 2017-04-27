@@ -208,7 +208,7 @@
                         <td> {{ $student->course_name }} </td>
                         <td>
                             @if ($student->is_emailed ==0)
-                            <a href="{{ url('/sendEmail') }}"><button type="button" name="id" value="{{ $student->id }}" class="btn btn-default">Send Email</button>
+                            <a href="{{ url('/get_email/'.$student->id.'/'.Auth::user()->name) }}"><button type="submit"  class="btn btn-default">Send Email</button>
                             @else
                             @endif
                         </td>

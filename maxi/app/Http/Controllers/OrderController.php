@@ -23,7 +23,12 @@ class OrderController extends Controller
     public function getEmail($id, $manager_name)
     {
         $student = Student::where('id', $id)->first();
-        return view('sendEmail')->with('content', $this->getEmailDetail($student))->with($student->email);
+        $content = $this->getEmailDetail($student, $manager_name);
+        $content_string = '';
+        foreach ($content as $value) {
+            $content_string = $content_string.$value;
+        }
+        return view('sendEmail')->with('content', $content_string)->withStudent($student);
     }
 
     public function getEmailDetail($student, $manager_name)
@@ -51,6 +56,7 @@ class OrderController extends Controller
         }
 
         $blurb = Department::where('name', $department)->select('blurb')->first();
+        $blurb = $blurb['blurb'];
         $link = Course::where('name', $course)->select('link')->first();
 
         //$welcomenew = preg_replace('/\n/','<br/>',$welcome['content']);//replace \n with <br/>, return correct, email has <br/>
@@ -62,7 +68,7 @@ class OrderController extends Controller
         $welcomenew = preg_replace('{{{link}}}', $link, $welcomenew);
         $welcomenew = preg_replace('{{{department}}}', $department, $welcomenew);
         $officeInfonew = preg_replace('{{{manager_name}}}', $manager_name, $officeInfo['content']);
-        //$welcomenew = preg_replace('{{{blurb}}}', $blurb, $welcomenew);
+        $welcomenew = preg_replace('{{{blurb}}}', $blurb, $welcomenew);
         $feesnew = $fees['content'];
         return ['welcomenew'=>$welcomenew, 'applynew'=>$applynew, 'nationalityPart'=>$nationalityPart, 'fees'=>$feesnew, 'officeInfo'=>$officeInfonew];
     }
@@ -89,7 +95,7 @@ class OrderController extends Controller
     public function specialEmail(Request $request)
     {
         $student = Student::where('id', $request->get('id'))->first();
-        if($manager==null)
+        if($student==null)
         {
             return redirect()->back()->withInput()->withErrors("Invalid student ID.");
         }
@@ -98,11 +104,11 @@ class OrderController extends Controller
             $content = $request->get('content');
             $email = $student['email'];
         }
+
         Mail::send('emails.special_email', ['content'=>$content], function($message) use($email)
         {
             $message->to( $email, 'some guy')->subject('Welcome to the University of Sheffield!');
         });
-
         $student->is_emailed = true;
         $student->save();
         return redirect('/main');
