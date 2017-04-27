@@ -4,146 +4,139 @@
 
 	<meta charset="utf-8"> 
 	<title>Email Module</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet"/>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-    <script src="./jquery.js"></script>
-	<link rel="stylesheet" href="{{ asset('css/shiyishi.css') }}">
-		<link rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/bootstrap-responsiv.css">
-		 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="{{ URL::asset('/js/jquery.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/shiyishi.css') }}">
 
-	<link rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/dataTables.bootstra.css">
+
+
+    <script>
+	$(function() {
+    	 $("#select_id").change(function() {
+             	var key = $(this).val();
+            	$("#a_id").attr("href", "/emailmodule/" + key );
+             });
+            });
+    </script>
+
 
 </head>
 
 <body>
 	
-	        <div id="header" style="background-color:#fff;">
-	                <div class="text-right links"><br>
-	                        <a href="{{ url('/main') }}">Teacher-Stu Interface</a>
-	                </div>
+	        <div id="header" style="background-color:#fff;"><br>
+
+@if (Auth::guest())
+
+    <div class="text-right links font">
+        <a href="{{ route('login') }}">Login</a>
+        <a href="{{ route('register') }}">Register</a>
+    </div>
+
+@else
+
+    <div class="text-right links font">
+        <a> 
+            <a> User: </a>
+            {{ Auth::user()->name }}
+        </a>
+        <a href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">Logout</a>
+        <a href="{{ url('/home') }}">Main</a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+
+{{ csrf_field() }}
+
+        </form>
+    </div>
+
+@endif
 	</div>
 
 	<div id=header class="header">
 		        <div class="col-md-4">
-	                <a href="{{ route('login') }}"><img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 13%;" ></a>
+	                        <a><img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 13%;" ></a>
+	            </div>
 	            <div class="col-md-8">
 	                    <div class="text-center" style="font-size: 50px; margin-top:5%">
 	                         <h><strong>Overseas Student Recruitment management</strong></h>
 	                    </div>
 	            </div>
 	</div>
-	        
 	<div class="col-md-12">
-	        <div class="text-right" style="background-color: #66B3FF">
-	             <a href="{{ url('/upload') }}"><button type="button" style="color:white" class="btn btn-link">Upload File</button></a>
-	           	<a href="{{ url('/emailmodify') }}"><button type="button" style="color:white" class="btn btn-link"  >Email Modification</button></a>
-				<button type="button" style="color:white" class="btn btn-link">Feedback</button>
-	        </div>
-	</div>
+    <div class="text-right" style="background-color: #66B3FF">
+        <a class="btn btn-link" style="color:white" href="{{ url('/course/_default') }}" role="button">Add Courses</a>
+        <a class="btn btn-link" style="color:white" href="{{ url('/department') }}" role="button">Add Department</a>
+        <a href="{{ url('/upload') }}"><button type="button" style="color:white" class="btn btn-link"> Upload File</button></a>
+        <a href="{{ url('/emailmodule/_default') }}"><button type="button" style="color:white" class="btn btn-link"  >Email Modification</button></a>
+        <button type="button" style="color:white" class="btn btn-link" onclick="feedBack()">Feedback</button>
+        </div>
+</div>
 	        
 	<div class="text-center col-md-12 content">
-	     	<span style="font-size:45px;">Email Module</span>
+	<br>
+	     	<span style="font-size:45px;margin-left: 5%">Email Module</span>
 	</div>
 
-<div class="col-md-12 ">
-<div class="col-md-4" style="margin-left: 30%" >
-<table class="table">
-
-    <thead>
-        <tr>
-            <th>Typle</th>
-            <th>Name</th>
-            <th>Manager</th>
-            
-    </thead>
-    <tbody>
-
-               
-                <tr> 
-                <td>Normal</td>
-
-                		
-                		 <td>
-                		 <select type="text" name="name" value="" required>
-                                <option value="welcome">Welcome</option>
-                                <option value="apply">Apply</option>
-                                <option value="fees">Fees</option>
-                                <option value="officeInfo">OfficeInfo</option>
-                        </select><br/>
-                		</td>
-
-                		<td>
-                	
-                		</td>
-                		
-        </tr>
-
-    </tbody>
-</table>
-</div>
-</div>
 
 
-		
-		<div class="col-md-4 text-center" style="margin-left:30% ">
-		<br>
-		<span>Content</span>
-		<input class="form-control" type="" name=""><br>
-		
-				<button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-primary "> Delete</button>
-                <button type="button" class="btn btn-primary "> Cancel</button>
-        </div>
-                
+<div class="col-md-12">
 
-<div class="col-md-12 ">
-<div class="col-md-4" style="margin-left: 30%" >
-<table class="table">
+  <div class="col-md-9" style="margin-left: 15%; border: 4px solid #a1a1a1;margin-top: 20px;padding: 50px;">
 
-    <thead>
-        <tr>
-            <th>Typle</th>
-            <th>Name</th>
-            <th>Manager</th>
-            
-    </thead>
-    <tbody>
+      <div class="form-group">
+        <table class="table table-hover">
+          <tr>
+   		       <th>Content Name</th>
+   		       <th></th>
+   		       <th>Manager</th>
+  		    </tr>
+ 		     <tr>
+    	       <td> 
 
-               
-                <tr> 
-                <td>Country</td>
+    		      <select id="select_id" class="form-control" value="">
+        	    <option value="_default" >select part</option>
+              @foreach ($email_modules as $module)
+              <option value="{{$module['name']}}" >{{$module['name']}}</option>
+             @endforeach
+        	   </select>
+        	   </td>
+        	   <td>
+              <button class="btn btn-link" type="button" style="color:white" ><a id="a_id">Search</a></button>
+            </td>
+            <td>
+            {{ Auth::user()->name }}
+            </td>
+  		    </tr>
+        	
+        </table>
+           
 
-                		
-                		 <td >
+           <form method="POST" enctype="multipart/form-data" action="{{url('emailmodule')}}">
 
-                		 <input type="text" name="country_name" style="width: 50%">
-                		 <button type="submit" name="submit" class="btn btn-primary">Search</button><br>
-                		
-                		
-                		</td>
+             <label>Name</label>
+             </label><input class="form-control" name="name" value="{{ $emailModule['name']}}"><br/>
 
-                		<td>
-                	
-                		</td>
-                		
-        </tr>
+             <label>Content</label>
+             <textarea name="content" rows="6"  class="form-control" > {{$emailModule['content']}} </textarea>
+             <br>
 
-    </tbody>
-</table>
+             <label>Manager</label>
+              <input class="form-control" name="manager" value="{{ $emailModule['manager'] }}" readonly><br/>
+
+            <div style="margin-left:25%">
+             <button class="btn btn-primary" name="id" value="{{ $emailModule['id']}}" type="submit" style="color:white;float:left;margin-left:40px;" >Modify</button>
+          </form>
+
+            <a href="{{ url('/emailmodule/delete') }}"><button class="btn btn-primary" type="submit" style="color:white;float:left;margin-left:40px;" >Delete</button></a>
+	          <a href="{{ url('/main') }}"><button class="btn btn-warning" type="button" style="color:white;float:left;margin-left:40px;" > Cancel</button></a></div>
+      </div>
+
+  </div>
 </div>
 
-
-
-		
-		<div class="col-md-4 text-center" style="margin-left:30% ">
-		<br>
-		<span>Content</span>
-		<input class="form-control" type="" name=""><br>
-		
-				<button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-primary "> Delete</button>
-                <button type="button" class="btn btn-primary "> Cancel</button>
-        </div>
 </body>
 <footer>
 	<div class="text-center col-md-12 content" >

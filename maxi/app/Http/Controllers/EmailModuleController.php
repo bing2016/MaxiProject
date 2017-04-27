@@ -8,21 +8,25 @@ use App\EmailModule;
 class EmailModuleController extends Controller
 {
     public function show() {
-    	return view('EmailModule')->withEmailModules(EmailModule::select('name')->orderBy('name')->get())->with('emailModule', ['id' => '', 'name' => '', 'link' => '']);
+
+    	return view('EmailModule')->withEmailModules(EmailModule::select('name')->orderBy('name')->get())->with('emailModule', ['id' => '', 'type' => '', 'name' => '', 'manager' => '', 'content' => '']);
     }
 
     public function showContent($name) {
-        $course = EmailModule::where('name', $name)->first();
-        $info = ['id' => $course->id, 
-                 'name' => $course->name, 
-                 'link' => $course->link];
-        return view('EmailModule')->withCourse(Course::select('name')->orderBy('name')->get())->with('emailModule', $info);
+        $emailModule = EmailModule::where('name', $name)->first();
+        $info = ['id' => $emailModule->id,
+                 'type' => $emailModule->type,
+                 'name' => $emailModule->name, 
+                 'manager' => $emailModule->manager,
+                 'content' => $emailModule->content
+                 ];
+        return view('EmailModule')->withEmailModules(EmailModule::select('name')->orderBy('name')->get())->with('emailModule', $info);
     }
     private function setAttribute(Request $request, $article) {
-        $article->name = $request->get('type');
-        $article->link = $request->get('name');
-        $article->link = $request->get('manager');
-        $article->link = $request->get('content');
+        $article->type = $request->get('type');
+        $article->name = $request->get('name');
+        $article->manager = $request->get('manager');
+        $article->content = $request->get('content');
 
         try {
             if ($article->save()) {
@@ -39,7 +43,7 @@ class EmailModuleController extends Controller
         }
     }
     public function store(Request $request) {
-        $article = EmailModule::find($request->get('id')))
+        $article = EmailModule::find($request->get('id'));
         if (null == $article) {
             $article = new EmailModule;
         } 
