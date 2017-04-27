@@ -7,7 +7,7 @@ use App\Department;
 
 class DepartmentController extends Controller
 {
-    public function show($name) {
+    public function show() {
         return view('departmentUp')->withDepartments(Department::select('name')->orderBy('name')->get())->with('department', ['id' => '', 'name' => '', 'link' => '', 'blurb' => '']);
     }
 
@@ -16,7 +16,7 @@ class DepartmentController extends Controller
         $info = ['id' => $department->id, 
                  'name' => $department->name, 
                  'link' => $department->link, 
-                 'blurb' => $department->blurb]
+                 'blurb' => $department->blurb];
         return view('departmentUp')->withDepartments(Department::select('name')->orderBy('name')->get())->with('department', $info);
     }
 
@@ -41,8 +41,7 @@ class DepartmentController extends Controller
     }
 
 	public function store(Request $request) {
-
-        $article = Department::find($request->get('name'));
+        $article = Department::find($request->get('id'));
         if (null == $article) {
             $article = new Department;
         }
