@@ -8,6 +8,10 @@ use App\Department;
 class DepartmentController extends Controller
 {
     public function show($name) {
+        return view('departmentUp')->withDepartments(Department::select('name')->orderBy('name')->get())->with('Department', ['id' => -1; 'name' => ''; 'link' => ''; 'blurb' => '';]);
+    }
+
+    public function showContent($name) {
         return view('departmentUp')->withDepartments(Department::select('name')->orderBy('name')->get())->withDepartment(Department::where('name', $name)->first());
     }
 
@@ -32,7 +36,15 @@ class DepartmentController extends Controller
     }
 
 	public function store(Request $request) {
-    	$article = new Department;
+
+        if (-1 != $request->get('id')) {
+            $article = Department::find($request->get('id'));
+            if (null == $article) {
+                $article = new Department;
+            }
+        } else {
+            $article = new Department;
+        }
         return $this->setAttribute($request, $article);
 	}
 

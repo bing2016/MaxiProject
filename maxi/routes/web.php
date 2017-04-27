@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('/test', 'StudentController@test');
 
 Route::group(['middleware' => 'auth',], function () {
+
 	Route::get('/home', 'StudentController@show');
 	Route::get('/main', 'StudentController@show');
 	Route::get('/enquireies', 'StudentController@showEnquireies');
@@ -28,28 +29,27 @@ Route::group(['middleware' => 'auth',], function () {
 	Route::post('/student/delete', 'StudentController@delete');
 	Route::get('/main/{key}/{value}', 'StudentController@searchStudent');
 
-	Route::post('/reset_email', 'OrderController@resetEmail');
-	Route::post('/general_email', 'OrderController@generalEmail');
-	Route::post('/special_email', 'OrderController@specialEmail');
-	Route::get('/get_email/{id}/{manager_name}', 'OrderController@getEmail');
-	
 	Route::get('upload','ExcelController@upload');
 	Route::post('excel/export','ExcelController@export');
 	Route::post('excel/import','ExcelController@import');
 
-	Route::get('department/{name}','DepartmentController@show');
+	Route::post('/reset_email', 'OrderController@resetEmail');
+	Route::post('/general_email', 'OrderController@generalEmail');
+	Route::post('/special_email', 'OrderController@specialEmail');
+	Route::get('/get_email/{id}/{manager_name}', 'OrderController@getEmail');
+
+	Route::get('department/','DepartmentController@show');
+	Route::get('department/{name}','DepartmentController@showContent');
 	Route::post('department','DepartmentController@store');
-	Route::post('department/update','DepartmentController@update');
 	Route::post('department/delete','DepartmentController@delete');
 
 	Route::get('course/{name}','CourseControllerController@show');
 	Route::post('course','CourseController@store');
-	Route::post('course/update','CourseController@update');
 	Route::post('course/delete','CourseController@delete');
 
 	Route::get('emailmodule/{name}','EmailmoduleController@show');
 	Route::post('emailmodule','EmailmoduleController@store');
-	Route::post('emailmodule/update','EmailmoduleController@update');
 	Route::post('emailmodule/delete','EmailmoduleController@delete');
 });
+
 
