@@ -7,10 +7,17 @@ use App\EmailModule;
 
 class EmailModuleController extends Controller
 {
-    public function show($name) {
-    	return view('EmailModule')->withEmailModules(EmailModule::select('name')->orderBy('name')->get())->withEmailModule(EmailModule::where('name', $name)->first());
+    public function show() {
+    	return view('EmailModule')->withEmailModules(EmailModule::select('name')->orderBy('name')->get())->with('emailModule', ['id' => '', 'name' => '', 'link' => '']);
     }
 
+    public function showContent($name) {
+        $course = EmailModule::where('name', $name)->first();
+        $info = ['id' => $course->id, 
+                 'name' => $course->name, 
+                 'link' => $course->link];
+        return view('EmailModule')->withCourse(Course::select('name')->orderBy('name')->get())->with('emailModule', $info);
+    }
     private function setAttribute(Request $request, $article) {
         $article->name = $request->get('type');
         $article->link = $request->get('name');
@@ -31,11 +38,13 @@ class EmailModuleController extends Controller
             return 'WHOOPS, FALSE STORED';
         }
     }
-
-	public function store(Request $request) {
-    	$article = new EmailModule;
+    public function store(Request $request) {
+        $article = EmailModule::find($request->get('id')))
+        if (null == $article) {
+            $article = new EmailModule;
+        } 
         return $this->setAttribute($request, $article);
-	}
+    }
 
     public function delete(Request $Request) {
     	if (EmailModule::destroy($Request->get('id'))) {

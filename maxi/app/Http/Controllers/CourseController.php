@@ -7,8 +7,16 @@ use App\Course;
 
 class CourseController extends Controller
 {
-    public function show($name) {
-        return view('courseUp')->withCourses(Course::select('name')->orderBy('name')->get())->withCourse(Course::where('name', $name)->first());
+    public function show() {
+        return view('courseUp')->withCourses(Course::select('name')->orderBy('name')->get())->with('course', ['id' => '', 'name' => '', 'link' => '']);
+    }
+
+    public function showContent($name) {
+        $course = Course::where('name', $name)->first();
+        $info = ['id' => $course->id, 
+                 'name' => $course->name, 
+                 'link' => $course->link];
+        return view('departmentUp')->withCourse(Course::select('name')->orderBy('name')->get())->with('course', $info);
     }
 
     private function setAttribute(Request $request, $article) {
@@ -29,10 +37,14 @@ class CourseController extends Controller
         }
     }
 
-	public function store(Request $request) {
-    	$article = new Course;
+
+    public function store(Request $request) {
+        $article = Course::find($request->get('id')))
+        if (null == $article) {
+            $article = new Course;
+        } 
         return $this->setAttribute($request, $article);
-	}
+    }
 
     public function delete(Request $Request) {
     	if (Course::destroy($Request->get('id'))) {

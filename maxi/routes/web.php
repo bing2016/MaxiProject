@@ -43,11 +43,12 @@ Route::group(['middleware' => 'auth',], function () {
 	Route::post('department','DepartmentController@store');
 	Route::post('department/delete','DepartmentController@delete');
 
-	Route::get('course/{name}','CourseControllerController@show');
+	Route::get('course','CourseControllerController@show');
+	Route::get('course/{name}','CourseControllerController@showContent');
 	Route::post('course','CourseController@store');
 	Route::post('course/delete','CourseController@delete');
 
-	Route::get('emailmodule/{name}','EmailmoduleController@show');
+	Route::get('emailmodule','EmailmoduleController@show');
 	Route::post('emailmodule','EmailmoduleController@store');
 	Route::post('emailmodule/delete','EmailmoduleController@delete');
 });
