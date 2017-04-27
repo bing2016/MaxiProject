@@ -204,7 +204,7 @@ class DatabaseSeeder extends Seeder
             ]);
         DB::table('email_modules')->insert([
             'type' => '_default',
-            'name' => '',
+            'name' => '_default',
             'manager' => '',
             'content' => '',
             ]);
