@@ -130,8 +130,13 @@
              <button class="btn btn-primary" name="id" value="{{ $emailModule['id']}}" type="submit" style="color:white;float:left;margin-left:40px;" >Modify</button>
           </form>
 
-            <a href="{{ url('/emailmodule/delete') }}"><button class="btn btn-primary" type="submit" style="color:white;float:left;margin-left:40px;" >Delete</button></a>
+            <form method="POST" enctype="multipart/form-data" action="{{url('emailmodule/delete')}}">
+
+            <button class="btn btn-primary" name="id" type="submit" value="{{ $emailModule['id']}}" style="color:white;float:left;margin-left:40px;" >Delete</button>
+             </form>
+
 	          <a href="{{ url('/main') }}"><button class="btn btn-warning" type="button" style="color:white;float:left;margin-left:40px;" > Cancel</button></a></div>
+             
       </div>
 
   </div>

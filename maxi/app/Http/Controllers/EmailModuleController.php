@@ -50,8 +50,8 @@ class EmailModuleController extends Controller
         return $this->setAttribute($request, $article);
     }
 
-    public function delete(Request $Request) {
-    	if (EmailModule::destroy($Request->get('id'))) {
+    public function delete(Request $request) {
+    	if (EmailModule::destroy($request->get('id'))) {
             return $this->show();
         } else {
             return $this->show()->withErrors('false delete');

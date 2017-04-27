@@ -15,11 +15,13 @@ class CreateEmailModulesTable extends Migration
     {
         Schema::create('email_modules', function (Blueprint $table) {
             $table->increments('id');
-            $table->String('type');
+            $table->String('type')->nullable();
             $table->String('name');
             $table->String('manager');
-            $table->unique('name');
             $table->text('content');
+
+            $table->unique('name');
+            $table->timestamps();
         });
     }
 
