@@ -8,7 +8,6 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/bootstrap-responsiv.css">
 	<link rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/dataTables.bootstra.css">
-    <script src="{{ URL::asset('/js/jquery.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/shiyishi.css') }}">
 
@@ -50,7 +49,7 @@
 	<div id=header class="header">
 		<a>
 		<div class="col-md-4">
-        	<a href="{{ route('login') }}"><img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 13%;" ></a>
+        	<a href="{{ url('/home') }}"><img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 13%;" ></a>
         </div>
         </a>
         <div class="col-md-8"><br><br>
@@ -86,8 +85,10 @@
 
 <div class="col-md-12">
 <div class="text-right" style="background-color: #66B3FF">
+        <a class="btn btn-link" style="color:white" href="{{ url('/course/_default') }}" role="button">Add Courses</a>
+        <a class="btn btn-link" style="color:white" href="{{ url('/department/_default') }}" role="button">Add Department</a>
         <a href="{{ url('/upload') }}"><button type="button" style="color:white" class="btn btn-link"> Upload File</button></a>
-        <a href="{{ url('/emailmodify') }}"><button type="button" style="color:white" class="btn btn-link"  >Email Modification</button></a>
+        <a href="{{ url('/emailmodule/_default') }}"><button type="button" style="color:white" class="btn btn-link"  >Email Modification</button></a>
         <button type="button" style="color:white" class="btn btn-link" onclick="feedBack()">Feedback</button>
         </div>
 </div>
@@ -103,7 +104,7 @@
 
 	<br>
 <form action=" {{ url('excel/export') }}   " name="frm" method="POST">&emsp;
-		<a class="btn btn-default" href="{{ url('/enquireies') }}" role="button">Add Student</a>&emsp;&emsp;&emsp;
+		<a class="btn btn-default" href="{{ url('/enquireies') }}" role="button">Add Student</a>&emsp;&emsp;&emsp;&emsp;
         <button class="btn btn-default" type="submit" id="submit1" name="id" value="" onclick="changeValue();">Download</button>
         </form>
         <br><br>
@@ -150,7 +151,7 @@
                 $("#select_id").change(function() {
                     var key = $(this).val();
                     var value = $("#input_id").val();
-                    $("#a_id").attr("href", "{{  url(' (/main/" + key + "/" + value + "') }}" );
+                    $("#a_id").attr("href", "/main/" + key + "/" + value);
                 });
 
                 $("#input_id").keyup(function() {
@@ -207,7 +208,7 @@
                         <td> {{ $student->course_name }} </td>
                         <td>
                             @if ($student->is_send_now ==1)
-                            <button type="button" class="btn btn-default">Send Email</button>
+                            <a href="{{ url('/sendEmail') }}"><button type="button" class="btn btn-default">Send Email</button>
                             @else
                             @endif
                         </td>
@@ -218,9 +219,8 @@
                         <td>
                             <button type="submit" class="btn btn-default" name="id" value=" {{ $student->id }} " >Delete</button>
                         </td></form>
+                </tr>
                 @endforeach
-        </tr>
-
     </tbody>
 </table>
 </div>
@@ -234,7 +234,3 @@
 </footer> 
 
 </html>
-
-
-
-

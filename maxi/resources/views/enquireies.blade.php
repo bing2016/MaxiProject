@@ -51,7 +51,7 @@
 
 	<div id=header class="">
 	        <div class="col-md-4">
-                        <a href="{{ route('login') }}"><img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 13%;" ></a>
+                        <a href="{{ url('/home') }}"><img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 13%;" ></a>
                 </div>
                 <div class="col-md-8">
                         <div class="text-center" style="font-size: 50px; margin-top:5%">
@@ -130,29 +130,19 @@
                         </select><br/>
 
 
-                         <span style="font-size:20px;">Department</span><br/>
-                        <select class="form-control" id="department_name" type="text" name="department_name" value="" required>
-                                <option value="CS">Computer Science</option>
-                                <option value="Math">Math</option>
-                                <option value="United States">United States</option>
-                                <option value="France">France</option>
-                                <option value="Italy">Italy</option>
+                        <span style="font-size:20px;">Department</span><br/>
+                        <select class="form-control" id="department_name" type="text" name="department_name" value="">
+                                @foreach ($departments as $department)
+                                <option value="{{ $department->name }}"> {{ $department->name }} </option>
+                                @endforeach
                         </select>
-                        <div class="text-right" >
-                        <a href="{{ url('/enquireies') }}" role="button">Add Department</a>
-                        </div>
 
                         <span style="font-size:20px;">Course/Subject</span><br/>
-                        <select class="form-control" id="course_name" type="text" name="course_name" value="" required >
-                                <option value="SSIT">Software System and Internet Technology (SSIT)</option>
-                                <option value="CS">Computer Science</option>
-                                <option value="United States">United States</option>
-                                <option value="France">France</option>
-                                <option value="Italy">Italy</option>
+                        <select class="form-control" id="course_name" type="text" name="course_name" value="">
+                                @foreach ($courses as $course)
+                                <option value="{{ $course->name }}"> {{ $course->name }} </option>
+                                @endforeach
                         </select>
-                        <div class="text-right" >
-                        <a href="{{ url('/enquireies') }}" role="button">Add Courses</a>
-                        </div>
 
                         <span style="font-size:20px;">Telephone Number</span>
                         <input class="form-control" input id="phone_number" type="text" name="phone_number" value="" required><br/>
@@ -176,7 +166,7 @@
                         <input class="form-control" id="regesition_number" type="text" name="regesition_number" value=""><br/>
 
                         <span style="font-size:20px;">Specific Question</span>
-                        <input class="form-control" id="questions" type="text" name="questions" value=""  >
+                        <textarea name="questions" rows="3" class="form-control" ></textarea><br>
 
                         <span style="font-size:15px;">Send now? </span>&emsp;
                         <span style="font-size:15px;">Yes</span>&emsp;

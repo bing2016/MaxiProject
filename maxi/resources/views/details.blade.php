@@ -20,7 +20,7 @@
 
         <div id=header class="">
                 <div class="col-md-4">
-                        <a href="{{ route('login') }}"><img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 13%;" ></a>
+                        <a href="{{ url('/home') }}"><img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 13%;" ></a>
                 </div>
                 <div class="col-md-8">
                         <div class="text-center" style="font-size: 50px; margin-top:5%">
@@ -92,10 +92,18 @@
 
 
                         <span style="font-size:20px;">Department</span><br>
-                        <input class="form-control" name="department_name" value="{{ $students->department_name }}"><br>
+                        <select class="form-control" id="department_name" type="text" name="department_name" value="{{ $students->department_name }}" required>
+                                @foreach ($departments as $department)
+                                <option value="{{ $department->name }}"> {{ $department->name }} </option>
+                                @endforeach
+                        </select>
 
                         <span style="font-size:20px;">Course/Subject</span><br>
-                        <input class="form-control" name="course_name" value="{{ $students->course_name }}"><br>
+                        <select class="form-control" id="course_name" type="text" name="course_name" value="{{ $students->course_name }}" required>
+                                @foreach ($courses as $course)
+                                <option value="{{ $course->name }}"> {{ $course->name }} </option>
+                                @endforeach
+                        </select>
 
                         <span style="font-size:20px;">Telephone Number</span>
                         <input class="form-control" name="phone_number" value="{{ $students->phone_number }}"><br>
@@ -124,7 +132,7 @@
                         @endif
 
                         <span style="font-size:20px;">Specific Question</span>
-                        <input class="form-control" name="questions" value="{{ $students->questions }}"><br>
+                        <textarea name="questions" rows="3" class="form-control" > {{ $students->questions }} </textarea><br>
 
                         <span style="font-size:20px;">Manager</span>
                         <input class="form-control" name="manager" value="{{ $students->manager }}"  readonly><br>
