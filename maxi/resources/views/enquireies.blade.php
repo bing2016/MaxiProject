@@ -112,8 +112,8 @@
                 </div>
 
                 <div class="col-md-5" style="margin-left: 30%">
-                        <span style="font-size:20px;">Date</span>
-                        <input class="form-control" id="date" type="date" name="date" value="" required><br/>
+                        <span style="font-size:20px;">Meeting Date  (yyyy/mm/dd)</span>
+                        <input class="form-control" id="date" type="date" name="date" value="" ><br/>
 
                         <span style="font-size:20px;">Email Address</span>
                         <input class="form-control" id="email" type="text" name="email" value="" required><br/>
@@ -121,7 +121,7 @@
                        
 
                         <span style="font-size:20px;">Level of Study</span><br/>
-                        <select class="form-control" id="level" type="text" name="level" value="" required>
+                        <select class="form-control" id="level" type="text" name="level" value="">
                                 <option value="FN">Foundation -FN</option>
                                 <option value="UT">Undergraduate -UT</option>
                                 <option value="PMP">Pre Masters -PMP</option>
@@ -131,24 +131,24 @@
 
 
                         <span style="font-size:20px;">Department</span><br/>
-                        <select class="form-control" id="department_name" type="text" name="department_name" value="">
+                        <select class="form-control" id="department_name" type="text" name="department_name" value="" required>
                                 @foreach ($departments as $department)
                                 <option value="{{ $department->name }}"> {{ $department->name }} </option>
                                 @endforeach
                         </select>
 
                         <span style="font-size:20px;">Course/Subject</span><br/>
-                        <select class="form-control" id="course_name" type="text" name="course_name" value="">
+                        <select class="form-control" id="course_name" type="text" name="course_name" value="" required>
                                 @foreach ($courses as $course)
                                 <option value="{{ $course->name }}"> {{ $course->name }} </option>
                                 @endforeach
                         </select>
 
                         <span style="font-size:20px;">Telephone Number</span>
-                        <input class="form-control" input id="phone_number" type="text" name="phone_number" value="" required><br/>
+                        <input class="form-control" input id="phone_number" type="text" name="phone_number" value=""><br/>
 
                         <span style="font-size:20px;" >Which Year You Want To Start</span>
-                        <select class="form-control" id="start_year" type="text" name="start_year" value="" required>
+                        <select class="form-control" id="start_year" type="text" name="start_year" value="">
                                 <option value="2017">2017</option> 
                                 <option value="2018">2018</option> 
                                 <option value="2019">2019</option> 
@@ -158,9 +158,9 @@
 
                         <span style="font-size:20px;"  >Have You Already Applied ?</span>&emsp;&emsp;&emsp;&emsp;
                         <span style="font-size:15px;">Yes</span>&emsp;
-                        <input type="radio" id="chk_list_1" value="1" required name="is_applied" >
+                        <input type="radio" id="chk_list_1" value="1" name="is_applied" >
                         <span style="font-size:15px;">No</span>&emsp;
-                        <input type="radio" id="chk_list_1" value="0"  required name="is_applied" ><br/><br/>
+                        <input type="radio" id="chk_list_1" value="0" name="is_applied" ><br/><br/>
 
                         <span style="font-size:20px;">If Yes, Input Your Regesition Number</span>
                         <input class="form-control" id="regesition_number" type="text" name="regesition_number" value=""><br/>
@@ -170,9 +170,9 @@
 
                         <span style="font-size:15px;">Send now? </span>&emsp;
                         <span style="font-size:15px;">Yes</span>&emsp;
-                        <input type="radio" id="chk_list_1" value="0"  name="is_send_now" required >
+                        <input type="radio" id="chk_list_1" value="1"  name="is_send_now" required >
                         <span style="font-size:15px;">No</span>&emsp;
-                        <input type="radio" id="chk_list_1" value="1"  name="is_send_now" required ><br/><br/>
+                        <input type="radio" id="chk_list_1" value="0"  name="is_send_now" required ><br/><br/>
 
                         <span style="font-size:20px;">Manager</span>
                         <input class="form-control" id="manager" type="text" name="manager" value="{{ Auth::user()->name }}" readonly>
