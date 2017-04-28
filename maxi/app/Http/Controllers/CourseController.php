@@ -39,7 +39,7 @@ class CourseController extends Controller
 
 
     public function store(Request $request) {
-        $article = Course::find($request->get('id')))
+        $article = Course::find($request->get('name')))
         if (null == $article) {
             $article = new Course;
         } 

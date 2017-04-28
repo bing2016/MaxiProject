@@ -41,7 +41,7 @@ class DepartmentController extends Controller
     }
 
 	public function store(Request $request) {
-        $article = Department::find($request->get('id'));
+        $article = Department::find($request->get('name'));
         if (null == $article) {
             $article = new Department;
         }

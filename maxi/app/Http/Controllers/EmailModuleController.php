@@ -43,7 +43,7 @@ class EmailModuleController extends Controller
         }
     }
     public function store(Request $request) {
-        $article = EmailModule::find($request->get('id'));
+        $article = EmailModule::find($request->get('name'));
         if (null == $article) {
             $article = new EmailModule;
         } 
