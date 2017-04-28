@@ -45,7 +45,7 @@ class ExcelController extends Controller
 	
 	public function import(Request $request){
     	$file = $request->file('import_file');
-
+    	$arr = array();
     	if($file) {
     		$path = $file->getRealPath();
 
@@ -57,11 +57,11 @@ class ExcelController extends Controller
     	    	foreach ($data as $key => $value) {
     	    		$nameArray = explode(" ", $value->name);
     	    		$student = new Student;
-    	    		$student->first_name => reset($nameArray),
-    	    		$student->last_name => end($nameArray), 
-    	    		$student->email => $value->email, 
-    	    		$student->course_name => $value->course,
-    	    		$student->manager => $request->get('manager')];
+    	    		$student->first_name = reset($nameArray);
+    	    		$student->last_name = end($nameArray);
+    	    		$student->email = $value->email;
+    	    		$student->course_name = $value->course;
+    	    		$student->manager = $request->get('manager');
     	    		try {
           				if (!$student->save()) {
                 			$arr[] = $nameArray;
@@ -71,9 +71,12 @@ class ExcelController extends Controller
         			}
             	}
             }
-        	return redirect('/main');
 		}
-
-		return //TODO
+		if ($ar) {
+			return redirect('/main');
+		} else {
+			 return redirect()->back()->withInput()->withErrors($arr);
+		}
+		
 	}
 }
