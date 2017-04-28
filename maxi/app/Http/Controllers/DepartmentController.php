@@ -25,10 +25,9 @@ class DepartmentController extends Controller
         $article->link = $request->get('link');
         $article->blurb = $request->get('blurb');
 
-
         try {
             if ($article->save()) {
-                return redirect('/main');
+                return redirect('/home');
             } else {
                 return redirect()->back()->withInput()->withErrors('false store');
             }
@@ -41,7 +40,7 @@ class DepartmentController extends Controller
     }
 
 	public function store(Request $request) {
-        $article = Department::find($request->get('name'));
+        $article = Department::where('name', $request->get('name'))->first();
         if (null == $article) {
             $article = new Department;
         }

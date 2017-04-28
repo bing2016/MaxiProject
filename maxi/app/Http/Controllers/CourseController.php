@@ -16,7 +16,7 @@ class CourseController extends Controller
         $info = ['id' => $course->id, 
                  'name' => $course->name, 
                  'link' => $course->link];
-        return view('departmentUp')->withCourse(Course::select('name')->orderBy('name')->get())->with('course', $info);
+        return view('courseUp')->withCourses(Course::select('name')->orderBy('name')->get())->with('course', $info);
     }
 
     private function setAttribute(Request $request, $article) {
@@ -39,7 +39,7 @@ class CourseController extends Controller
 
 
     public function store(Request $request) {
-        $article = Course::find($request->get('name')))
+        $article = Course::where('name', $request->get('name'))->first();
         if (null == $article) {
             $article = new Course;
         } 
@@ -47,7 +47,7 @@ class CourseController extends Controller
     }
 
     public function delete(Request $request) {
-    	if (Course::destroy($request->get('id'))) {
+    	if (Course::destroy($request->get('name'))) {
             return $this->show();
         } else {
             return $this->show()->withErrors('false delete');
