@@ -170,9 +170,9 @@
 
                         <span style="font-size:15px;">Send now? </span>&emsp;
                         <span style="font-size:15px;">Yes</span>&emsp;
-                        <input type="radio" id="chk_list_1" value="1"  name="is_send_now" required >
+                        <input type="radio" id="" value="1"  name="is_send_now" required >
                         <span style="font-size:15px;">No</span>&emsp;
-                        <input type="radio" id="chk_list_1" value="0"  name="is_send_now" required ><br/><br/>
+                        <input type="radio" id="" value="0"  name="is_send_now" required ><br/><br/>
 
                         <span style="font-size:20px;">Manager</span>
                         <input class="form-control" id="manager" type="text" name="manager" value="{{ Auth::user()->name }}" readonly>

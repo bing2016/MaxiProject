@@ -58,13 +58,14 @@
     </div>
 
     <div class="col-md-12">
-        <div class="text-right" style="background-color: #66B3FF">
-        <a class="btn btn-link" style="color:white" href="{{ url('/course/_default') }}" role="button">Add Courses</a>
+    <div class="text-right" style="background-color: #66B3FF">
+        <a class="btn btn-link" style="color:white" href="{{ url('/course') }}" role="button">Add Courses</a>
         <a class="btn btn-link" style="color:white" href="{{ url('/department') }}" role="button">Add Department</a>
         <a href="{{ url('/upload') }}"><button type="button" style="color:white" class="btn btn-link"> Upload File</button></a>
         <a href="{{ url('/emailmodule') }}"><button type="button" style="color:white" class="btn btn-link"  >Email Modification</button></a>
         <button type="button" style="color:white" class="btn btn-link" onclick="feedBack()">Feedback</button>
-        </div>
+    </div>
+</div>
 
         <div class="text-center">
         <br><span  style="font-size:45px;">Send Email</span>

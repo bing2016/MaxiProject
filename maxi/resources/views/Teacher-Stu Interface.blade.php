@@ -147,7 +147,6 @@
   <div class="form-group">
 
     <select id="select_id" class="form-control">
-        <option value="all_students">All Students</option>
         <option value="first_name">First Name</option>
         <option value="last_name">Last Name</option>
         <option value="nationality">Country</option>
