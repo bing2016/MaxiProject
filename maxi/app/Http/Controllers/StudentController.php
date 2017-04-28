@@ -42,7 +42,8 @@ class StudentController extends Controller
         return $this->show();
     }
 
-    private function setAttribute(Request $request, $student) {
+    public function update(Request $request) {
+        $student = Student::findOrFail($request->get('id'));
         $student->last_name = $request->get('last_name');
         $student->middle_name = $request->get('middle_name');
         $student->first_name = $request->get('first_name');
@@ -78,15 +79,46 @@ class StudentController extends Controller
             }
             return 'WHOOPS, FALSE STORED';
         }
-    }
-    public function update(Request $request) {
-        $student = Student::findOrFail($request->get('id'));
-        return $this->setAttribute($request, $student);
+        return $this->show();
     }
 
 	public function store(Request $request) {
     	$student = new Student;
-        $this->setAttribute($request, $student);
+        $student->last_name = $request->get('last_name');
+        $student->middle_name = $request->get('middle_name');
+        $student->first_name = $request->get('first_name');
+        $student->nationality = $request->get('nationality');
+        $student->email = $request->get('email');
+        $student->phone_number = $request->get('phone_number');
+
+        $student->department_name = $request->get('department_name');
+        $student->course_name = $request->get('course_name');
+        $student->source = $request->get('source');
+        $student->level = $request->get('level');
+        $student->is_send_now = $request->get('is_send_now'); //more question
+        $student->questions = $request->get('questions');
+        $student->start_year = $request->get('start_year');
+        $student->is_applied = $request->get('is_applied');
+        $student->registration_number = $request->get('registration_number');
+
+        $student->manager = $request->get('manager');
+        $student->place = $request->get('place');
+        $student->date = $request->get('date');
+        if (null != $request->get('questions')){
+            $student->is_highlight = true;
+        }
+
+        try {
+            if (!$student->save()) {
+                return redirect()->back()->withInput()->withErrors('WHOOPS, FALSE STORED');
+            }
+        } catch(QueryException $e) {
+            $error_code = $e->errorInfo[1];
+            if($error_code == 1062){
+                return redirect()->back()->withInput()->withErrors('You already have this student');
+            }
+            return 'WHOOPS, FALSE STORED';
+        }
         if (1 == $request->get('is_send_now')) {
             (new OrderController)->generalEmail($request);
         }
