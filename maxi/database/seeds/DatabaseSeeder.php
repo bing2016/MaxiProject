@@ -219,8 +219,737 @@ class DatabaseSeeder extends Seeder
             'blurb' => '',
             ]);
         DB::table('nationalities')->insert([
-            'name' => 'china',
+            'name' => 'Abkhazia',
             ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Afghanistan',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Albania',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Algeria',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'American Samoa',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Andorra',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Angola',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Anguilla',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Antigua and Barbuda',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Argentina',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Armenia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Aruba',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Australia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Austria',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Azerbaijan',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Bahamas, The',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Bahrain',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Bangladesh',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Barbados',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Belarus',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Belgium',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Belize',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Benin',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Bermuda',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Bhutan',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Bolivia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Bosnia and Herzegovina',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Botswana',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Brazil',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Bolivia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'British Indian Ocean Territory',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Brunei',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Bulgaria',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Burkina Faso',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Burundi',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Cambodia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Cameroon',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Canada',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Cape Verde',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Cayman Islands',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Central African Republic',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Chad',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Chile',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'China',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Canada',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Christmas lsland',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Cocos (Keeling) Islands',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Colombia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Comoros',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Congo (Brazzaville)',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Congo (Kinshasa)',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Cook Islands',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Costa Rica',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Côte d‘Ivoire',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Croatia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Cuba',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Curaçao',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Cyprus',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Czech Republic',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Denmark',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Djibouti',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Dominica',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Dominican Republic',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Ecuador',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Egypt',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'El Salvador',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Equatorial Guinea',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Eritrea',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Estonia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Ethiopia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Falkland Islands(Islas Malvinas)',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Faroe Islands',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Fiji',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Finland',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'France',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'French Polynesia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Gabon',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Gambia, The',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Georgia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Germany',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Ghana',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Gibraltar',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Greece',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Greenland',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Grenada',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Guam',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Guatemala',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Guernsey',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Guinea',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Guinea-Bissau',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Guyana',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Haiti',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Honduras',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Hong Kong',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Hungary',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Iceland',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'India',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Indonesia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Iran',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Iraq',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Ireland',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Israel',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Italy',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Jamaica',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Japan',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Jersey',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Jordan',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Kazakhstan',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Kenya',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Kiribati',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Korea, South',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Kosovo',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Kuwait',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Laos',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Latvia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Lebanon',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Lesotho',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Liberia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Libya',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Liechtenstein',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Lithuania',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Luxembourg',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Macao',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Macedonia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Madagascar',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Malawi',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Malaysia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Maldives',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Mali',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Malta',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Isle of Man',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Marshall Islands',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Mauritania',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Mauritius',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Mayotte',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Mexico',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Micronesia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Moldova',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Monaco',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Mongolia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Montenegro',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Montserrat',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Morocco',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Mozambique',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Myanmar',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Nagorno-Karabakh',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Namibia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Nauru',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Nepal',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'New Caledonia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'New Zealand',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Niger',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Nigeria',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Niue',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Norfolk Island',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Northern Cyprus',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Northern Mariana Islands',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Norway',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Oman',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Pakistan',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Palau',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Palestine',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Panama',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Papua New Guinea',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Paraguay',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'People’s Republic of Korea',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Peru',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Philippines',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Pitcairn Islands',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Poland',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Portugal',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Pridnestrovie',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Puerto Rico',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Qatar',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Réunion',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Romania',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Russia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Rwanda',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Saint Helena',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Saint Christopher and Nevis',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Saint Lucia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Saint Pierre and Miquelon',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Saint Vincent and the Grenadines',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Samoa',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'San Marino',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'São Tomé and Príncipe',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Saudi Arabia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Senegal',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Serbia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Seychelles',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Sierra Leone',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Singapore',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Sint Maarten',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Slovakia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Slovenia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Solomon Islands',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Somali',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Somaliland',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'South Africa',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'South Ossetia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'South Sudan',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Spain',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Sri Lanka',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Sudan',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Suriname',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Svalbard',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Swaziland',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Sweden',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Switzerland',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Syria',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Tajikistan',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Tanzania',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Thailand',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Timor-Leste',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Togo',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Tokelau',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Tonga',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Trinidad and Tobago',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Tunisia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Turkey',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Turkmenistan',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Turks and Caicos Islands',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Tuvalu',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Uganda',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Ukraine',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'United Arab Emirates',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'United Kingdom',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'United States',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Uruguay',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Uzbekistan',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Vanuatu',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'The Holy See（Vatican City）',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Venezuela',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Vietnam',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Virgin Islands, British',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Virgin Islands, United States',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Wallis and Futuna',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Western Sahara',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Yemen',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Zambia',
+            ]);
+        DB::table('nationalities')->insert([
+            'name' => 'Zimbabwe',
+            ]);
+        
+
+
+
+
+
+
+
+
         DB::table('courses')->insert([
             'name' => 'SSIT',
             'link' => 'Http:/sdfasdf',
