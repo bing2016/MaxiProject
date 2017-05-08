@@ -20,13 +20,16 @@ Route::get('/test', 'StudentController@test');
 
 Route::group(['middleware' => 'auth',], function () {
 
-	Route::get('/home', 'StudentController@show');
-	Route::get('/main', 'StudentController@show');
+	Route::get('/home', function () {
+    	return view('welcome');
+	}));
+	Route::get('/main/{manager}', 'StudentController@show');
 	Route::get('/enquireies', 'StudentController@showEnquireies');
 	Route::get('/details/{id}', 'StudentController@showDetail');
 	Route::post('/student', 'StudentController@store');
 	Route::post('/student/update', 'StudentController@update');
 	Route::post('/student/delete', 'StudentController@delete');
+	Route::post('/student/deleteAll', 'StudentController@deleteAll');
 	Route::get('/main/{key}/{value}', 'StudentController@searchStudent');
 
 	Route::get('upload','ExcelController@upload');

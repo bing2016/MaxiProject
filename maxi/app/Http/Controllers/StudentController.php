@@ -12,8 +12,9 @@ use App\Course;
 class StudentController extends Controller
 {
 
-	public function show() {
-    	return view('Teacher-Stu Interface')->withStudents(Student::where('is_download', false)->orderBy('is_highlight', 'desc')->orderBy('created_at', 'desc')->get());
+	public function show($manager) {
+    	return view('Teacher-Stu Interface')->withStudents(Student::where('is_download', false)
+            ->where('manager', $manager)->orderBy('is_highlight', 'desc')->orderBy('created_at', 'desc')->get());
     }
 
 	public function showEnquireies() {
@@ -128,5 +129,16 @@ class StudentController extends Controller
             return $this->show()->withErrors('false delete');
         }
     }
+
+    public function deleteAll(Request $Request) {
+        $arr = explode(",", $request->get('id'));
+
+        if (Student::destroy($arr)) {
+            return $this->show();
+        } else {
+            return $this->show()->withErrors('false delete');
+        }
+    }
+
 
 }
