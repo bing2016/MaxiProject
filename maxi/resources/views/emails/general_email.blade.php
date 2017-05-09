@@ -8,7 +8,8 @@
 <br/><br/>
 
 {{$blurb}}
-<br/><br/>
+<br/><br/><br/><br/>
+
 
 {{$university1}}
 <br/><br/>
@@ -52,4 +53,6 @@
 {{$manager_name}}
 <br/><br/>
 
-{{$officeInfo}}
+{{$officeInfo1}}
+<br/><br/>
+{{$officeInfo2}}

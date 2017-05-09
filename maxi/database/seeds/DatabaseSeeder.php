@@ -141,7 +141,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'university1',
             'manager' => 'Ruth Lauener',
             'content' => '
-            The University of Sheffield',
+            *The University of Sheffield*
+            ',
             ]);
         DB::table('email_modules')->insert([
             'type' => 'normal',
@@ -173,7 +174,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'fees1',
             'manager' => 'Ruth Lauener',
             'content' => '
-            Fees and Living Costs
+            *Fees and Living Costs*
             ',
             ]);
         DB::table('email_modules')->insert([
@@ -198,7 +199,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'funding',
             'manager' => 'Ruth Lauener',
             'content' => '
-            Scholarships and Funding
+            *Scholarships and Funding*
             ',
             ]);
 
@@ -207,7 +208,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'apply',
             'manager' => 'Ruth Lauener',
             'content' => '
-            Applying
+            *Applying*
             ',
             ]);
 
@@ -231,24 +232,24 @@ class DatabaseSeeder extends Seeder
 
         DB::table('email_modules')->insert([
             'type' => 'normal',
-            'name' => 'officeInfo',
+            'name' => 'officeInfo1',
             'manager' => 'Ruth Lauener',
             'content' => '
-            International Officer
-            Global Engagement
+            Global Engagement,',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'normal',
+            'name' => 'officeInfo2',
+            'manager' => 'Ruth Lauener',
+            'content' => '
             The University of Sheffield
-            Level 1, The Arts Tower
-            Western Bank
-            Sheffield
-            S10 2TN
-            Tel: +44(0)114 222 8025
             ',
             ]);
             ///////////////////////////////////////////////////////////////////////////////////////
             //Fees blurb
         DB::table('email_modules')->insert([
             'type' => 'fees',
-            'name' => 'feesUG',
+            'name' => 'feesUT',
             'manager' => 'Ruth Lauener',
             'content' => 'http://ssd.dept.shef.ac.uk/fees/ug/ug-fees.php',
             ]);
@@ -260,19 +261,19 @@ class DatabaseSeeder extends Seeder
             ]);
         DB::table('email_modules')->insert([
             'type' => 'fees',
-            'name' => 'feesPRG',
+            'name' => 'feesPGR',
             'manager' => 'Ruth Lauener',
             'content' => 'http://www.sheffield.ac.uk/ssid/fees/pgr',
             ]);
         DB::table('email_modules')->insert([
             'type' => 'fees',
-            'name' => 'feesFundation',
+            'name' => 'feesFN',
             'manager' => 'Ruth Lauener',
             'content' => 'http://usic.sheffield.ac.uk/fees',
             ]);
         DB::table('email_modules')->insert([
             'type' => 'fees',
-            'name' => 'feesPre-Masters',
+            'name' => 'feesPMP',
             'manager' => 'Ruth Lauener',
             'content' => 'http://usic.sheffield.ac.uk/fees',
             ]);
@@ -280,20 +281,23 @@ class DatabaseSeeder extends Seeder
             //Apply blurb
         DB::table('email_modules')->insert([
             'type' => 'applying',
-            'name' => 'applyingUG',
+            'name' => 'applyingUT',
             'manager' => 'Ruth Lauener',
-            'content' => 'This is done through UCAS online at www.ucas.co.uk',
+            'content' => '
+            This is done through UCAS online at www.ucas.co.uk
+            ',
             ]);
         DB::table('email_modules')->insert([
             'type' => 'applying',
             'name' => 'applyingPGT',
             'manager' => 'Ruth Lauener',
             'content' => '
-            The application is done online and there is no charge to apply – useful information about this process can be found here: http://www.sheffield.ac.uk/postgraduate/taught/apply/applying.  ',
+            The application is done online and there is no charge to apply – useful information about this process can be found here: http://www.sheffield.ac.uk/postgraduate/taught/apply/applying.  
+            ',
             ]);
         DB::table('email_modules')->insert([
             'type' => 'applying',
-            'name' => 'applyingPRG',
+            'name' => 'applyingPGR',
             'manager' => 'Ruth Lauener',
             'content' => '
             The first step when applying for a PhD is to find an appropriate supervisor.  We have a very useful supervisor search tool that makes this easy: http://www.sheffield.ac.uk/postgraduate/research/areas.
@@ -308,31 +312,39 @@ class DatabaseSeeder extends Seeder
             ]);
         DB::table('email_modules')->insert([
             'type' => 'applying',
-            'name' => 'applyingFundation',
+            'name' => 'applyingFN',
             'manager' => 'Ruth Lauener',
             'content' => '
-            To apply for our International Foundation Year it’s a quick and easy process.  You apply direct through the website at http://usic.sheffield.ac.uk/how-to-apply/apply-now.',
+            To apply for our International Foundation Year it’s a quick and easy process.  You apply direct through the website at http://usic.sheffield.ac.uk/how-to-apply/apply-now.
+            ',
             ]);
         DB::table('email_modules')->insert([
             'type' => 'applying',
-            'name' => 'applyingPre-Masters',
+            'name' => 'applyingPMP',
             'manager' => 'Ruth Lauener',
             'content' => '
-            To apply for our International Pre-Masters Programme it’s a quick and easy process.  You apply direct through the website at http://usic.sheffield.ac.uk/how-to-apply/apply-now. ',
+            To apply for our International Pre-Masters Programme it’s a quick and easy process.  You apply direct through the website at http://usic.sheffield.ac.uk/how-to-apply/apply-now. 
+            ',
             ]);
 
 
         DB::table('email_modules')->insert([
             'type' => 'country',
-            'name' => 'America',
-            'manager' => 'Mr. John',
-            'content' => 'Welcome to America kid!',
+            'name' => 'Mexico',
+            'manager' => 'Ruth Lauener',
+            'content' => '
+            The University of Sheffield is pleased to offer a range of scholarships to high achieving international students.  To see what’s available for your country please visit: http://www.sheffield.ac.uk/international/enquiry/money/scholarships.
+
+            The University of Sheffield has for many years been extremely popular with Mexican students and we have around 160 CONACYT-funded Mexican students, one of thelargest numbers in the UK. As a result we now have former Sheffield students in senior positions throughout Mexico, including Rectors of major universities and the Directors of CONACYT research centres. The large number of Sheffield graduates in important posts in Mexico ensures that your Sheffield degree is really recognised and valued throughout the country.
+            ',
             ]);
         DB::table('email_modules')->insert([
             'type' => 'country',
-            'name' => 'China',
-            'manager' => 'Mr. John',
-            'content' => 'Welcome to China kid!',
+            'name' => 'default',
+            'manager' => 'Ruth Lauener',
+            'content' => '
+            The University of Sheffield is pleased to offer a range of scholarships to high achieving international students.  To see what’s available for your country please visit: http://www.sheffield.ac.uk/international/enquiry/money/scholarships.
+            ',
             ]);
         DB::table('email_modules')->insert([
             'type' => '_default',
@@ -1074,14 +1086,18 @@ class DatabaseSeeder extends Seeder
         DB::table('departments')->insert([
             'name' => 'Automatic Control and Systems Engineering',
             'link' => 'Http:/sdfasdf',
-            'blurb' => 'The Department of Automatic Control and Systems Engineering is the largest of its kind in Europe (about 25 professors) and was ranked 1st for research output in the UK‘s most recent National Research Excellence Framework in which over 115 institutions were independently evaluated.  We’re the only Department in the UK, and one of the best in the world, dedicated to Control and Systems Engineering.  The Department has some of the world‘s most cited engineers and does work for NASA, the European Space Agency, NATO and many of the world’s leading companies. ',
+            'blurb' => '
+            The Department of Automatic Control and Systems Engineering is the largest of its kind in Europe (about 25 professors) and was ranked 1st for research output in the UK‘s most recent National Research Excellence Framework in which over 115 institutions were independently evaluated.  We’re the only Department in the UK, and one of the best in the world, dedicated to Control and Systems Engineering.  The Department has some of the world‘s most cited engineers and does work for NASA, the European Space Agency, NATO and many of the world’s leading companies. 
+            ',
             ]);
         DB::table('departments')->insert([
             'name' => 'Aerospace',
             'link' => '',
-            'blurb' => 'The Aerospace degree in Sheffield is one of the highest ranked in the UK and has outstanding industrial connections.  The degree is taught across 4 departments in the Faculty of Engineering.  The university has developed world-leading expertise and unique facilities for industriial collaboration in aerospace manufacture.  These include the ‘Advanced Manufacturing Research Centre with Boeing’; several Rolls-Royce research centres including the ‘Rolls-Royce Factory of the Future’; and the ‘BAe Systems University Technology Centre’.
+            'blurb' => '
+            The Aerospace degree in Sheffield is one of the highest ranked in the UK and has outstanding industrial connections.  The degree is taught across 4 departments in the Faculty of Engineering.  The university has developed world-leading expertise and unique facilities for industriial collaboration in aerospace manufacture.  These include the ‘Advanced Manufacturing Research Centre with Boeing’; several Rolls-Royce research centres including the ‘Rolls-Royce Factory of the Future’; and the ‘BAe Systems University Technology Centre’.
 
-                The University of Sheffield has the second largest research income in Engineering of all UK universities (after Imperial College).  In 2012 Sheffield overtook Cambridge and our engineering research income is now around $125m each year - and it is growing fast. ',
+            The University of Sheffield has the second largest research income in Engineering of all UK universities (after Imperial College).  In 2012 Sheffield overtook Cambridge and our engineering research income is now around $125m each year - and it is growing fast. 
+            ',
             ]);
 
         DB::table('courses')->insert([

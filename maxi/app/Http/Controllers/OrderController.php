@@ -38,7 +38,7 @@ class OrderController extends Controller
         $department = $student['department_name'];
         $course = $student['course_name'];
         $email = $student['email'];
-        $level_of_study = $student['level_of_study'];
+        $level_of_study = $student['level'];
 
         $welcome1 = EmailModule::where('name', 'welcome1')->select('content')->first();
         $welcome2 = EmailModule::where('name', 'welcome2')->select('content')->first();
@@ -67,7 +67,7 @@ class OrderController extends Controller
         $fees1 = EmailModule::where('name', 'fees1')->select('content')->first();
         $fees2 = EmailModule::where('name', 'fees2')->select('content')->first();
         $fees3 = EmailModule::where('name', 'fees3')->select('content')->first();
-        $fees_link = EmailModule::where('type', 'fees')->where('name', $level_of_study)->select('content')->first();
+        $fees_link = EmailModule::where('type', 'fees')->where('name', 'fees'.$level_of_study)->select('content')->first();//////////////////////////////////////////
         $fees1 = $fees1['content'];
         $fees2 = $fees2['content'];
         $fees3 = $fees3['content'];
@@ -76,33 +76,35 @@ class OrderController extends Controller
 
         $funding = EmailModule::where('name', 'funding')->select('content')->first();//nationality blurb
         $funding = $funding['content'];
-        $nationalityBlurb="nationalityBlurb";
-        //$nationalityBlurb ;
+        $nationalityBlurb = EmailModule::where('type', 'country')->where('name', $nationality)->select('content')->first();
+        if($nationalityBlurb==null)
+        {
+            $nationalityBlurb = EmailModule::where('type', 'country')->where('name', 'default')->select('content')->first();
+        }
+        else
+        {
+            $nationalityBlurb = $nationalityBlurb['content'];
+        }
 
         $apply = EmailModule::where('name', 'apply')->select('content')->first();
-        $applyPart = EmailModule::where('type', 'applying')->where('name', $level_of_study)->select('content')->first();
+        $applyPart = EmailModule::where('type', 'applying')->where('name', 'applying'.$level_of_study)->select('content')->first();//////////////////////////////////////////
         $apply = $apply['content'];
         $applyPart = $applyPart['content'];
 
         $ending1 = EmailModule::where('name', 'ending1')->select('content')->first();
         $ending2 = EmailModule::where('name', 'ending2')->select('content')->first();
-        $officeInfo = EmailModule::where('name', 'officeInfo')->select('content')->first();
+        $officeInfo1 = EmailModule::where('name', 'officeInfo1')->select('content')->first();
+        $officeInfo2 = EmailModule::where('name', 'officeInfo2')->select('content')->first();
         $ending1 = $ending1['content'];
         $ending2 = $ending2['content'];
-        $officeInfo = $officeInfo['content'];
+        $officeInfo1 = $officeInfo1['content'];
+        $officeInfo2 = $officeInfo2['content'];
 
         /*$nationalityList = EmailModule::where('name', 'America')->select('content')->first();
 
-        if($nationalityList==null)
-        {
-            $nationalityPart = '';
-        }
-        else
-        {
-            $nationalityPart = $nationalityList['content'];
-        }*/
+        */
 
-        return ['welcome1'=>$welcome1, 'welcome2'=>$welcome2, 'welcome3'=>$welcome3, 'blurb'=>$blurb, 'university1'=>$university1, 'university2'=>$university2, 'university3'=>$university3, 'university4'=>$university4, 'fees1'=>$fees1, 'fees2'=>$fees2, 'fees3'=>$fees3, 'funding'=>$funding, 'nationalityBlurb'=>$nationalityBlurb, 'apply'=>$apply, 'applyPart'=>$applyPart, 'ending1'=>$ending1, 'ending2'=>$ending2, 'manager_name'=>$manager_name, 'officeInfo'=>$officeInfo];
+        return ['welcome1'=>$welcome1, 'welcome2'=>$welcome2, 'welcome3'=>$welcome3, 'blurb'=>$blurb, 'university1'=>$university1, 'university2'=>$university2, 'university3'=>$university3, 'university4'=>$university4, 'fees1'=>$fees1, 'fees2'=>$fees2, 'fees3'=>$fees3, 'funding'=>$funding, 'nationalityBlurb'=>$nationalityBlurb, 'apply'=>$apply, 'applyPart'=>$applyPart, 'ending1'=>$ending1, 'ending2'=>$ending2, 'manager_name'=>$manager_name, 'officeInfo1'=>$officeInfo1, 'officeInfo2'=>$officeInfo2];
     }
     
     //general email
@@ -116,10 +118,12 @@ class OrderController extends Controller
         foreach ($studentList as $student)
         {
             $email = $student['email'];
+            $studnet_name = $student['first_name'];
             //return $this->getEmailDetail($student, $request->manager_name);
-            Mail::send('emails.general_email', $this->getEmailDetail($student, $request->manager_name), function($message) use($email, $manager_email)
+            Mail::send('emails.general_email', $this->getEmailDetail($student, $request->manager_name), function($message) use($email, $manager_email, $studnet_name, $manager)
             {
-                $message->from($manager_email)->to( $email, 'some guy')->subject('Welcome to the University of Sheffield!');
+                $message->from($manager_email, $manager);
+                $message->to( $email, $studnet_name)->subject('Welcome to the University of Sheffield!');
             });
 
             $student->is_emailed = true;
@@ -130,6 +134,7 @@ class OrderController extends Controller
     public function specialEmail(Request $request)
     {
         $student = Student::where('id', $request->get('id'))->first();
+        $studnet_name = $student['first_name'];
         $manager = $request->get('manager');
         $manager_email = User::where('name', $manager)->select('email')->first();
         $manager_email = $manager_email['email'];
@@ -143,9 +148,10 @@ class OrderController extends Controller
             $email = $student['email'];
         }
 
-        Mail::send('emails.special_email', ['content'=>$content], function($message) use($email, $manager_email)
+        Mail::send('emails.special_email', ['content'=>$content], function($message) use($email, $manager_email, $studnet_name, $manager)
         {
-            $message->from($manager_email)->to( $email, 'some guy')->subject('Welcome to the University of Sheffield!');
+            $message->from('tma8@sheffield.ac.uk', $manager);
+            $message->to( $email, $studnet_name)->subject('Welcome to the University of Sheffield!');
         });
         $student->is_emailed = true;
         $student->save();
