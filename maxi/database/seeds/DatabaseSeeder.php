@@ -330,16 +330,7 @@ class DatabaseSeeder extends Seeder
             'manager' => '',
             'content' => '',
             ]);
-        DB::table('departments')->insert([
-            'name' => 'Computer Science',
-            'link' => 'Http:/sdfasdf',
-            'blurb' => 'XXXXXXXX',
-            ]);
-        DB::table('departments')->insert([
-            'name' => '_default',
-            'link' => '',
-            'blurb' => '',
-            ]);
+
         DB::table('nationalities')->insert([
             'name' => 'Abkhazia',
             ]);
@@ -1070,15 +1061,26 @@ class DatabaseSeeder extends Seeder
 
 
 
+        DB::table('departments')->insert([
+            'name' => 'Automatic Control and Systems Engineering',
+            'link' => 'Http:/sdfasdf',
+            'blurb' => 'The Department of Automatic Control and Systems Engineering is the largest of its kind in Europe (about 25 professors) and was ranked 1st for research output in the UK‘s most recent National Research Excellence Framework in which over 115 institutions were independently evaluated.  We’re the only Department in the UK, and one of the best in the world, dedicated to Control and Systems Engineering.  The Department has some of the world‘s most cited engineers and does work for NASA, the European Space Agency, NATO and many of the world’s leading companies. ',
+            ]);
+        DB::table('departments')->insert([
+            'name' => 'Aerospace',
+            'link' => '',
+            'blurb' => 'The Aerospace degree in Sheffield is one of the highest ranked in the UK and has outstanding industrial connections.  The degree is taught across 4 departments in the Faculty of Engineering.  The university has developed world-leading expertise and unique facilities for industriial collaboration in aerospace manufacture.  These include the ‘Advanced Manufacturing Research Centre with Boeing’; several Rolls-Royce research centres including the ‘Rolls-Royce Factory of the Future’; and the ‘BAe Systems University Technology Centre’.
 
+                The University of Sheffield has the second largest research income in Engineering of all UK universities (after Imperial College).  In 2012 Sheffield overtook Cambridge and our engineering research income is now around $125m each year - and it is growing fast. ',
+            ]);
 
         DB::table('courses')->insert([
-            'name' => 'SSIT',
-            'link' => 'Http:/sdfasdf',
+            'name' => 'Accounting, Governance and Financial Management - MSc',
+            'link' => 'https://www.sheffield.ac.uk/management/study/msc/courses/msc-accounting-governance-financial-management',
             ]);
         DB::table('courses')->insert([
-            'name' => '_default',
-            'link' => '',
+            'name' => 'Acquired Communication Disorders - Msc/Diploma/Certificate',
+            'link' => 'https://www.sheffield.ac.uk/hcs/prospective_pg/taught/acd',
             ]);
 
     }
