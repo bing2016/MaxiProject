@@ -4,7 +4,7 @@
 <head>
 
 	<meta charset="UTF-8"> 
-	<title>Teacher-Stu Interface</title>
+	<title>Send Email</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/shiyishi.css') }}">
 
@@ -67,7 +67,7 @@
     </div>
 </div>
 
-        <div class="text-center">
+        <div class="text-center col-md-12">
         <br><span  style="font-size:45px;">Send Email</span>
         </div><br>
     
@@ -78,7 +78,7 @@
     
 
     <div>
-
+        <input name="manager" value="{{ Auth::user()->name }}" hidden="">
         <button type="submit" name="id" value="{{ $student->id }}" class="btn btn-primary btn-lg">
             <span style="font-size:20px;">Submit</span>
         </button>&emsp;&emsp;&emsp;
