@@ -11,27 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-        /*DB::table('users')->insert([
-            'account_id' => 001,
-            'username' => 'test_user@qq.com',
-            'password' => 'password',
-            'title' => 'Mr.',
-            'forename' => 'James',
-            'surname' => 'Bond',
-            'add_time' => '2017/01/01 08:00:00',
-            'upd_time' => '2017/01/01 09:00:00',
-            ]);
-        DB::table('users')->insert([
-            'account_id' => 002,
-            'username' => 'test_user2@qq.com',
-            'password' => 'newpassword',
-            'title' => 'Mrs.',
-            'forename' => 'Lilith',
-            'surname' => 'Bond',
-            'add_time' => '2017/01/02 08:00:00',
-            'upd_time' => '2017/01/02 09:00:00',
-            ]);*/
         DB::table('students')->insert([
             'first_name' => 'Tom',
             'middle_name' => '',
@@ -132,54 +111,119 @@ class DatabaseSeeder extends Seeder
             'created_at' => '2017/01/02 08:00:00',
             'updated_at' => '2017/01/03 09:00:00',
             ]);
+        ///////////////////////////////////////////////////////////////////////////////////////
+            //Email template
         DB::table('email_modules')->insert([
             'type' => 'normal',
-            'name' => 'welcome',
-            'manager' => 'Mr. John',
+            'name' => 'welcome1',
+            'manager' => 'Ruth Lauener',
+            'content' => ' Dear {{first_name}},',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'normal',
+            'name' => 'welcome2',
+            'manager' => 'Ruth Lauener',
             'content' => '
             Dear {{first_name}},
 
-            Thank you for coming to speak with the University of Sheffield recently. I hope you found the discussion enjoyable, interesting and informative. This e-mail contains information about your subject area, the University itself and advice on funding options.
-            
-            You expressed a particular interest in our {{department}}.  You can find more information about the relevant programme(s) here: {{link}}.
+            Thank you for coming to speak with the University of Sheffield recently. I hope you found the discussion enjoyable, interesting and informative. This e-mail contains information about your subject area, the University itself and advice on funding options.',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'normal',
+            'name' => 'welcome3',
+            'manager' => 'Ruth Lauener',
+            'content' => '
+            You expressed a particular interest in our {{course}}.  You can find more information about the relevant programme(s) here: {{link}}.',
+            ]);
 
-            {{blurb}}
-
+        DB::table('email_modules')->insert([
+            'type' => 'normal',
+            'name' => 'university1',
+            'manager' => 'Ruth Lauener',
+            'content' => 'The University of Sheffield',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'normal',
+            'name' => 'university2',
+            'manager' => 'Ruth Lauener',
+            'content' => 'You can watch a video about Sheffield here: https://youtu.be/XkXUy-AJSaA.',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'normal',
+            'name' => 'university3',
+            'manager' => 'Ruth Lauener',
+            'content' => '
+            As a place to study at, Sheffield offers both the highest academic quality and a great lifestyle. The University is consistently ranked in the World Top 100 - the QS Rankings 2016-17 position Sheffield at number 84. Sheffield was a founding member of the Russell Group – the Ivy League of UK universities - and we’re proud to have had 6 Nobel Prizes for former staff or students.
             ',
             ]);
         DB::table('email_modules')->insert([
             'type' => 'normal',
-            'name' => 'apply',
-            'manager' => 'Mr. John',
+            'name' => 'university4',
+            'manager' => 'Ruth Lauener',
             'content' => '
-            *How to Apply* 
-            The application is done through our website: http://www.sheffield.ac.uk/postgraduate/taught/apply/applying.   
+            In terms of lifestyle, Sheffield is statistically the safest and one of the cheapest cities in the UK for students to live in. It’s also the UK’s greenest city and The Peak District, the oldest national park in the UK, is only 15 minutes’ drive from the University. Sheffield was No 3 in the UK in the survey of ‘Student Experience 2017’ carried out by the Times Higher Education publication. This survey measures the students’ assessment of their university across a range of academic, social and environmental parameters. In the same survey, our Student’s Union (the heart of social life on campus) has been voted Number 1 in the UK for the last 9 years.
+            ',
+            ]);
 
+        DB::table('email_modules')->insert([
+            'type' => 'normal',
+            'name' => 'fees1',
+            'manager' => 'Ruth Lauener',
+            'content' => 'Fees and Living Costs',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'normal',
+            'name' => 'fees2',
+            'manager' => 'Ruth Lauener',
+            'content' => '
+            Tuition fees can be found here: {{fees_link}}
+            ',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'normal',
+            'name' => 'fees3',
+            'manager' => 'Ruth Lauener',
+            'content' => '
+            On top of the fees, the government advise that you should budget £1015 per month for living costs - however this will be more than you need for Sheffield as we have some of the lowest living costs in the UK (we’re 25% cheaper than living in London and 10% cheaper than the national average).',
+            ]);
+        
+        DB::table('email_modules')->insert([
+            'type' => 'normal',
+            'name' => 'funding',
+            'manager' => 'Ruth Lauener',
+            'content' => 'Scholarships and Funding',
+            ]);
+
+        DB::table('email_modules')->insert([
+            'type' => 'normal',
+            'name' => 'apply',
+            'manager' => 'Ruth Lauener',
+            'content' => 'Applying',
+            ]);
+
+
+        DB::table('email_modules')->insert([
+            'type' => 'normal',
+            'name' => 'ending1',
+            'manager' => 'Ruth Lauener',
+            'content' => '
             I do hope that you have found this information helpful. If you cannot find what you are looking for, please do not hesitate to contact me and I will get back to you. We are here to help.
             ',
             ]);
         DB::table('email_modules')->insert([
             'type' => 'normal',
-            'name' => 'fees',
-            'manager' => 'Mr. John',
+            'name' => 'ending2',
+            'manager' => 'Ruth Lauener',
             'content' => '
-            *Fees and Scholarships*
-            Tuition fees can be found here: https://www.sheffield.ac.uk/ssid/fees/pgt/lookup (select your department and then overseas). Please note - this page will be updated soon for 2017 fees.
-
-            We are pleased to offer a range of scholarships specifically to students from Brazil.  We have automatic scholarships worth £2000-£2500, merit based scholarships worth 50% of the tuition fee and also Santander scholarships worth £5000 for both undergraduate and postgraduate students.
-
-            You may also wish to apply for a Chevening scholarship for study at Sheffield: http://www.chevening.org/brazil.  Please note the application deadline for Chevening is 8 November.
-
+            Best wishes,
             ',
             ]);
+
         DB::table('email_modules')->insert([
             'type' => 'normal',
             'name' => 'officeInfo',
-            'manager' => 'Mr. John',
+            'manager' => 'Ruth Lauener',
             'content' => '
-            Best wishes,
-            --
-            {{manager_name}}
             International Officer
             Global Engagement
             The University of Sheffield
@@ -190,6 +234,84 @@ class DatabaseSeeder extends Seeder
             Tel: +44(0)114 222 8025
             ',
             ]);
+            ///////////////////////////////////////////////////////////////////////////////////////
+            //Fees blurb
+        DB::table('email_modules')->insert([
+            'type' => 'fees',
+            'name' => 'feesUG',
+            'manager' => 'Ruth Lauener',
+            'content' => 'http://ssd.dept.shef.ac.uk/fees/ug/ug-fees.php',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'fees',
+            'name' => 'feesPGT',
+            'manager' => 'Ruth Lauener',
+            'content' => 'http://www.sheffield.ac.uk/ssid/fees/pgt/lookup',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'fees',
+            'name' => 'feesPRG',
+            'manager' => 'Ruth Lauener',
+            'content' => 'http://www.sheffield.ac.uk/ssid/fees/pgr',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'fees',
+            'name' => 'feesFundation',
+            'manager' => 'Ruth Lauener',
+            'content' => 'http://usic.sheffield.ac.uk/fees',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'fees',
+            'name' => 'feesPre-Masters',
+            'manager' => 'Ruth Lauener',
+            'content' => 'http://usic.sheffield.ac.uk/fees',
+            ]);
+            ///////////////////////////////////////////////////////////////////////////////////////
+            //Apply blurb
+        DB::table('email_modules')->insert([
+            'type' => 'applying',
+            'name' => 'applyingUG',
+            'manager' => 'Ruth Lauener',
+            'content' => 'This is done through UCAS online at www.ucas.co.uk',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'applying',
+            'name' => 'applyingPGT',
+            'manager' => 'Ruth Lauener',
+            'content' => '
+            The application is done online and there is no charge to apply – useful information about this process can be found here: http://www.sheffield.ac.uk/postgraduate/taught/apply/applying.  ',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'applying',
+            'name' => 'applyingPRG',
+            'manager' => 'Ruth Lauener',
+            'content' => '
+            The first step when applying for a PhD is to find an appropriate supervisor.  We have a very useful supervisor search tool that makes this easy: http://www.sheffield.ac.uk/postgraduate/research/areas.
+
+            After identifying the appropriate supervisor, the next step for a PhD is to write the proposal and there is some advice on how to write a proposal here: http://www.sheffield.ac.uk/postgraduate/research/sheffield/proposal.  Essentially the 4 main questions are:
+            • What’s your idea?
+            • What makes your idea relevant?
+            • What’s your plan?
+            • What resources do you need?
+            After you have sent your proposal to the department - if they feel able to supervise you then they will ask you to submit a formal application which you can do online through our website: http://www.sheffield.ac.uk/postgraduate/research/apply/applying.
+            ',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'applying',
+            'name' => 'applyingFundation',
+            'manager' => 'Ruth Lauener',
+            'content' => '
+            To apply for our International Foundation Year it’s a quick and easy process.  You apply direct through the website at http://usic.sheffield.ac.uk/how-to-apply/apply-now.',
+            ]);
+        DB::table('email_modules')->insert([
+            'type' => 'applying',
+            'name' => 'applyingPre-Masters',
+            'manager' => 'Ruth Lauener',
+            'content' => '
+            To apply for our International Pre-Masters Programme it’s a quick and easy process.  You apply direct through the website at http://usic.sheffield.ac.uk/how-to-apply/apply-now. ',
+            ]);
+
+
         DB::table('email_modules')->insert([
             'type' => 'country',
             'name' => 'America',
@@ -941,7 +1063,7 @@ class DatabaseSeeder extends Seeder
         DB::table('nationalities')->insert([
             'name' => 'Zimbabwe',
             ]);
-        
+
 
 
 
