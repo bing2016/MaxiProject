@@ -66,13 +66,13 @@
 </div>
 </div>
 <div class="col-md-12">
-  <div class="text-right" style="background-color: #66B3FF">
-    <a class="btn btn-link" style="color:white" href="{{ url('/course/_default') }}" role="button">Add Courses</a>
-    <a class="btn btn-link" style="color:white" href="{{ url('/department') }}" role="button">Add Department</a>
-    <a href="{{ url('/upload') }}"><button type="button" style="color:white" class="btn btn-link"> Upload File</button></a>
-    <a href="{{ url('/emailmodule/_default') }}"><button type="button" style="color:white" class="btn btn-link"  >Email Modification</button></a>
-    <button type="button" style="color:white" class="btn btn-link" onclick="feedBack()">Feedback</button>
-  </div>
+    <div class="text-right" style="background-color: #66B3FF">
+        <a class="btn btn-link" style="color:white" href="{{ url('/course') }}" role="button">Add Courses</a>
+        <a class="btn btn-link" style="color:white" href="{{ url('/department') }}" role="button">Add Department</a>
+        <a href="{{ url('/upload') }}"><button type="button" style="color:white" class="btn btn-link"> Upload File</button></a>
+        <a href="{{ url('/emailmodule') }}"><button type="button" style="color:white" class="btn btn-link"  >Email Modification</button></a>
+        <button type="button" style="color:white" class="btn btn-link" onclick="feedBack()">Feedback</button>
+    </div>
 </div>
 
 <div class="text-center col-md-12 content">
@@ -133,15 +133,19 @@
     <table style="margin-left: 30%">
     <tr>
     
-     <td><button class="btn btn-primary " name="id" value="{{ $emailModule['id']}}" type="submit" style="color:white;float:left;margin-left:40px;" >Update</button></td>
+     <td>
+      <input name="manager" value="{{ Auth::user()->name }}" hidden="">
+      <button class="btn btn-primary " name="id" value="{{ $emailModule['id']}}" type="submit" style="color:white;float:left;margin-left:40px;" >Update</button></td>
 
    </form>
 
    <form method="POST" enctype="multipart/form-data" action="{{url('emailmodule/delete')}}">
 
-     <td><button class="btn btn-primary " name="id" type="submit" value="{{ $emailModule['id']}}" style="color:white;float:left;margin-left:40px;" >Delete</button></td>
+     <td>
+      <input name="manager" value="{{ Auth::user()->name }}" hidden="">
+      <button class="btn btn-primary " name="id" type="submit" value="{{ $emailModule['id']}}" style="color:white;float:left;margin-left:40px;" >Delete</button></td>
    </form>
-    <td><a href="{{ url('/main') }}"><button class="btn btn-warning " type="button" style="color:white;float:left;margin-left:40px;" > Cancel</button></a></td>
+    <td><a href="{{ url('/main/'.Auth::user()->name) }}"><button class="btn btn-warning " type="button" style="color:white;float:left;margin-left:40px;" > Cancel</button></a></td>
     </tr>
     </table>
 

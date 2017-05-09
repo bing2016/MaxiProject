@@ -112,11 +112,13 @@
             <div style="margin-left: 25%">
             <table>
                 <td><div>
+                    <input name="manager" value="{{ Auth::user()->name }}" hidden="">
                     <button type="submit" name="id" value="{{ $department['id'] }}" class="btn btn-default">Update Department</button>&emsp;&emsp;
                 </div>
             </form></td>
             <td><form action=" {{ url('department/delete') }} "  method="POST">
                 <div>
+                <input name="manager" value="{{ Auth::user()->name }}" hidden="">
                 <button type="submit" name="id" value="{{ $department['id'] }}"  class="btn btn-default">Delete</button>
                 </div>
             </form></td>
