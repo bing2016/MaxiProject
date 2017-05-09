@@ -52,7 +52,7 @@
         <div class="col-md-8"><br><br>
 
         <div class="text-center">
-        <h1><strong>Overseas Student Recruitment Management</strong></h1>
+        <h1>Overseas Student Recruitment Management</h1>
         </div>
         </div>
     </div>
@@ -83,7 +83,7 @@
             <span style="font-size:20px;">Submit</span>
         </button>&emsp;&emsp;&emsp;
 
-        <a href="{{ url('/main') }}"><button type="button" class="btn btn-primary btn-lg">
+        <a href="{{ url('/main/'.Auth::user()->name) }}"><button type="button" class="btn btn-primary btn-lg">
             <span style="font-size:20px;">Cancel</span>
         </button></a>
     </div><br><br></div>

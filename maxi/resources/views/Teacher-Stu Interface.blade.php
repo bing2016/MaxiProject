@@ -114,7 +114,7 @@
 
         <div class="text-center">
         <div class="text-center" style="font-size: 50px; margin-top:2%">
-                <h><strong>Overseas Student Recruitment Management</strong></h>
+                <h>Overseas Student Recruitment Management</h>
             </div>
         </div>
 
