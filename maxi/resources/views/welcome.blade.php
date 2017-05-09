@@ -61,9 +61,10 @@
 
 
                 <div style="margin-top:% ">
-                    <button class="btn btn-default btn-lg">Add Student</button>
 
-                    <a href="{{ url('/main/'.Auth::user()->name) }}"><button type="submit"  class="btn btn-default btn-lg">Main Interface</button></a>
+                    <a href="{{ url('/enquireies') }}" role="button"><button class="btn btn-default btn-lg">Add Student</button></a>
+
+                    <a href="{{ url('/main/'.Auth::user()->name) }}"><button class="btn btn-default btn-lg">Main Interface</button></a>
                 </div>
             </div>
         </div>
