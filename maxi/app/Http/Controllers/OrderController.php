@@ -38,13 +38,60 @@ class OrderController extends Controller
         $department = $student['department_name'];
         $course = $student['course_name'];
         $email = $student['email'];
+        $level_of_study = $student['level_of_study'];
 
-        $welcome = EmailModule::where('name', 'welcome')->select('content')->first();
+        $welcome1 = EmailModule::where('name', 'welcome1')->select('content')->first();
+        $welcome2 = EmailModule::where('name', 'welcome2')->select('content')->first();
+        $welcome3 = EmailModule::where('name', 'welcome3')->select('content')->first();
+        $link = Course::where('name', $course)->select('link')->first();
+        $welcome1 = $welcome1['content'];
+        $welcome2 = $welcome2['content'];
+        $welcome3 = $welcome3['content'];
+        $link = $link['link'];
+        $welcome1 = preg_replace('{{{first_name}}}', $first_name, $welcome1);
+        $welcome3 = preg_replace('{{{course}}}', $course, $welcome3);
+        $welcome3 = preg_replace('{{{link}}}', $link, $welcome3);
+
+        $blurb = Department::where('name', $department)->select('blurb')->first();
+        $blurb = $blurb['blurb'];
+
+        $university1 = EmailModule::where('name', 'university1')->select('content')->first();
+        $university2 = EmailModule::where('name', 'university2')->select('content')->first();
+        $university3 = EmailModule::where('name', 'university3')->select('content')->first();
+        $university4 = EmailModule::where('name', 'university4')->select('content')->first();
+        $university1 = $university1['content'];
+        $university2 = $university2['content'];
+        $university3 = $university3['content'];
+        $university4 = $university4['content'];
+
+        $fees1 = EmailModule::where('name', 'fees1')->select('content')->first();
+        $fees2 = EmailModule::where('name', 'fees2')->select('content')->first();
+        $fees3 = EmailModule::where('name', 'fees3')->select('content')->first();
+        $fees_link = EmailModule::where('type', 'fees')->where('name', $level_of_study)->select('content')->first();
+        $fees1 = $fees1['content'];
+        $fees2 = $fees2['content'];
+        $fees3 = $fees3['content'];
+        $fees_link = $fees_link['content'];
+        $fees2 = preg_replace('{{{fees_link}}}', $fees_link, $fees2);
+
+        $funding = EmailModule::where('name', 'funding')->select('content')->first();//nationality blurb
+        $funding = $funding['content'];
+        $nationalityBlurb="nationalityBlurb";
+        //$nationalityBlurb ;
+
         $apply = EmailModule::where('name', 'apply')->select('content')->first();
-        $fees = EmailModule::where('name', 'fees')->select('content')->first();
-        $officeInfo = EmailModule::where('name', 'officeInfo')->select('content')->first();
+        $applyPart = EmailModule::where('type', 'applying')->where('name', $level_of_study)->select('content')->first();
+        $apply = $apply['content'];
+        $applyPart = $applyPart['content'];
 
-        $nationalityList = EmailModule::where('name', 'America')->select('content')->first();
+        $ending1 = EmailModule::where('name', 'ending1')->select('content')->first();
+        $ending2 = EmailModule::where('name', 'ending2')->select('content')->first();
+        $officeInfo = EmailModule::where('name', 'officeInfo')->select('content')->first();
+        $ending1 = $ending1['content'];
+        $ending2 = $ending2['content'];
+        $officeInfo = $officeInfo['content'];
+
+        /*$nationalityList = EmailModule::where('name', 'America')->select('content')->first();
 
         if($nationalityList==null)
         {
@@ -53,37 +100,26 @@ class OrderController extends Controller
         else
         {
             $nationalityPart = $nationalityList['content'];
-        }
+        }*/
 
-        $blurb = Department::where('name', $department)->select('blurb')->first();
-        $blurb = $blurb['blurb'];
-        $link = Course::where('name', $course)->select('link')->first();
-
-        //$welcomenew = preg_replace('/\n/','<br/>',$welcome['content']);//replace \n with <br/>, return correct, email has <br/>
-        $welcomenew = ($welcome['content']);
-        //$applynew = preg_replace('/\n/','<br />',$apply['content']);//replace \r\n, nothing changes
-        $applynew = ($apply['content']);
-
-        $welcomenew = preg_replace('{{{first_name}}}', $first_name, $welcomenew);
-        $welcomenew = preg_replace('{{{link}}}', $link, $welcomenew);
-        $welcomenew = preg_replace('{{{department}}}', $department, $welcomenew);
-        $officeInfonew = preg_replace('{{{manager_name}}}', $manager_name, $officeInfo['content']);
-        $welcomenew = preg_replace('{{{blurb}}}', $blurb, $welcomenew);
-        $feesnew = $fees['content'];
-        return ['welcomenew'=>$welcomenew, 'applynew'=>$applynew, 'nationalityPart'=>$nationalityPart, 'fees'=>$feesnew, 'officeInfo'=>$officeInfonew];
+        return ['welcome1'=>$welcome1, 'welcome2'=>$welcome2, 'welcome3'=>$welcome3, 'blurb'=>$blurb, 'university1'=>$university1, 'university2'=>$university2, 'university3'=>$university3, 'university4'=>$university4, 'fees1'=>$fees1, 'fees2'=>$fees2, 'fees3'=>$fees3, 'funding'=>$funding, 'nationalityBlurb'=>$nationalityBlurb, 'apply'=>$apply, 'applyPart'=>$applyPart, 'ending1'=>$ending1, 'ending2'=>$ending2, 'manager_name'=>$manager_name, 'officeInfo'=>$officeInfo];
     }
     
     //general email
     public function generalEmail(Request $request)
     {
         $studentList = Student::where('is_emailed', false)->where('is_send_now', true)->get();
+
+        $manager = $request->manager;
+        $manager_email = User::where('name', $manager)->select('email')->first();
+        $manager_email = $manager_email['email'];
         foreach ($studentList as $student)
         {
             $email = $student['email'];
             //return $this->getEmailDetail($student, $request->manager_name);
-            Mail::send('emails.general_email', $this->getEmailDetail($student, $request->manager_name), function($message) use($email)
+            Mail::send('emails.general_email', $this->getEmailDetail($student, $request->manager_name), function($message) use($email, $manager_email)
             {
-                $message->to( $email, 'some guy')->subject('Welcome to the University of Sheffield!');
+                $message->from($manager_email)->to( $email, 'some guy')->subject('Welcome to the University of Sheffield!');
             });
 
             $student->is_emailed = true;
@@ -94,6 +130,9 @@ class OrderController extends Controller
     public function specialEmail(Request $request)
     {
         $student = Student::where('id', $request->get('id'))->first();
+        $manager = $request->get('manager');
+        $manager_email = User::where('name', $manager)->select('email')->first();
+        $manager_email = $manager_email['email'];
         if($student==null)
         {
             return redirect()->back()->withInput()->withErrors("Invalid student ID.");
@@ -104,22 +143,24 @@ class OrderController extends Controller
             $email = $student['email'];
         }
 
-        Mail::send('emails.special_email', ['content'=>$content], function($message) use($email)
+        Mail::send('emails.special_email', ['content'=>$content], function($message) use($email, $manager_email)
         {
-            $message->to( $email, 'some guy')->subject('Welcome to the University of Sheffield!');
+            $message->from($manager_email)->to( $email, 'some guy')->subject('Welcome to the University of Sheffield!');
         });
         $student->is_emailed = true;
         $student->save();
-        return redirect('/main');
+        $newDirect = '/main/'.$manager;
+        return redirect($newDirect);
     }
 
     //reset passwaord email
     public function resetEmail(Request $request)
     {
+
         $manager = User::where('email', $request->get('email'))->first();
         if($manager==null)
         {
-            return redirect()->back()->withInput()->withErrors("Invalid email.");
+            //return redirect()->back()->withInput()->withErrors("Invalid email.");
         }
         else
         {

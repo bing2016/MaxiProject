@@ -117,36 +117,39 @@ class DatabaseSeeder extends Seeder
             'type' => 'normal',
             'name' => 'welcome1',
             'manager' => 'Ruth Lauener',
-            'content' => ' Dear {{first_name}},',
+            'content' => 'Dear {{first_name}},',
             ]);
         DB::table('email_modules')->insert([
             'type' => 'normal',
             'name' => 'welcome2',
             'manager' => 'Ruth Lauener',
             'content' => '
-            Dear {{first_name}},
-
-            Thank you for coming to speak with the University of Sheffield recently. I hope you found the discussion enjoyable, interesting and informative. This e-mail contains information about your subject area, the University itself and advice on funding options.',
+            Thank you for coming to speak with the University of Sheffield recently. I hope you found the discussion enjoyable, interesting and informative. This e-mail contains information about your subject area, the University itself and advice on funding options.
+            ',
             ]);
         DB::table('email_modules')->insert([
             'type' => 'normal',
             'name' => 'welcome3',
             'manager' => 'Ruth Lauener',
             'content' => '
-            You expressed a particular interest in our {{course}}.  You can find more information about the relevant programme(s) here: {{link}}.',
+            You expressed a particular interest in our {{course}}.  You can find more information about the relevant programme(s) here: {{link}}.
+            ',
             ]);
 
         DB::table('email_modules')->insert([
             'type' => 'normal',
             'name' => 'university1',
             'manager' => 'Ruth Lauener',
-            'content' => 'The University of Sheffield',
+            'content' => '
+            The University of Sheffield',
             ]);
         DB::table('email_modules')->insert([
             'type' => 'normal',
             'name' => 'university2',
             'manager' => 'Ruth Lauener',
-            'content' => 'You can watch a video about Sheffield here: https://youtu.be/XkXUy-AJSaA.',
+            'content' => '
+            You can watch a video about Sheffield here: https://youtu.be/XkXUy-AJSaA.
+            ',
             ]);
         DB::table('email_modules')->insert([
             'type' => 'normal',
@@ -169,7 +172,9 @@ class DatabaseSeeder extends Seeder
             'type' => 'normal',
             'name' => 'fees1',
             'manager' => 'Ruth Lauener',
-            'content' => 'Fees and Living Costs',
+            'content' => '
+            Fees and Living Costs
+            ',
             ]);
         DB::table('email_modules')->insert([
             'type' => 'normal',
@@ -184,21 +189,26 @@ class DatabaseSeeder extends Seeder
             'name' => 'fees3',
             'manager' => 'Ruth Lauener',
             'content' => '
-            On top of the fees, the government advise that you should budget £1015 per month for living costs - however this will be more than you need for Sheffield as we have some of the lowest living costs in the UK (we’re 25% cheaper than living in London and 10% cheaper than the national average).',
+            On top of the fees, the government advise that you should budget £1015 per month for living costs - however this will be more than you need for Sheffield as we have some of the lowest living costs in the UK (we’re 25% cheaper than living in London and 10% cheaper than the national average).
+            ',
             ]);
         
         DB::table('email_modules')->insert([
             'type' => 'normal',
             'name' => 'funding',
             'manager' => 'Ruth Lauener',
-            'content' => 'Scholarships and Funding',
+            'content' => '
+            Scholarships and Funding
+            ',
             ]);
 
         DB::table('email_modules')->insert([
             'type' => 'normal',
             'name' => 'apply',
             'manager' => 'Ruth Lauener',
-            'content' => 'Applying',
+            'content' => '
+            Applying
+            ',
             ]);
 
 
