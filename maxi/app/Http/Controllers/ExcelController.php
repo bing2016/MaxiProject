@@ -24,15 +24,43 @@ class ExcelController extends Controller
 			$students = Student::whereIn('id', $arr)->get();
 		}
 
-		$info[] = array('email' => 'email', 'name' => 'name', 'course' => 'course', 'link'=>'link', 'blurb'=>'blurb');
+		$info[] = array('name' => 'Name', 
+						'email' => 'Email',
+						'phone' => 'Phone',
+						'date' => 'Birthday',
+						'country' => 'Country', 
+						'department' => 'Department', 
+						'course' => 'Course',
+						'level' => 'Level',
+						'start_year' => 'Start Year',
+						'questions' => 'Questions',
+						'applied' => 'Applied ?',
+						'registration_number' => 'Registration number',
+						'manager' => 'Manager',
+						'place' => 'Place',
+						'source' => 'Source',
+						'is_emailed' => 'Emailed ?');
+
 		foreach ($students as $key => $value) {
 			$name = $value['first_name'].$value['middle_name'].$value['last_name'];
 			$info[] = array(                
-				'email' => $value['email'],                
+				              
 				'name' => $name,
-				'course' => $value['course_name'], 
-				'link' => $value->course->link, 
-				'blurb' => $value->department->blurb,
+				'email' => $value['email'],  
+						'phone' => $value['phone_number'],
+						'date' => $value['date'],
+						'country' => $value['nationality'],
+						'department' => $value['department_name'],
+						'course' => $value['course_name'],
+						'level' => $value['level'],
+						'start_year' => $value['start_year'],
+						'questions' => $value['questions'],
+						'applied' => $value['is_applied'],
+						'registration_number' => $value['registration_number'],
+						'manager' => $value['manager'],
+						'place' => $value['place'],
+						'source' => $value['source'],
+						'is_emailed' => $value['is_emailed'],
 				);        
 		}
 
@@ -73,7 +101,7 @@ class ExcelController extends Controller
             }
 		}
 		if ($ar) {
-			return redirect('/main');
+			return redirect('/main'.$request->get('manager'));
 		} else {
 			 return redirect()->back()->withInput()->withErrors($arr);
 		}

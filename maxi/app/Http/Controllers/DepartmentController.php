@@ -27,7 +27,7 @@ class DepartmentController extends Controller
 
         try {
             if ($article->save()) {
-                return redirect('/home');
+                return redirect('/main.$request->get('manager')');
             } else {
                 return redirect()->back()->withInput()->withErrors('false store');
             }
