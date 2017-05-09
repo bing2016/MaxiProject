@@ -18,11 +18,11 @@ class StudentController extends Controller
     }
 
 	public function showEnquireies() {
-		return view('enquireies')->withDepartments(nationality::all())->withDepartments(Department::all())->withCourses(Course::all());
+		return view('enquireies')->withNationalitys(Nationality::all())->withDepartments(Department::all())->withCourses(Course::all());
 	}
 
 	public function showDetail($id) {
-		return view('details')->withStudents(Student::findOrFail($id))->withDepartments(nationality::all())->withDepartments(Department::all())->withCourses(Course::all());
+		return view('details')->withStudents(Student::findOrFail($id))->withNationalitys(Nationality::all())->withDepartments(Department::all())->withCourses(Course::all());
 	}
 
     public function searchStudent($key, $value) {
