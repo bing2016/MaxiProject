@@ -44,7 +44,7 @@
                 <a href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">Logout</a>
-                <a href="{{ url('/home') }}">Main</a>
+                <a href="{{ url('/main/'.Auth::user()->name) }}">Main</a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 

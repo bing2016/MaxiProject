@@ -7,14 +7,21 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/shiyishi.css') }}">
 
+    <style type="text/css">
+        .footer{position:absolute;bottom:-80%;width:100%;}
+    </style>
+
+    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('css/datechooser.css') }}">
+    <script type="text/javascript" src="{{ asset('js/datechooser.js') }}" ></script>
+
 </head>
 
 <body>
-    
+
     <div style="">
         <div id="header" style="background-color:#fff;">
             <div class="text-right links"><br>
-                <a href="{{ url('/main') }}">Main</a>
+                <a href="{{ url('/main/'.Auth::user()->name) }}">Main</a>
             </div>
         </div>
 
@@ -24,7 +31,7 @@
             </div>
             <div class="col-md-8">
                 <div class="text-center" style="font-size: 50px; margin-top:5%">
-                    <h><strong>Overseas Student Recruitment management</strong></h>
+                    <h><strong>Overseas Student Recruitment Management</strong></h>
                 </div>
             </div>
         </div>
@@ -40,7 +47,7 @@
         </div>
 
         <div class="text-center col-md-12">
-            <br><span style="font-size:45px;">Enquireies</span>
+            <br><span style="font-size:45px;">Student Detail</span>
         </div>
 
         <form action="{{ url('/student/update') }}" method="POST">
@@ -49,7 +56,7 @@
 
             <div style="margin-left: 30%"><br><br>
                 <div class="row col-md-10">
-                    
+
                     <div class="col-md-3">
                         <span style="font-size:20px;">First Name</span><br>
                         <input class="form-control" input class="form-control" name="first_name" value="{{ $students->first_name }}"><br></div>
@@ -59,7 +66,7 @@
                            <input class="form-control" input class="form-control" name="middle_name" value="{{ $students->middle_name }}"><br/></div>
 
                            <div class="col-md-3">
-                            <span style="font-size:20px;">Last Name</span><br/>
+                            <span style="font-size:20px;">Surname</span><br/>
                             <input class="form-control" input class="form-control" name="last_name" value="{{ $students->last_name }}"><br/></div>
                             
                         </div>
@@ -70,8 +77,14 @@
                     <div  style="margin-left: 29%" class="col-md-7">
                         <div  class="col-md-9 ">
 
-                            <span style="font-size:20px;">Nationality</span><br/>
-                            <input class="form-control" name="nationality" value="{{ $students->nationality }}"><br/>
+                            <span style="font-size:20px;">Country</span><br/>
+                            <select class="form-control" type="text" name="nationality" value="" required>
+                                <option value="{{ $students->nationality }}"> {{ $students->nationality }} </option>
+                                @foreach ($nationalities as $na)
+                                <option value="{{ $na->name }}"> {{ $na->name }} </option>
+                                @endforeach
+
+                            </select><br/>
 
                             <span style="font-size:20px;">Meeting Place</span><br/>
                             <input class="form-control" name="place" value="{{ $students->place }}"><br/>
@@ -80,14 +93,15 @@
 
                     <div  style="margin-left: 29%" class="col-md-7">
                         <div  class="col-md-9 ">
-                            <span style="font-size:20px;">Date</span>
-                            <input class="form-control" name="date" value="{{ $students->date }}"><br>
+                            <span style="font-size:20px;">Date Of Birth</span>
 
+                            <input class="form-control datechooser dc-dateformat='j-n-Y' dc-iconlink='{{URL::asset('/images/datechooser.png')}}'  dc-weekstartday='1' dc-startdate='01012017' dc-latestdate='07312050' dc-earliestdate='05241999'" name="date" value="{{ $students->date }}"><br>
 
                             <span style="font-size:20px;">Email Address</span>
                             <input class="form-control" name="email" value="{{ $students->email }}"><br>
 
-                            
+                            <span style="font-size:20px;">Telephone Number</span>
+                            <input class="form-control" name="phone_number" value="{{ $students->phone_number }}"><br>
 
                             <span style="font-size:20px;">Level of Study</span><br>
                             <input class="form-control" name="level" value="{{ $students->level }}"><br>
@@ -107,9 +121,6 @@
                                 @endforeach
                             </select>
 
-                            <span style="font-size:20px;">Telephone Number</span>
-                            <input class="form-control" name="phone_number" value="{{ $students->phone_number }}"><br>
-
                             <span style="font-size:20px;" type="text" name="start_year" >Which Year You Want To Start</span>
                             <input class="form-control" name="start_year" value="{{ $students->start_year }}"><br>
 
@@ -126,42 +137,31 @@
                             @endif
                             
                             <br>
-                            <span style="font-size:20px;">If Yes, Input Your Regesition Number</span>
+                            <span style="font-size:20px;">If Yes, Input Your Applicant Id Number</span>
                             @if ($students->is_special == 1)
                             <input class="form-control" name="regesition_number" value="{{ $students->regesition_number }}"><br>
                             @else
                             <input class="form-control" name="regesition_number" disabled><br>
                             @endif
 
-                            <span style="font-size:20px;">Specific Question</span>
+                            <span style="font-size:20px;">Note</span>
                             <textarea name="questions" rows="3" class="form-control" > {{ $students->questions }} </textarea><br>
 
                             <span style="font-size:20px;">Manager</span>
                             <input class="form-control" name="manager" value="{{ $students->manager }}"  readonly><br>
 
                             <div class="text-center links"><br>
-                                <br/><button type="submit" name="id" value="{{ $students->id }}" class="btn btn-default">
-                                <a><span style="font-size:20px;">Submit</span></a>
+                                <br/><button type="submit" name="id" value="{{ $students->id }}" class="btn btn-primary">
+                                <a><span style="font-size:20px; color: white">Submit</span></a>
                             </button>
                         </div>
                     </form>
-                    <div class="text-center links"><br>
-                        <a href="{{ url('/main') }}">Back To Main</a>
-                    </div><br><br>
                 </div>
-            </div>
-
-            
+            </div>           
 
         </div>
 
-
-
     </body>
-    
-
-
-
     </html>
 
 

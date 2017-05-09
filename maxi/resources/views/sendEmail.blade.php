@@ -30,7 +30,7 @@
         <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">Logout</a>
-        <a href="{{ url('/home') }}">Main</a>
+        <a href="{{ url('/main/'.Auth::user()->name) }}">Main</a>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 
@@ -72,9 +72,9 @@
         </div><br>
     
     <form action="{{ url('/special_email') }}" method="POST">
-    <div class="text-center col-md-6" style="margin-left: 25%">
+    <div class="text-center col-md-8" style="margin-left: 18%">
         <span style="font-size:25px;">Content</span>
-        <textarea rows="30" name="content" id="content" class="form-control" >{{ $content }}</textarea><br>
+        <textarea rows="40" name="content" id="content" class="form-control" >{{ $content }}</textarea><br>
     
 
     <div>

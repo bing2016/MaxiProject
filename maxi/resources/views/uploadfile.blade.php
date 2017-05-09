@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 		<meta charset="utf-8"> 
-		<title>upload</title>
+		<title>Upload</title>
 		<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('css/shiyishi.css') }}">
 	    <link href="../css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
@@ -32,7 +32,7 @@
         <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">Logout</a>
-        <a href="{{ url('/home') }}">Main</a>
+        <a href="{{ url('/main/'.Auth::user()->name) }}">Main</a>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 
@@ -52,7 +52,7 @@
 	            </div>
 	            <div class="col-md-8">
 	                    <div class="text-center" style="font-size: 50px; margin-top:5%">
-	                         <h><strong>Overseas Student Recruitment management</strong></h>
+	                         <h><strong>Overseas Student Recruitment Management</strong></h>
 	                    </div>
 	            </div>
 	</div>
@@ -80,13 +80,13 @@
 	</div><br><br>
    <script>
     $("#import_file").fileinput({
-     showUpload: false, //是否显示上传按钮  
+     showUpload: false,   
      showRemove:false,  
      dropZoneEnabled: false,  
-     showCaption: true,//是否显示标题  
+     showCaption: true, 
      allowedFileExtensions:  ['xls', 'xlsx'],   
      maxFileCount: 1,  
-     uploadAsync: false, //同步上传  
+     uploadAsync: false, 
         
     });
 	</script>
@@ -97,7 +97,7 @@
 
 <footer>
         <div class=" col-md-12 content">
-              <p>Uniersity of Sheffield/ Conmputer of Science/ Software System of Internet Technology/ Maxi Project/ Team Three </p> 
+              <p>University of Sheffield/ Computer of Science/ Software System of Internet Technology/ Maxi Project/ Team Three </p> 
         </div>
 </footer> 
 </html>

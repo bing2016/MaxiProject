@@ -91,7 +91,7 @@
             <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">Logout</a>
-            <a href="{{ url('/home') }}">Main</a>
+            <a href="{{ url('/main/'.Auth::user()->name) }}">Main</a>
 
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 
@@ -183,7 +183,7 @@
                     <th>Country</th>
                     <th>Email Address</th>
                     <th>Stuff</th>
-                    <th>Meeting Date</th>
+                    <th>Date Of Birth</th>
                     <th>Course</th>
                     <th>Sending</th>
                     <th></th>

@@ -38,7 +38,7 @@
         <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">Logout</a>
-        <a href="{{ url('/home') }}">Main</a>
+        <a href="{{ url('/main/'.Auth::user()->name) }}">Main</a>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 
@@ -64,11 +64,13 @@
         </div>
         
         <div class="col-md-12">
-                <div class="text-right links" style="background-color: #66B3FF">
-                        <button type="button" style="color:white" class="btn btn-link">Upload File</button>
-                        <a href="{{ url('/emailmodify') }}"><button type="button" style="color:white" class="btn btn-link"  >Email Modification</button></a>
-                        <button type="button" style="color:white" class="btn btn-link">Feedback</button>
-                </div>
+            <div class="text-right" style="background-color: #66B3FF">
+                <a class="btn btn-link" style="color:white" href="{{ url('/course') }}" role="button">Add Courses</a>
+                <a class="btn btn-link" style="color:white" href="{{ url('/department') }}" role="button">Add Department</a>
+                <a href="{{ url('/upload') }}"><button type="button" style="color:white" class="btn btn-link"> Upload File</button></a>
+                <a href="{{ url('/emailmodule') }}"><button type="button" style="color:white" class="btn btn-link"  >Email Modification</button></a>
+                <button type="button" style="color:white" class="btn btn-link" onclick="feedBack()">Feedback</button>
+            </div>
         </div>
 
         <div class="text-center col-md-12">
@@ -198,12 +200,6 @@
 </div>
 
 </body>
-
-<footer>
-        <div class="text-center footer">
-                <p>University of Sheffield/ Computer of Science/ Software System of Internet Technology/ Maxi Project/ Team Three </p>  
-        </div>
-</footer> 
 
 </html>
 
