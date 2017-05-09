@@ -1090,7 +1090,7 @@ class DatabaseSeeder extends Seeder
             The Department of Automatic Control and Systems Engineering is the largest of its kind in Europe (about 25 professors) and was ranked 1st for research output in the UK‘s most recent National Research Excellence Framework in which over 115 institutions were independently evaluated.  We’re the only Department in the UK, and one of the best in the world, dedicated to Control and Systems Engineering.  The Department has some of the world‘s most cited engineers and does work for NASA, the European Space Agency, NATO and many of the world’s leading companies. 
             ',
             ]);
-        
+
         DB::table('departments')->insert([
             'name' => 'Aerospace',
             'link' => '',
@@ -1469,24 +1469,86 @@ class DatabaseSeeder extends Seeder
         DB::table('courses')->insert([
             'name' => 'Accounting, Governance and Financial Management - MSc',
             'link' => 'https://www.sheffield.ac.uk/management/study/msc/courses/msc-accounting-governance-financial-management',
+            'department_id' => 0,
             ]);
         DB::table('courses')->insert([
             'name' => 'Acquired Communication Disorders - Msc/Diploma/Certificate',
             'link' => 'https://www.sheffield.ac.uk/hcs/prospective_pg/taught/acd',
+             'department_id' => 0,
             ]);
+         DB::table('courses')->insert([
+            'name' => 'Additive Manufacturing and Advanced Manufacturing Technologies - MSc(Res)',
+            'link' => 'https://https://www.sheffield.ac.uk/postgraduate/taught/courses/engineering/mechanical/additive-manufacturing-advanced-manufacturing-technologies-msc-res',
 
-    }
-}
-
-
-        DB::table('courses')->insert([
-            'name' => 'Accounting, Governance and Financial Management - MSc',
-            'link' => 'https://www.sheffield.ac.uk/management/study/msc/courses/msc-accounting-governance-financial-management',
+             'department_id' => 0,
             ]);
-        DB::table('courses')->insert([
-            'name' => 'Acquired Communication Disorders - Msc/Diploma/Certificate',
-            'link' => 'https://www.sheffield.ac.uk/hcs/prospective_pg/taught/acd',
+          DB::table('courses')->insert([
+            'name' => 'Advanced Computer Science - MSc',
+            'link' => 'https://https://www.sheffield.ac.uk/dcs/postgraduate-taught/acs',
+            'department_id' => 0,
             ]);
+           DB::table('courses')->insert([
+            'name' => 'Advanced Control and Systems Engineering - MSc',
+            'link' => 'https://www.sheffield.ac.uk/acse/masters/control-systems/index',
+             'department_id' => 0,
+            ]);
+            DB::table('courses')->insert([
+            'name' => 'Advanced Control and Systems Engineering (with Industrial Management) - MSc',
+            'link' => 'http://www.sheffield.ac.uk/acse/masters/industrial-management' ,
+            'department_id' => 0,
+            ]);
+             DB::table('courses')->insert([
+            'name' => 'Advanced Control and Systems Engineering (with Industry) - MSc',
+            'link' => 'https://www.sheffield.ac.uk/acse/masters/industry',
+            'department_id' => 0,
+            ]);
+            DB::table('courses')->insert([
+            'name' => 'Advanced Electrical Machines, Power Electronics and Drives - MSc',
+            'link' => 'https://www.sheffield.ac.uk/eee/pgt/1.435523' ,
+            'department_id' => 0,
+            ]);
+            DB::table('courses')->insert([
+            'name' => 'Advanced Emergency Care - MSc',
+            'link' => 'https://www.sheffield.ac.uk/scharr/prospective_students/masters/aec/index' ,
+            'department_id' => 0,
+            ]);
+            DB::table('courses')->insert([
+            'name' => 'Advanced Manufacturing Management - Executive MBA',
+            'link' => 'http://www.sheffield.ac.uk/management/study/mba/emba' ,
+            'department_id' => 0,
+            ]);
+            DB::table('courses')->insert([
+            'name' => 'Advanced Manufacturing Technologies - MSc(Res)',
+            'link' => 'https://www.sheffield.ac.uk/mecheng/prospectivemsc/advmantech' ,
+            'department_id' => 0,
+            ]);
+            DB::table('courses')->insert([
+            'name' => 'Advanced Materials Manufacturing - MSc (Eng)',
+            'link' => 'http://www.sheffield.ac.uk/materials/masters/advmat' ,
+             'department_id' => 0,
+            ]);
+            DB::table('courses')->insert([
+            'name' => 'Software Engineering, Advanced - MSc(Eng)',
+            'link' => 'https://www.sheffield.ac.uk/dcs/postgraduate-taught/ased',
+             'department_id' => 0,
+            ]);
+            DB::table('courses')->insert([
+            'name' => 'Software Systems and Internet Technology - MSc',
+            'link' => 'https://www.sheffield.ac.uk/dcs/postgraduate-taught/sst' ,
+            'department_id' => 0,
+            ]);
+            DB::table('courses')->insert([
+            'name' => 'Solid State Chemistry and its Applications, Advanced - MSc(Eng)',
+            'link' => 'http://www.sheffield.ac.uk/materials/masters/chemistry' ,
+            'department_id' => 0,
+            ]);
+            DB::table('courses')->insert([
+            'name' => 'Speech Difficulties - MSc/Diploma/Cert',
+            'link' => 'https://www.sheffield.ac.uk/hcs/prospective_pg/taught/speech_difficulties' ,
+            'department_id' => 0,
+            ]);
+          
+
 
     }
 }
