@@ -53,7 +53,6 @@ class StudentController extends Controller
         $student->course_name = $request->get('course_name');
         $student->source = $request->get('source');
         $student->level = $request->get('level');
-        $student->is_send_now = $request->get('is_send_now'); //more question
         $student->questions = $request->get('questions');
         $student->start_year = $request->get('start_year');
         $student->is_applied = $request->get('is_applied');
@@ -75,7 +74,7 @@ class StudentController extends Controller
             if($error_code == 1062){
                 return redirect()->back()->withInput()->withErrors('You already have this student');
             }
-            return 'WHOOPS, FALSE STORED';
+            return redirect()->back()->withInput()->withErrors('WHOOPS, FALSE STORED');
         }
         return $this->show($request->get('manager'));
     }
@@ -116,7 +115,7 @@ class StudentController extends Controller
                 return redirect()->back()->withInput()->withErrors('You already have this student');
             }
 
-            return $e;
+            return redirect()->back()->withInput()->withErrors('WHOOPS, FALSE STORED');
         }
         if (1 == $request->get('is_send_now')) {
             (new OrderController)->generalEmail($request);
