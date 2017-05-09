@@ -47,7 +47,7 @@
 
                     <div class=" font">
                     <span style="font-size:70px;">
-                    Overseas Student Recruitment management System
+                    Overseas Student Recruitment Management System
                     </span></div>
                 </div>
 </div>
@@ -55,7 +55,7 @@
 <div  class="col-md-6 font" style="margin-top: 10%">
     <div class="content" >
         <div>
-            <span style="font-weight;font-size:80px;color: black;">Register</span>
+            <span style="font-weight;font-size:100px;color: black;">Register</span>
         </div><br>
 
         <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
@@ -102,7 +102,7 @@
 
 <footer>
         <div class="text-center font" style="margin-top: 8%">
-                <p>Uniersity of Sheffield/ Conmputer of Science/ Software System of Internet Technology/ Maxi Project/ Team Three </p> 
+                <p>University of Sheffield/ Computer of Science/ Software System of Internet Technology/ Maxi Project/ Team Three </p> 
         </div>
 </footer>
 

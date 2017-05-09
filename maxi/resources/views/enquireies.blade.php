@@ -83,7 +83,7 @@
                         <div class="row">
                                 
                                 <div class="col-md-2">
-                                <span style="font-size:20px;">First Name</span><br/>
+                                <span style="font-size:20px;">First Name *</span><br/>
                                 <input class="form-control" id="firstname" type="text" name="first_name" value=" " required><br/></div>
 
                                 <div class="col-md-2">
@@ -91,7 +91,7 @@
                                 <input class="form-control" id="middle_name" type="text" name="middle_name" value="" ><br/></div>
 
                                 <div class="col-md-2">
-                                <span style="font-size:20px;">Surname</span><br/>
+                                <span style="font-size:20px;">Surname *</span><br/>
                                 <input class="form-control" id="sur_name" type="text" name="last_name" value="" required><br/></div>
                    
                         </div>
@@ -101,7 +101,7 @@
 
                 <div class="col-md-5 " style="margin-left: 30%">
 
-                        <span style="font-size:20px;">Country</span><br/>
+                        <span style="font-size:20px;">Country *</span><br/>
                         <select class="form-control" type="text" name="nationality" value="" required>
                                 @foreach ($nationalities as $na)
                                 <option value="{{ $na->name }}"> {{ $na->name }} </option>
@@ -118,7 +118,7 @@
 
                         <input class="form-control datechooser dc-dateformat='j-n-Y' dc-iconlink='{{URL::asset('/images/datechooser.png')}}'  dc-weekstartday='1' dc-startdate='01012017' dc-latestdate='07312050' dc-earliestdate='05241999'" name="date" value=""><br>
 
-                        <span style="font-size:20px;">Email Address</span>
+                        <span style="font-size:20px;">Email Address *</span>
                         <input class="form-control" id="email" type="text" name="email" value="" required><br/>
 
                         <span style="font-size:20px;">Telephone Number</span>
@@ -134,14 +134,14 @@
                         </select><br/>
 
 
-                        <span style="font-size:20px;">Department</span><br/>
+                        <span style="font-size:20px;">Department *</span><br/>
                         <select class="form-control" id="department_name" type="text" name="department_name" value="" required>
                                 @foreach ($departments as $department)
                                 <option value="{{ $department->name }}"> {{ $department->name }} </option>
                                 @endforeach
                         </select><br>
 
-                        <span style="font-size:20px;">Course/Subject</span><br/>
+                        <span style="font-size:20px;">Course/Subject *</span><br/>
                         <select class="form-control" id="course_name" type="text" name="course_name" value="" required>
                                 @foreach ($courses as $course)
                                 <option value="{{ $course->name }}"> {{ $course->name }} </option>
@@ -172,7 +172,7 @@
                         <span style="font-size:20px;">Note</span>
                         <textarea name="questions" rows="3" class="form-control" ></textarea><br>
 
-                        <span style="font-size:15px;">Send now? </span>&emsp;
+                        <span style="font-size:15px;">Send now? * </span>&emsp;
                         <span style="font-size:15px;">Yes</span>&emsp;
                         <input type="radio" id="" value="1"  name="is_send_now" required >
                         <span style="font-size:15px;">No</span>&emsp;

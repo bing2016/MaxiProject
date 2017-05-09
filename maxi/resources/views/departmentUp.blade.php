@@ -129,7 +129,7 @@
 
     <footer>
         <div class="text-center footer">
-            <p>Uniersity of Sheffield/ Conmputer of Science/ Software System of Internet Technology/ Maxi Project/ Team Three </p> 
+            <p>University of Sheffield/ Computer of Science/ Software System of Internet Technology/ Maxi Project/ Team Three </p>  
         </div>
     </footer> 
 
