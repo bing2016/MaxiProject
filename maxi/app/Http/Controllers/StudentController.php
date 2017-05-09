@@ -7,6 +7,7 @@ use Illuminate\Database\QueryException;
 use App\Student;
 use App\Department;
 use App\Course;
+use App\Nationality;
 
 
 class StudentController extends Controller
@@ -18,11 +19,11 @@ class StudentController extends Controller
     }
 
 	public function showEnquireies() {
-		return view('enquireies')->withNationalitys(Nationality::all())->withDepartments(Department::all())->withCourses(Course::all());
+		return view('enquireies')->withDepartments(Department::all())->withCourses(Course::all())->withNationalities(Nationality::all());
 	}
 
 	public function showDetail($id) {
-		return view('details')->withStudents(Student::findOrFail($id))->withNationalitys(Nationality::all())->withDepartments(Department::all())->withCourses(Course::all());
+		return view('details')->withStudents(Student::findOrFail($id))->withNationalities(Nationality::all())->withDepartments(Department::all())->withCourses(Course::all());
 	}
 
     public function searchStudent($key, $value) {
