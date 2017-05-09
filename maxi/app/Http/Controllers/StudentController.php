@@ -37,7 +37,7 @@ class StudentController extends Controller
         else {
             $student->is_highlight = true;
         }
-        return $this->show();
+        return $this->show($request->get('manager'));
     }
 
     public function update(Request $request) {
@@ -77,7 +77,7 @@ class StudentController extends Controller
             }
             return 'WHOOPS, FALSE STORED';
         }
-        return $this->show();
+        return $this->show($request->get('manager'));
     }
 
 	public function store(Request $request) {
@@ -115,29 +115,30 @@ class StudentController extends Controller
             if($error_code == 1062){
                 return redirect()->back()->withInput()->withErrors('You already have this student');
             }
-            return 'WHOOPS, FALSE STORED';
+
+            return $e;
         }
         if (1 == $request->get('is_send_now')) {
             (new OrderController)->generalEmail($request);
         }
-        return $this->show();
+        return $this->show($request->get('manager'));
 	}
 
-    public function delete(Request $Request) {
-        if (Student::destroy($Request->get('id'))) {
-            return $this->show();
+    public function delete(Request $request) {
+        if (Student::destroy($request->get('id'))) {
+            return $this->show($request->get('manager'));
         } else {
-            return $this->show()->withErrors('false delete');
+            return $this->show($request->get('manager'))->withErrors('false delete');
         }
     }
 
-    public function deleteAll(Request $Request) {
+    public function deleteAll(Request $request) {
         $arr = explode(",", $request->get('id'));
 
         if (Student::destroy($arr)) {
-            return $this->show();
+            return $this->show($request->get('manager'));
         } else {
-            return $this->show()->withErrors('false delete');
+            return $this->show($request->get('manager'))->withErrors('false delete');
         }
     }
 

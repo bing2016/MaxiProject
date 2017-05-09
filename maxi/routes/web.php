@@ -22,7 +22,7 @@ Route::group(['middleware' => 'auth',], function () {
 
 	Route::get('/home', function () {
     	return view('welcome');
-	}));
+	});
 	Route::get('/main/{manager}', 'StudentController@show');
 	Route::get('/enquireies', 'StudentController@showEnquireies');
 	Route::get('/details/{id}', 'StudentController@showDetail');

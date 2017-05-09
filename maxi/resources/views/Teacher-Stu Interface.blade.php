@@ -44,8 +44,28 @@
             });
         }
         function feedBack() {
-        alert(" Harry Meng: rmeng3@sheffield.ac.uk ");
-    }
+            alert(" Harry Meng: rmeng3@sheffield.ac.uk ");
+        }
+
+        function changeValue() {
+            obj = document.getElementsByName("isSelect");
+            check_val = [];
+            for(k in obj){
+                if(obj[k].checked)
+                    check_val.push(obj[k].value);
+            }
+            document.getElementById("submit1").value=(check_val); 
+        }
+
+        function changeValue2() {
+            obj = document.getElementsByName("isSelect");
+            check_val = [];
+            for(k in obj){
+                if(obj[k].checked)
+                    check_val.push(obj[k].value);
+            }
+            document.getElementById("submit2").value=(check_val); 
+        }
 
     </script>
 
@@ -85,21 +105,21 @@
     </div>
 
     <div id=header class="header">
-      <a>
-          <div class="col-md-4">
-             <a href="{{ url('/home') }}"><img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 13%;" ></a>
-         </div>
-     </a>
-     <div class="col-md-8"><br><br>
+        <a>
+            <div class="col-md-4">
+                <a href="{{ url('/home') }}"><img src="{{URL::asset('/images/TUOS_Logo_CMYK.png')}}" alt="profile Pic" height="200" style="margin-left: 13%;" ></a>
+            </div>
+        </a>
+    <div class="col-md-8"><br><br>
 
         <div class="text-center">
-            <h1><strong>Overseas Student Recruitment Management</strong></h1>
+        <div class="text-center" style="font-size: 50px; margin-top:2%">
+                <h><strong>Overseas Student Recruitment Management</strong></h>
+            </div>
         </div>
 
-
-
     </div>
-</div>
+    </div>
 
 
 <div class="col-md-12">
@@ -112,39 +132,29 @@
     </div>
 </div>
 
-<div class="col-md-2">
+<div class="col-md-4">
 	<div class="text-left">
 
-     <br>
-     <form action=" {{ url('excel/export') }}   " name="frm" method="POST">&emsp;
-      <a class="btn btn-default" href="{{ url('/enquireies') }}" role="button">Add Student</a>&emsp;&emsp;&emsp;&emsp;
-      <button class="btn btn-default" type="submit" id="submit1" name="id" value="" onclick="changeValue();">Download</button>
-  </form>
-  <br><br>
+        <table>
+            <td><a class="btn btn-default" href="{{ url('/enquireies') }}" role="button">Add Student</a>&emsp;</td>
+
+            <td><div class="col-md-2"><br>
+                <button class="btn btn-default" onclick="allSelect();" >Select All/Cancel All</button>&emsp;
+            </div></td>
+            <td><form action=" {{ url('excel/export') }}   " name="frm" method="POST">
+                <button class="btn btn-default" type="submit" id="submit1" name="id" value="" onclick="changeValue();">Download</button>&emsp;&emsp;
+            </form></td>
+            <td><form action=" {{ url('student/deleteAll') }}   " name="frm" method="POST">
+                <input name="manager" value="{{ Auth::user()->name }}" hidden="">
+                <button class="btn btn-default" type="submit" id="submit2" name="id" value="" onclick="changeValue2();">DeleteAll</button>
+            </form></td>
+        </table>
+    </div>
 </div>
-</div>
-<div class="col-md-2"><br>
-    <button class="btn btn-default" onclick="allSelect();" >Select All/Cancel All</button>&emsp;
-</div>
 
-
-<script type="text/javascript">
-    function changeValue() {
-        obj = document.getElementsByName("isSelect");
-        check_val = [];
-        for(k in obj){
-            if(obj[k].checked)
-                check_val.push(obj[k].value);
-        }
-        document.getElementById("submit1").value=(check_val); 
-    }
-</script>
-
-<div class="col-md-3"></div>
-<div class="col-md-3 text-right" ><br>
- <form class="form-inline" role="form" >
-
-  <div class="form-group">
+<div class="col-md-4"></div>
+<div class="col-md-4 text-right" ><br>
+   <form class="form-inline" role="form" >
 
     <select id="select_id" class="form-control">
         <option value="first_name">First Name</option>
@@ -152,14 +162,12 @@
         <option value="nationality">Country</option>
         <option value="email">Email Address</option>
         <option value="manager">Stuff</option>
-        <option value="updated_at">Meeting Date</option>
+        <option value="updated_at">Upload Date</option>
         <option value="course_name">Course</option>
     </select>
     <input type="text" id="input_id" class="form-control">
     <button class="btn"><a id="a_id">Search</a></button>
 
-
-</div>
 </form>
 </div>
 
@@ -206,17 +214,17 @@
                     <td> {{ $student->course_name }} </td>
                     <td>
                         @if ($student->is_emailed ==0)
-                        <a href="{{ url('/get_email/'.$student->id.'/'.Auth::user()->name) }}"><button type="submit"  class="btn btn-default">Send Email</button>
+                        <a href="{{ url('/get_email/'.$student->id.'/'.Auth::user()->name) }}"><button type="submit"  class="btn btn-default">Write Email</button></a>
                             @else
                             @endif
                         </td>
                         <td>
                             <a href="{{ url(str_replace('{id}',$student->id,'/details/{id}')) }} "><button type="button" class="btn btn-default">Detail</button></a>
                         </td>
-                        <form action=" {{ url('student/delete') }}   " name="frm" method="POST">
-                            <td>
-                                <button type="submit" class="btn btn-default" name="id" value=" {{ $student->id }} " >Delete</button>
-                            </td></form>
+                        <td><form action=" {{ url('student/delete') }}   " name="frm" method="POST">
+                            <input name="manager" value="{{ Auth::user()->name }}" hidden="">
+                            <button type="submit" class="btn btn-default" name="id" value=" {{ $student->id }} " >Delete</button>
+                        </td></form>
                         </tr>
                         @endforeach
                     </tbody>
@@ -227,7 +235,7 @@
 
         <footer>
             <div class="text-center">
-                <p>Uniersity of Sheffield/ Conmputer of Science/ Software System of Internet Technology/ Maxi Project/ Team Three </p> 
+                <p>University of Sheffield/ Computer of Science/ Software System of Internet Technology/ Maxi Project/ Team Three </p>  
             </div>
         </footer> 
 
