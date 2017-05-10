@@ -80,6 +80,7 @@ class OrderController extends Controller
         if($nationalityBlurb==null)
         {
             $nationalityBlurb = EmailModule::where('type', 'country')->where('name', 'default')->select('content')->first();
+            $nationalityBlurb = $nationalityBlurb['content'];
         }
         else
         {

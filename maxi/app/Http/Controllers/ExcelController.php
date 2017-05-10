@@ -100,8 +100,8 @@ class ExcelController extends Controller
             	}
             }
 		}
-		if ($ar) {
-			return redirect('/main'.$request->get('manager'));
+		if ( null == $arr) {
+			return redirect('/main/'.$request->get('manager'));
 		} else {
 			 return redirect()->back()->withInput()->withErrors($arr);
 		}
