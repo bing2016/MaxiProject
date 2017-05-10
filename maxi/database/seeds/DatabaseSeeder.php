@@ -1079,28 +1079,6 @@ class DatabaseSeeder extends Seeder
 
 
 
-
-
-
-
-        DB::table('departments')->insert([
-            'name' => 'Automatic Control and Systems Engineering',
-            'link' => 'Http:/sdfasdf',
-            'blurb' => '
-            The Department of Automatic Control and Systems Engineering is the largest of its kind in Europe (about 25 professors) and was ranked 1st for research output in the UK‘s most recent National Research Excellence Framework in which over 115 institutions were independently evaluated.  We’re the only Department in the UK, and one of the best in the world, dedicated to Control and Systems Engineering.  The Department has some of the world‘s most cited engineers and does work for NASA, the European Space Agency, NATO and many of the world’s leading companies. 
-            ',
-            ]);
-
-        DB::table('departments')->insert([
-            'name' => 'Aerospace',
-            'link' => '',
-            'blurb' => '
-            The Aerospace degree in Sheffield is one of the highest ranked in the UK and has outstanding industrial connections.  The degree is taught across 4 departments in the Faculty of Engineering.  The university has developed world-leading expertise and unique facilities for industriial collaboration in aerospace manufacture.  These include the ‘Advanced Manufacturing Research Centre with Boeing’; several Rolls-Royce research centres including the ‘Rolls-Royce Factory of the Future’; and the ‘BAe Systems University Technology Centre’.
-
-            The University of Sheffield has the second largest research income in Engineering of all UK universities (after Imperial College).  In 2012 Sheffield overtook Cambridge and our engineering research income is now around $125m each year - and it is growing fast. ',
-            ]);
-
-
         DB::table('departments')->insert([
             'name' => 'Automatic Control and Systems Engineering',
             'link' => 'Http:/sdfasdf',
@@ -1130,14 +1108,9 @@ class DatabaseSeeder extends Seeder
           DB::table('departments')->insert([
             'name' => 'Architecture',
             'link' => '',
-            'blurb' => 'Architecture ',
+            'blurb' => 'Architecture has been taught at the University of Sheffield since 1908 and the School of Architecture is ranked in the top 4 in the UK (with the Department of Landscape and the Department of Urban Studies).  It occupies 9 floors of the iconic Arts Tower with extensive design suites and classroom space.  In collaboration with the Department of Civil and Structural Engineering the School of Architecture hosts on of 3 national ‘Royal Academy of Engineering Centres of Excellence in Sustainable Building Design‘.  Sheffield‘s Architecture students consistently win prizes at national and international competitions.  In order to gain admission, students will usually need to prepare a relevant portfolio - guidance on this can be found here: Postgraduate:  http://www.sheffield.ac.uk/architecture/postgraduate/masters/apply and Undergraduate: http://www.sheffield.ac.uk/polopoly_fs/1.320243!/file/portfolioK100KK13.pdf. ',
             ]);
 
-           DB::table('departments')->insert([
-            'name' => 'Aerospace',
-            'link' => '',
-            'blurb' => 'Architecture has been taught at the University of Sheffield since 1908 and the School of Architecture is ranked in the top 4 in the UK (with the Department of Landscape and the Department of Urban Studies).  It occupies 9 floors of the iconic Arts Tower with extensive design suites and classroom space.  In collaboration with the Department of Civil and Structural Engineering the School of Architecture hosts on of 3 national ‘Royal Academy of Engineering Centres of Excellence in Sustainable Building Design‘.  Sheffield’s Architecture students consistently win prizes at national and international competitions.  In order to gain admission, students will usually need to prepare a relevant portfolio - guidance on this can be found here: Postgraduate:  http://www.sheffield.ac.uk/architecture/postgraduate/masters/apply and Undergraduate: http://www.sheffield.ac.uk/polopoly_fs/1.320243!/file/portfolioK100KK13.pdf. ',
-            ]);
 
             DB::table('departments')->insert([
             'name' => 'Biblical Studies',
@@ -1251,7 +1224,9 @@ class DatabaseSeeder extends Seeder
             DB::table('departments')->insert([
             'name' => 'Journalism',
             'link' => '',
-            'blurb' => 'During the past 50 years the Department of Chemistry has seen 3 Nobel prizes awarded to either its staff or its former students.  This success continues to the present day as shown in the Research Excellence Framework 2014, which rated 98% of our research as world-class or internationally excellent. The Department has around 40 faculty and 100 PhD students.',
+            'blurb' => '"Sheffield‘s Department of Journalism is the number 1 Journalism department in the UK according to the Complete University Guide 2016. When the Department of Journalism Studies was established in 1994, we committed to establishing an active research programme focusing on the theory and practice of journalism and news production, and political communication.
+
+            Since then our world-class research staff have made the department a leading international centre for research in media and communications.  In the 2014 Research Excellence Framework 100 per cent of our work was rated world-leading or internationally excellent for impact.  A number of courses have been designed specially for overseas students, eliminating modules in UK media law which would otherwise be a requirement in programmes which are nationally accredited."',
             ]);
 
             DB::table('departments')->insert([
@@ -1469,83 +1444,83 @@ class DatabaseSeeder extends Seeder
         DB::table('courses')->insert([
             'name' => 'Accounting, Governance and Financial Management - MSc',
             'link' => 'https://www.sheffield.ac.uk/management/study/msc/courses/msc-accounting-governance-financial-management',
-            'department_id' => 0,
+            //'department_id' => 0,
             ]);
         DB::table('courses')->insert([
             'name' => 'Acquired Communication Disorders - Msc/Diploma/Certificate',
             'link' => 'https://www.sheffield.ac.uk/hcs/prospective_pg/taught/acd',
-             'department_id' => 0,
+            // 'department_id' => 0,
             ]);
          DB::table('courses')->insert([
             'name' => 'Additive Manufacturing and Advanced Manufacturing Technologies - MSc(Res)',
             'link' => 'https://https://www.sheffield.ac.uk/postgraduate/taught/courses/engineering/mechanical/additive-manufacturing-advanced-manufacturing-technologies-msc-res',
 
-             'department_id' => 0,
+           //  'department_id' => 0,
             ]);
           DB::table('courses')->insert([
             'name' => 'Advanced Computer Science - MSc',
             'link' => 'https://https://www.sheffield.ac.uk/dcs/postgraduate-taught/acs',
-            'department_id' => 0,
+           // 'department_id' => 0,
             ]);
            DB::table('courses')->insert([
             'name' => 'Advanced Control and Systems Engineering - MSc',
             'link' => 'https://www.sheffield.ac.uk/acse/masters/control-systems/index',
-             'department_id' => 0,
+            // 'department_id' => 0,
             ]);
             DB::table('courses')->insert([
             'name' => 'Advanced Control and Systems Engineering (with Industrial Management) - MSc',
             'link' => 'http://www.sheffield.ac.uk/acse/masters/industrial-management' ,
-            'department_id' => 0,
+            //'department_id' => 0,
             ]);
              DB::table('courses')->insert([
             'name' => 'Advanced Control and Systems Engineering (with Industry) - MSc',
             'link' => 'https://www.sheffield.ac.uk/acse/masters/industry',
-            'department_id' => 0,
+            //'department_id' => 0,
             ]);
             DB::table('courses')->insert([
             'name' => 'Advanced Electrical Machines, Power Electronics and Drives - MSc',
             'link' => 'https://www.sheffield.ac.uk/eee/pgt/1.435523' ,
-            'department_id' => 0,
+            //'department_id' => 0,
             ]);
             DB::table('courses')->insert([
             'name' => 'Advanced Emergency Care - MSc',
             'link' => 'https://www.sheffield.ac.uk/scharr/prospective_students/masters/aec/index' ,
-            'department_id' => 0,
+            //'department_id' => 0,
             ]);
             DB::table('courses')->insert([
             'name' => 'Advanced Manufacturing Management - Executive MBA',
             'link' => 'http://www.sheffield.ac.uk/management/study/mba/emba' ,
-            'department_id' => 0,
+            //'department_id' => 0,
             ]);
             DB::table('courses')->insert([
             'name' => 'Advanced Manufacturing Technologies - MSc(Res)',
             'link' => 'https://www.sheffield.ac.uk/mecheng/prospectivemsc/advmantech' ,
-            'department_id' => 0,
+            //'department_id' => 0,
             ]);
             DB::table('courses')->insert([
             'name' => 'Advanced Materials Manufacturing - MSc (Eng)',
             'link' => 'http://www.sheffield.ac.uk/materials/masters/advmat' ,
-             'department_id' => 0,
+             //'department_id' => 0,
             ]);
             DB::table('courses')->insert([
             'name' => 'Software Engineering, Advanced - MSc(Eng)',
             'link' => 'https://www.sheffield.ac.uk/dcs/postgraduate-taught/ased',
-             'department_id' => 0,
+             //'department_id' => 0,
             ]);
             DB::table('courses')->insert([
             'name' => 'Software Systems and Internet Technology - MSc',
             'link' => 'https://www.sheffield.ac.uk/dcs/postgraduate-taught/sst' ,
-            'department_id' => 0,
+            //'department_id' => 0,
             ]);
             DB::table('courses')->insert([
             'name' => 'Solid State Chemistry and its Applications, Advanced - MSc(Eng)',
             'link' => 'http://www.sheffield.ac.uk/materials/masters/chemistry' ,
-            'department_id' => 0,
+            //'department_id' => 0,
             ]);
             DB::table('courses')->insert([
             'name' => 'Speech Difficulties - MSc/Diploma/Cert',
             'link' => 'https://www.sheffield.ac.uk/hcs/prospective_pg/taught/speech_difficulties' ,
-            'department_id' => 0,
+            //'department_id' => 0,
             ]);
           
 
