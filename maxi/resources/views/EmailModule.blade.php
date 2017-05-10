@@ -87,6 +87,7 @@
       <table >
         <tr>
           <th>Content Name</th> 
+          <th></th>
         </tr>
         <tr>
           <td> 
@@ -99,7 +100,9 @@
              @endforeach
 
            </select>
+
          </td>
+         <td> <a id="a_id"><button class="btn btn-link">Select</button></a><br><br></td>
        </tr>
 
      </table><br>
