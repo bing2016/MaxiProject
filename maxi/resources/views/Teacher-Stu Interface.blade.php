@@ -124,9 +124,9 @@
 
 <div class="col-md-12">
     <div class="text-right" style="background-color: #66B3FF">
+        <a href="{{ url('/upload') }}"><button type="button" style="color:white" class="btn btn-link"> Upload File</button></a>
         <a class="btn btn-link" style="color:white" href="{{ url('/course') }}" role="button">Add Courses</a>
         <a class="btn btn-link" style="color:white" href="{{ url('/department') }}" role="button">Add Department</a>
-        <a href="{{ url('/upload') }}"><button type="button" style="color:white" class="btn btn-link"> Upload File</button></a>
         <a href="{{ url('/emailmodule') }}"><button type="button" style="color:white" class="btn btn-link"  >Email Modification</button></a>
         <button type="button" style="color:white" class="btn btn-link" onclick="feedBack()">Feedback</button>
     </div>
@@ -179,7 +179,7 @@
                 <tr>
                     <th></th>
                     <th>Q?</th>
-                    <th>Name</th>
+                    <th>First Name</th>
                     <th>Country</th>
                     <th>Email Address</th>
                     <th>Stuff</th>

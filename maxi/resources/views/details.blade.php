@@ -38,9 +38,9 @@
         
         <div class="col-md-12">
             <div class="text-right" style="background-color: #66B3FF">
+                <a href="{{ url('/upload') }}"><button type="button" style="color:white" class="btn btn-link"> Upload File</button></a>
                 <a class="btn btn-link" style="color:white" href="{{ url('/course') }}" role="button">Add Courses</a>
                 <a class="btn btn-link" style="color:white" href="{{ url('/department') }}" role="button">Add Department</a>
-                <a href="{{ url('/upload') }}"><button type="button" style="color:white" class="btn btn-link"> Upload File</button></a>
                 <a href="{{ url('/emailmodule') }}"><button type="button" style="color:white" class="btn btn-link"  >Email Modification</button></a>
                 <button type="button" style="color:white" class="btn btn-link" onclick="feedBack()">Feedback</button>
             </div>
@@ -62,10 +62,10 @@
                         <input class="form-control" input class="form-control" name="first_name" value="{{ $students->first_name }}"><br></div>
 
                         <div class="col-md-3">
-                           <span style="font-size:20px;">Middle name</span><br/>
-                           <input class="form-control" input class="form-control" name="middle_name" value="{{ $students->middle_name }}"><br/></div>
+                         <span style="font-size:20px;">Middle name</span><br/>
+                         <input class="form-control" input class="form-control" name="middle_name" value="{{ $students->middle_name }}"><br/></div>
 
-                           <div class="col-md-3">
+                         <div class="col-md-3">
                             <span style="font-size:20px;">Surname</span><br/>
                             <input class="form-control" input class="form-control" name="last_name" value="{{ $students->last_name }}"><br/></div>
                             
@@ -150,18 +150,20 @@
                             <span style="font-size:20px;">Manager</span>
                             <input class="form-control" name="manager" value="{{ $students->manager }}"  readonly><br>
 
-                            <div class="text-center links"><br>
-                                <br/><button type="submit" name="id" value="{{ $students->id }}" class="btn btn-primary">
-                                <a><span style="font-size:20px; color: white">Submit</span></a>
-                            </button>
+                            <div class="col-md-4" style="margin-left: 20%">
+                                <button type="submit" name="id" value="{{ $students->id }}" class="btn btn-primary">
+                                    <a><span style="font-size:20px; color: white">Submit</span></a>
+                                </button></div>
+                                <div class="col-md-3">
+                                    <a href="{{ url('/main/'.Auth::user()->name) }}"><button class="btn btn-primary" style="color:white;float:left;margin-left:40px;" ><span style="font-size:20px; color: white">Cancel</span></button></a>
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                </div>
-            </div>           
+                    </div>         
 
-        </div>
+                </div> 
 
-    </body>
-    </html>
+            </body>
+            </html>
 
 
