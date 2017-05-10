@@ -111,11 +111,11 @@ class OrderController extends Controller
     //general email
     public function generalEmail(Request $request)
     {
-        $studentList = Student::where('is_emailed', false)->where('is_send_now', true)->get();
-
         $manager = $request->manager;
         $manager_email = User::where('name', $manager)->select('email')->first();
         $manager_email = $manager_email['email'];
+        $studentList = Student::where('is_emailed', false)->where('is_send_now', true)->where('manager', $manager)->get();
+
         foreach ($studentList as $student)
         {
             $email = $student['email'];
