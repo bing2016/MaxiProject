@@ -142,6 +142,7 @@
                 <button class="btn btn-default" onclick="allSelect();" >Select All/Cancel All</button>&emsp;
             </div></td>
             <td><form action=" {{ url('excel/export') }}   " name="frm" method="POST">
+                <input name="manager" value="{{ Auth::user()->name }}" hidden="">
                 <button class="btn btn-default" type="submit" id="submit1" name="id" value="" onclick="changeValue();">Download</button>&emsp;&emsp;
             </form></td>
             <td><form action=" {{ url('student/deleteAll') }}   " name="frm" method="POST">

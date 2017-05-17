@@ -107,9 +107,9 @@
             <textarea class="form-control" rows="3" name="blurb" required>{{ $department['blurb'] }}</textarea><br>
 
             <span style="font-size:20px;">Department Link</span>
-            <input type="text" name="link" value="{{ $department['link'] }}" class="form-control"><br>
+            <input type="text" name="link" value="{{ $department['link'] }}" class="form-control"><br><br>
 
-            <div style="margin-left: 25%">
+            <div style="margin-left: 16%">
             <table>
                 <td><div>
                     <input name="manager" value="{{ Auth::user()->name }}" hidden="">
@@ -119,9 +119,10 @@
             <td><form action=" {{ url('department/delete') }} "  method="POST">
                 <div>
                 <input name="manager" value="{{ Auth::user()->name }}" hidden="">
-                <button type="submit" name="id" value="{{ $department['id'] }}"  class="btn btn-default">Delete</button>
+                <button type="submit" name="id" value="{{ $department['id'] }}"  class="btn btn-default">Delete</button>&emsp;&emsp;
                 </div>
             </form></td>
+            <td><a class="btn btn-default" href="{{ url('/main/'.Auth::user()->name) }}" >Cancel</a></td>
         </table></div>
         </div></div>
 

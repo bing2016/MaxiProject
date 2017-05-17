@@ -18,16 +18,20 @@ class ExcelController extends Controller
 
 		$arr = explode(",", $request->get('id'));
 
-		if (empty($arr)) {
-			$students = Student::where('is_download', 0)->get();
+		if ($arr[0] == null) {
+			$students = Student::where('is_download', 0)->where('manager', $request->get('manager'))->get();
 		} else {
-			$students = Student::whereIn('id', $arr)->get();
+			$students = Student::whereIn('id', $arr)->where('manager', $request->get('manager'))->get();
+			return $arr;
 		}
 
-		$info[] = array('name' => 'Name', 
+		$info[] = array('first_name' => 'First Name', 
+						'middle_name' => 'Middle Name',
+						'last_name' => 'Last Name',
+						'nationality' => 'Country',
+						'date' => 'Birthday',
 						'email' => 'Email',
 						'phone' => 'Phone',
-						'date' => 'Birthday',
 						'country' => 'Country', 
 						'department' => 'Department', 
 						'course' => 'Course',
@@ -42,13 +46,17 @@ class ExcelController extends Controller
 						'is_emailed' => 'Emailed ?');
 
 		foreach ($students as $key => $value) {
-			$name = $value['first_name'].$value['middle_name'].$value['last_name'];
+			//$name = $value['first_name'].$value['middle_name'].$value['last_name'];
 			$info[] = array(                
 				              
-				'name' => $name,
-				'email' => $value['email'],  
+						//'name' => $name,
+						'first_name' => $value['first_name'],  
+						'middle_name' => $value['middle_name'],  
+						'last_name' => $value['last_name'], 
+						'nationality' => $value['nationality'], 
+						'date' => $value['date'], 
+						'email' => $value['email'],  
 						'phone' => $value['phone_number'],
-						'date' => $value['date'],
 						'country' => $value['nationality'],
 						'department' => $value['department_name'],
 						'course' => $value['course_name'],
@@ -83,10 +91,13 @@ class ExcelController extends Controller
     	    $namelist = array();
     	    if(!empty($data)){
     	    	foreach ($data as $key => $value) {
-    	    		$nameArray = explode(" ", $value->name);
+    	    		//$nameArray = explode(" ", $value->name);
     	    		$student = new Student;
-    	    		$student->first_name = reset($nameArray);
-    	    		$student->last_name = end($nameArray);
+    	    		$student->first_name = $value->first_name;
+    	    		$student->middle_name = $value->middle_name;
+    	    		$student->last_name = $value->last_name;
+    	    		$student->date = $value->birthday;
+    	    		$student->nationality = $value->country;
     	    		$student->email = $value->email;
     	    		$student->course_name = $value->course;
     	    		$student->manager = $request->get('manager');

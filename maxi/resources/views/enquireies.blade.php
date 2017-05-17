@@ -117,9 +117,9 @@
                 </div>
 
                 <div class="col-md-5" style="margin-left: 30%">
-                    <span style="font-size:20px;">Date Of Birth  (dd/mm/yyyy)</span>
+                    <span style="font-size:20px;">Date Of Birth  (yyyy-mm-dd)</span>
 
-                    <input class="form-control datechooser dc-dateformat='j/n/Y' dc-iconlink='{{URL::asset('/images/datechooser.png')}}'  dc-weekstartday='1' dc-startdate='01012017' dc-latestdate='07312050' dc-earliestdate='05241980'" name="date" value=""><br>
+                    <input class="form-control datechooser dc-dateformat='Y-n-j' dc-iconlink='{{URL::asset('/images/datechooser.png')}}'  dc-weekstartday='1' dc-startdate='01012017' dc-latestdate='07312050' dc-earliestdate='05241980'" name="date" value=""><br>
 
                     <span style="font-size:20px;">Email Address *</span>
                     <input class="form-control" id="email" type="text" name="email" value="" required><br/>

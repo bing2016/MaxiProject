@@ -104,9 +104,9 @@
                     <input type="text" name="name" value="{{ $course['name'] }}" class="form-control" required><br>
 
                     <span style="font-size:20px;">Course Link</span>
-                    <input type="text" name="link" value="{{ $course['link'] }}" class="form-control"><br>
+                    <input type="text" name="link" value="{{ $course['link'] }}" class="form-control"><br><br>
 
-                    <div style="margin-left: 25%">
+                    <div style="margin-left: 18%">
                         <table>
                             <td><div>
                             <input name="manager" value="{{ Auth::user()->name }}" hidden="">
@@ -116,9 +116,10 @@
                         <td><form action=" {{ url('course/delete') }} "  method="POST">
                             <div>
                                 <input name="manager" value="{{ Auth::user()->name }}" hidden="">
-                                <button type="submit" name="id" value="{{ $course['id'] }}"  class="btn btn-default">Delete</button>
+                                <button type="submit" name="id" value="{{ $course['id'] }}"  class="btn btn-default">Delete</button>&emsp;&emsp;
                             </div>
                         </form></td>
+                        <td><a class="btn btn-default" href="{{ url('/main/'.Auth::user()->name) }}" >Cancel</a></td>
                     </table></div>
                 </div></div>
 

@@ -95,7 +95,7 @@
                         <div  class="col-md-9 ">
                             <span style="font-size:20px;">Date Of Birth</span>
 
-                            <input class="form-control datechooser dc-dateformat='j-n-Y' dc-iconlink='{{URL::asset('/images/datechooser.png')}}'  dc-weekstartday='1' dc-startdate='01012017' dc-latestdate='07312050' dc-earliestdate='05241999'" name="date" value="{{ $students->date }}"><br>
+                            <input class="form-control datechooser dc-dateformat='Y-n-j' dc-iconlink='{{URL::asset('/images/datechooser.png')}}'  dc-weekstartday='1' dc-startdate='01012017' dc-latestdate='07312050' dc-earliestdate='05241999'" name="date" value="{{ $students->date }}"><br>
 
                             <span style="font-size:20px;">Email Address</span>
                             <input class="form-control" name="email" value="{{ $students->email }}"><br>
@@ -127,13 +127,13 @@
                             <span style="font-size:20px;"  >Have You Already Applied ?</span>&emsp;&emsp;&emsp;&emsp;
                             <span style="font-size:15px;">Yes</span>&emsp;
                             @if ($students->is_applied == 1)
-                            <label><input type="checkbox" name="is_applied" value="1" checked></label>&emsp;
+                            <label><input type="radio" name="is_applied" value="1" checked></label>&emsp;
                             <span style="font-size:15px;">No</span>&emsp;
-                            <label><input type="checkbox" name="is_applied" value="0"></label>
+                            <label><input type="radio" name="is_applied" value="0"></label>
                             @else
-                            <label><input type="checkbox" name="is_applied" value="1"></label>&emsp;
+                            <label><input type="radio" name="is_applied" value="1"></label>&emsp;
                             <span style="font-size:15px;">No</span>&emsp;
-                            <label><input type="checkbox" name="is_applied" value="0" checked></label>
+                            <label><input type="radio" name="is_applied" value="0" checked></label>
                             @endif
                             
                             <br>
@@ -141,7 +141,7 @@
                             @if ($students->is_special == 1)
                             <input class="form-control" name="regesition_number" value="{{ $students->regesition_number }}"><br>
                             @else
-                            <input class="form-control" name="regesition_number" disabled><br>
+                            <input class="form-control" name="regesition_number"><br>
                             @endif
 
                             <span style="font-size:20px;">Note</span>
@@ -153,11 +153,11 @@
                             <div class="col-md-4" style="margin-left: 20%">
                                 <button type="submit" name="id" value="{{ $students->id }}" class="btn btn-primary">
                                     <a><span style="font-size:20px; color: white">Submit</span></a>
-                                </button></div>
+                                </button></div></form>
                                 <div class="col-md-3">
-                                    <a href="{{ url('/main/'.Auth::user()->name) }}"><button class="btn btn-primary" style="color:white;float:left;margin-left:40px;" ><span style="font-size:20px; color: white">Cancel</span></button></a>
+                                    <a href="{{ url('/main/'.Auth::user()->name) }}" class="btn btn-primary"><span style="font-size:20px; color: white">Cancel</span></a>
                                 </div>
-                            </form>
+                            
                         </div>
                     </div>         
 

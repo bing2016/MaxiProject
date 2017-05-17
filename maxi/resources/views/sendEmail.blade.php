@@ -69,10 +69,10 @@
 
 <div class="text-center col-md-12">
     <br><span  style="font-size:45px;">Send Email</span>
-</div><br>
+</div><br><br>
 
 <form action="{{ url('/special_email') }}" method="POST">
-    <div class="text-center col-md-8" style="margin-left: 18%">
+    <div class="text-center col-md-8" style="margin-left: 16%">
         <span style="font-size:25px;">Content</span>
         <textarea rows="40" name="content" id="content" class="form-control" >{{ $content }}</textarea><br>
         

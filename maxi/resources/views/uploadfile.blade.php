@@ -70,7 +70,7 @@
 </div>
 <br>
 
-<div class="container" style="margin-top:15%">
+<div class="container" style="margin-top:20%">
 
 
  <form style="border: 4px solid #a1a1a1;margin-top: 20px;padding: 30px;" method="post" enctype="multipart/form-data" action="{{url('excel/import')}}">  
