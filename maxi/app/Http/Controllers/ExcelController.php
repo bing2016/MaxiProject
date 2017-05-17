@@ -22,12 +22,11 @@ class ExcelController extends Controller
 			$students = Student::where('is_download', 0)->where('manager', $request->get('manager'))->get();
 		} else {
 			$students = Student::whereIn('id', $arr)->where('manager', $request->get('manager'))->get();
-			return $arr;
 		}
 
-		$info[] = array('first_name' => 'First Name', 
-						'middle_name' => 'Middle Name',
-						'last_name' => 'Last Name',
+		$info[] = array('first_name' => 'FirstName', 
+						'middle_name' => 'MiddleName',
+						'last_name' => 'LastName',
 						'nationality' => 'Country',
 						'date' => 'Birthday',
 						'email' => 'Email',
@@ -36,14 +35,15 @@ class ExcelController extends Controller
 						'department' => 'Department', 
 						'course' => 'Course',
 						'level' => 'Level',
-						'start_year' => 'Start Year',
+						'start_year' => 'StartYear',
 						'questions' => 'Questions',
-						'applied' => 'Applied ?',
-						'registration_number' => 'Registration number',
+						'applied' => 'IsApplied',
+						'registration_number' => 'RegistrationNumber',
 						'manager' => 'Manager',
 						'place' => 'Place',
 						'source' => 'Source',
-						'is_emailed' => 'Emailed ?');
+						'is_emailed' => 'IsEmailed',
+						'is_send_now' => 'Is send now');
 
 		foreach ($students as $key => $value) {
 			//$name = $value['first_name'].$value['middle_name'].$value['last_name'];
@@ -69,6 +69,7 @@ class ExcelController extends Controller
 						'place' => $value['place'],
 						'source' => $value['source'],
 						'is_emailed' => $value['is_emailed'],
+						'is_send_now' => $value['is_send_now'],
 				);        
 		}
 
@@ -91,16 +92,34 @@ class ExcelController extends Controller
     	    $namelist = array();
     	    if(!empty($data)){
     	    	foreach ($data as $key => $value) {
-    	    		//$nameArray = explode(" ", $value->name);
+
     	    		$student = new Student;
-    	    		$student->first_name = $value->first_name;
-    	    		$student->middle_name = $value->middle_name;
-    	    		$student->last_name = $value->last_name;
+    	    		$student->first_name = $value->firstname;
+    	    		$student->middle_name = $value->middlename;
+    	    		$student->last_name = $value->lastname;
     	    		$student->date = $value->birthday;
     	    		$student->nationality = $value->country;
     	    		$student->email = $value->email;
-    	    		$student->course_name = $value->course;
-    	    		$student->manager = $request->get('manager');
+    	    		$student->phone_number = $value->phone;
+
+					$student->department_name = $value->department;
+        			$student->course_name = $value->course;
+        			$student->source = $value->source;
+        			$student->level = $value->level;
+        			$student->is_send_now = $value->is_send_now; //more question
+        			$student->questions = $value->questions;
+        			$student->start_year = $value->startyear;
+        			$student->is_applied = $value->isapplied;
+        			$student->registration_number = $value->registrationnumber;
+        			$student->is_send_now = $value->is_send_now;
+
+        			$student->manager = $request->get('manager');
+        			$student->place = $request->place;
+
+					if (null != $request->questions){
+            				$student->is_highlight = true;
+        			}
+
     	    		try {
           				if (!$student->save()) {
                 			$arr[] = $nameArray;

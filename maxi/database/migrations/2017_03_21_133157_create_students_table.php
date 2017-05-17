@@ -18,6 +18,7 @@ class CreateStudentsTable extends Migration
             $table->String('first_name',50);
             $table->String('middle_name',50)->nullable();
             $table->String('last_name',50);
+            $table->date('date')->nullable(); 
             $table->String('nationality',50)->nullable();
             $table->String('email',50);
             $table->String('phone_number',20)->nullable();
@@ -33,7 +34,6 @@ class CreateStudentsTable extends Migration
 
             $table->String('manager', 100)->nullable();
             $table->String('place', 100)->nullable();
-            $table->date('date')->nullable(); 
             $table->String('source',250)->nullable();
             $table->boolean('is_highlight')->default(false);
             $table->boolean('is_emailed')->default(false);
