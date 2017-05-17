@@ -91,6 +91,7 @@
             <span style="font-size:20px;">Course</span><br>
             
             <select class="form-control" id="select_id" >
+                <option value="select course.."> Select Course..</option>
                 @foreach ($courses as $cc)
                 <option value="{{ $cc->name }}" > {{ $cc->name }} </option>
                 @endforeach

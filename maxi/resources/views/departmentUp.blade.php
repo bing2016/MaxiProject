@@ -91,6 +91,7 @@
         <span style="font-size:20px;">Department</span><br>
 
         <select class="form-control" id="select_id" >
+        <option value="select department.."> Select Depatment..</option>
             @foreach ($departments as $dd)
             <option value="{{ $dd->name }}" > {{ $dd->name }} </option>
             @endforeach
@@ -119,10 +120,9 @@
             <td><form action=" {{ url('department/delete') }} "  method="POST">
                 <div>
                 <input name="manager" value="{{ Auth::user()->name }}" hidden="">
-                <button type="submit" name="id" value="{{ $department['id'] }}"  class="btn btn-default">Delete</button>&emsp;&emsp;
+                <button type="submit" name="id" value="{{ $department['id'] }}"  class="btn btn-default">Delete</button>
                 </div>
             </form></td>
-            <td><a class="btn btn-default" href="{{ url('/main/'.Auth::user()->name) }}" >Cancel</a></td>
         </table></div>
         </div></div>
 
