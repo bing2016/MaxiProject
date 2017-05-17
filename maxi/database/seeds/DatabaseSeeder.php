@@ -1446,11 +1446,6 @@ class DatabaseSeeder extends Seeder
             'link' => 'https://www.sheffield.ac.uk/management/study/msc/courses/msc-accounting-governance-financial-management',
             //'department_id' => 0,
             ]);
-        DB::table('courses')->insert([
-            'name' => 'Acquired Communication Disorders - Msc/Diploma/Certificate',
-            'link' => 'https://www.sheffield.ac.uk/hcs/prospective_pg/taught/acd',
-            // 'department_id' => 0,
-            ]);
          DB::table('courses')->insert([
             'name' => 'Additive Manufacturing and Advanced Manufacturing Technologies - MSc(Res)',
             'link' => 'https://https://www.sheffield.ac.uk/postgraduate/taught/courses/engineering/mechanical/additive-manufacturing-advanced-manufacturing-technologies-msc-res',
